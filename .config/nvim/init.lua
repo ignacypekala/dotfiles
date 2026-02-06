@@ -7,9 +7,11 @@ vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'line'
 vim.opt.scrolloff = 999
-
+-- Normal cursor but with a beam in the command line
+vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 
 -- Use 4 spaces as tab, 4 if not at the beginning of a line
+-- I think treesitter overwrites it on supported filetypes
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -29,25 +31,39 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Alt+hjkl in command mode
+vim.keymap.set({"c"}, "<M-h>", "<Left>")
+vim.keymap.set({"c"}, "<M-H>", "<S-Left>")
+vim.keymap.set({"c"}, "<M-l>", "<Right>")
+vim.keymap.set({"c"}, "<M-L>", "<S-Right>")
+vim.keymap.set({"c"}, "<M-j>", "<Down>")
+vim.keymap.set({"c"}, "<M-k>", "<Up>")
+
 require('config.clipboard')
 require('config.lazy')
 
 -- Treesitter configuration
-local treesitter_langs = { 
-    'c', 
-    'python', 
-    'typst', 
-    'markdown', 
-    'make', 
-    'javascript', 
-    'jsdoc', 
-    'json', 
-    'html', 
-    'css',
-    'csv', 
-    'lua', 
-    'bash', 
-    'make' 
+local treesitter_langs = {
+    'c', 'make', 'cpp',
+
+    'python',
+    'lua',
+
+    'typst',
+    'markdown',
+
+    'javascript', 'jsdoc',
+
+    'json', 'csv',
+    'yaml', 'toml', 'ini',
+
+    'html', 'css',
+
+    'bash',
+    'tmux',
+    'gitignore',
+
+    'sql',
 }
 require('nvim-treesitter').install(treesitter_langs)
 --
@@ -61,14 +77,5 @@ vim.api.nvim_create_autocmd('FileType', {
 }
 )
 
--- Configure emulated terminal
-vim.keymap.set('n', '<leader>t', '<CMD>botright 15split<CR><CMD>terminal<CR>',
-    { desc = 'Opens a small terminal from the bottom' })
-vim.api.nvim_create_autocmd('TermOpen', {
-    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-    callback = function()
-        vim.opt.number = true
-        vim.opt.relativenumber = true
-    end
-})
-vim.keymap.set('t', '<Esc>', "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.cmd("colorscheme default")
+vim.cmd("set notermguicolors")

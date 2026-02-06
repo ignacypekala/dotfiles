@@ -1,0 +1,16 @@
+{
+    "min": {
+        "prefix": "min",
+        "body": [
+            "int min(int a, int b) { return a < b ? a : b; }"
+        ],
+        "description": "min(int a, int b)"
+    },
+    "max": {
+        "prefix": "max",
+        "body": [
+            "int max(int a, int b) { return a > b ? a : b; }"
+        ],
+        "description": "max(int a, int b)"
+    }
+}

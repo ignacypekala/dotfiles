@@ -1,0 +1,28 @@
+-- Determine the os file path separator 
+path_sep = package.config:sub(1,1)
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. path_sep .. "lazy" .. path_sep .. "lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.print(lazypath)
+vim.opt.rtp:prepend(lazypath)
+
+-- Initiate lazy plugin manager 
+require('lazy').setup({
+    spec = {import = "plugins"},
+    install = { colorscheme = { "poimandres" } },
+    -- checker = { enabled = true },
+})
+

@@ -1,0 +1,53 @@
+[terminal]
+shell = { program = "wsl -- tmux" }
+
+[window]
+dimensions = { columns = 120, lines = 35 }
+decorations = "Transparent"
+dynamic_title = true
+padding = { x = 10, y = 10 }
+opacity = 0.95 
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+vi_mode_style = { shape = "Block", blinking = "Off" }
+
+[colors]
+cursor = { text = "#121212", cursor = "#cccccc" }
+
+[colors.primary]
+background = "#121212"
+foreground = "#cccccc"
+
+[colors.normal]
+black = "#000000"
+red = "#d44d4f"
+green = "#83e089"
+yellow = "#f4c451"
+blue = "#5592ef"
+magenta = "#b575e9"
+cyan = "#78e8e8"
+white = "#cccccc"
+
+[colors.bright]
+black = "#6a6969"
+red = "#ed7375"
+green = "#a3d9a4"
+yellow = "#f9f1a5"
+blue = "#89b9ff"
+magenta = "#c59be7"
+cyan = "#aee8e8"
+white = "#f2f2f2"
+
+[font]
+normal = { family = "JetBrainsMono NF", style = "SemiBold" }
+size = 10
+offset = { x = 1, y = 0 }
+
+[keyboard]
+bindings = [
+    # Send Control+Tab code
+    { mods = "Control", key = "Tab", chars = "\u001b[27;5;9~"},
+    # Map Control+Shift+Tab to Control+Shift+Left
+    { mods = "Control|Shift", key = "Tab", chars = "\u001b[1;6D"}
+]

@@ -49,5 +49,15 @@ bindings = [
     # Send Control+Tab code
     { mods = "Control", key = "Tab", chars = "\u001b[27;5;9~"},
     # Map Control+Shift+Tab to Control+Shift+Left
-    { mods = "Control|Shift", key = "Tab", chars = "\u001b[1;6D"}
+    { mods = "Control|Shift", key = "Tab", chars = "\u001b[1;6D"},
+
+    # Navigate throught the prompt with Alt+hjkl and Alt+HJKL
+    { mods = "Alt", key = "h", chars = "\u001b[D"},
+    { mods = "Alt", key = "l", chars = "\u001b[C"},
+    { mods = "Alt|Shift", key = "h", chars = "\u001b[1;5D"},
+    { mods = "Alt|Shift", key = "l", chars = "\u001b[1;5C"},
+    { mods = "Alt", key = "j", chars = "\u001b[B" },
+    { mods = "Alt", key = "k", chars = "\u001b[A" }
 ]
+
+

@@ -32,12 +32,17 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Alt+hjkl in command mode
+-- Currently not used as I have the same overwrites in alacritty config
+-- Leaving this just in case I switch terminal emulators
 vim.keymap.set({"c"}, "<M-h>", "<Left>")
 vim.keymap.set({"c"}, "<M-H>", "<S-Left>")
 vim.keymap.set({"c"}, "<M-l>", "<Right>")
 vim.keymap.set({"c"}, "<M-L>", "<S-Right>")
 vim.keymap.set({"c"}, "<M-j>", "<Down>")
 vim.keymap.set({"c"}, "<M-k>", "<Up>")
+
+vim.opt.termguicolors = false
+vim.cmd.colorscheme('default')
 
 require('config.clipboard')
 require('config.lazy')
@@ -77,5 +82,3 @@ vim.api.nvim_create_autocmd('FileType', {
 }
 )
 
-vim.cmd("colorscheme default")
-vim.cmd("set notermguicolors")

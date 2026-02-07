@@ -4,7 +4,7 @@ return {
         tag = 'v0.2.0',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            { "nvim-tree/nvim-web-devicons", opts = {} },
+            -- { "nvim-tree/nvim-web-devicons", opts = {} },
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
@@ -18,7 +18,6 @@ return {
                     fzf = {}
                 },
                 mappings = {
-
                 },
                 pickers = {
                     find_files = {
@@ -45,6 +44,7 @@ return {
             vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
             vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
             vim.keymap.set('n', '<leader>k', builtin.keymaps, { desc = 'Telescope keymappings' })
+            vim.keymap.set('n', '<leader>m', builtin.man_pages, { desc = 'Telescope man pages' })
         end
     }
 }

@@ -11,9 +11,8 @@ RESET="\[\e[0m\]"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-# PS1='[\u@\h \W]\$ '
 export PROMPT_DIRTRIM=3
-PS1="\n${GREEN}\w${RESET} ${BOLD}λ${RESET} "
+export PS1="${GREEN}\w${RESET} ${BOLD}λ${RESET} "
 
 
 # Dont save duplicates in history

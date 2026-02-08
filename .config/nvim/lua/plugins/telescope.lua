@@ -4,12 +4,8 @@ return {
         tag = 'v0.2.0',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            -- { "nvim-tree/nvim-web-devicons", opts = {} },
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
-            }
-
+            { "nvim-tree/nvim-web-devicons", opts = {} },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' }
         },
         event = "VeryLazy",
         config = function()
@@ -34,7 +30,11 @@ return {
             })
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope files' })
+            vim.keymap.set('n', '<leader>f',
+                function()
+                    builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
+                end,
+                { desc = 'Telescope files' })
             vim.keymap.set('n', '<leader>nv',
                 function()
                     builtin.find_files({ cwd = vim.fn.stdpath('config') })

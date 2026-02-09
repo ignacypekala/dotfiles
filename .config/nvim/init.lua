@@ -67,6 +67,7 @@ local treesitter_langs = {
     'bash',
     'tmux',
     'gitignore',
+    'vimdoc',
 
     'sql',
 }

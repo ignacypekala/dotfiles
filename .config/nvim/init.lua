@@ -50,25 +50,16 @@ require('config.lazy')
 -- Treesitter configuration
 local treesitter_langs = {
     'c', 'make', 'cpp',
-
-    'python',
-    'lua',
-
-    'typst',
-    'markdown',
-
+    'python','lua',
+    'typst', 'markdown',
     'javascript', 'jsdoc',
-
     'json', 'csv',
     'yaml', 'toml', 'ini',
-
     'html', 'css',
-
     'bash',
     'tmux',
     'gitignore',
     'vimdoc',
-
     'sql',
 }
 require('nvim-treesitter').install(treesitter_langs)

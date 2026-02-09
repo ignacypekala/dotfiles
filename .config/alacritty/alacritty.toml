@@ -9,7 +9,7 @@ dimensions = { columns = 120, lines = 35 }
 decorations = "Transparent"
 dynamic_title = true
 padding = { x = 10, y = 10 }
-opacity = 0.95 
+opacity = 1 
 
 [cursor]
 style = { shape = "Beam", blinking = "On" }
@@ -23,17 +23,17 @@ background = "#121212"
 foreground = "#cccccc"
 
 [colors.normal]
-black = "#000000"
+black = "#050505"
 red = "#d44d4f"
 green = "#83e089"
 yellow = "#f4c451"
 blue = "#5592ef"
 magenta = "#b575e9"
 cyan = "#78e8e8"
-white = "#cccccc"
+white = "#7d7d7d"
 
 [colors.bright]
-black = "#6a6969"
+black = "#202020"
 red = "#ed7375"
 green = "#a3d9a4"
 yellow = "#f9f1a5"

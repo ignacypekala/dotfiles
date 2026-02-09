@@ -2,10 +2,12 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.numberwidth = 4
 
+vim.opt.colorcolumn = "80"
+
 vim.opt.wrap = false
 
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = 'line'
+vim.opt.cursorlineopt = 'both'
 vim.opt.scrolloff = 999
 -- Normal cursor but with a beam in the command line
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
@@ -42,7 +44,8 @@ vim.keymap.set({"c"}, "<M-j>", "<Down>")
 vim.keymap.set({"c"}, "<M-k>", "<Up>")
 
 vim.opt.termguicolors = false
-vim.cmd.colorscheme('default')
+vim.cmd.colorscheme('custom')
+vim.opt.fillchars = { vert = " ", horiz = " " , eob = " " }
 
 require('config.clipboard')
 require('config.lazy')

@@ -25,21 +25,21 @@ foreground = "#cccccc"
 [colors.normal]
 black = "#050505"
 red = "#d44d4f"
-green = "#83e089"
+green = "#67a376"
 yellow = "#f4c451"
-blue = "#5592ef"
+blue = "#78a7f0"
 magenta = "#b575e9"
-cyan = "#78e8e8"
+cyan = "#4eccf2"
 white = "#7d7d7d"
 
 [colors.bright]
 black = "#202020"
 red = "#ed7375"
-green = "#a3d9a4"
+green = "#9ae3ac"
 yellow = "#f9f1a5"
-blue = "#89b9ff"
+blue = "#8bc4f0"
 magenta = "#c59be7"
-cyan = "#aee8e8"
+cyan = "#9fd3ed"
 white = "#f2f2f2"
 
 [font]

@@ -43,6 +43,10 @@ vim.keymap.set({"c"}, "<M-L>", "<S-Right>")
 vim.keymap.set({"c"}, "<M-j>", "<Down>")
 vim.keymap.set({"c"}, "<M-k>", "<Up>")
 
+-- Move chunks of text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 vim.opt.termguicolors = false
 vim.cmd.colorscheme('custom')
 vim.opt.fillchars = { vert = " ", horiz = " " , eob = " " }

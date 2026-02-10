@@ -30,6 +30,7 @@ local function hl(group, fg, bg, attr)
     })
 end
 
+-- GUI
 hl('Normal', tc.bright_white, tc.none)
 hl('NormalFloat', tc.bright_white, tc.bright_black)
 
@@ -46,3 +47,57 @@ hl('StatusLineNC', tc.none, tc.none, {})
 
 hl('SnippetTabstop', tc.white, tc.bright_black)
 hl('Visual', tc.none, tc.white)
+
+-- Highlighting
+-- -- Syntax
+hl('Comment', tc.white)
+hl('Constant', tc.bright_blue)
+hl('String', tc.bright_blue)
+hl('Identifier', tc.bright_white)
+hl('Function', tc.bright_green)
+hl('Statement', tc.white)
+hl('Type', tc.green)
+hl('Special', tc.blue)
+
+-- -- Treesitter
+hl('@comment', tc.white)
+
+hl('@variable.builtin', tc.bright_green)
+hl('@variable.parameter.builtin', tc.bright_green)
+hl('@module.builtin', tc.bright_green)
+hl('@type.builtin', tc.bright_green)
+
+hl('@attribute.builtin', tc.bright_green)
+hl('@property', tc.green)
+
+hl('@function', tc.bright_green)
+hl('@function.builtin', tc.bright_green)
+hl('@constructor', tc.bright_green)
+
+hl('@type', tc.green)
+hl('@type.builtin', tc.green)
+
+hl('@punctuation.special', tc.bright_green)
+hl('@comment.note', tc.bright_green)
+hl('@markup.quote', tc.bright_green)
+hl('@markup.math', tc.bright_green)
+hl('@markup.raw', tc.bright_green)
+hl('@markup.list', tc.bright_green)
+hl('@tag', tc.bright_green)
+hl('@tag.builtin', tc.bright_green)
+
+hl('@string', tc.bright_blue)
+
+hl('@string.regexp', tc.blue)
+hl('@string.escape', tc.blue)
+hl('@string.special', tc.blue)
+
+hl('@constant', tc.bright_blue)
+hl('@number', tc.bright_blue)
+hl('@number.float', tc.blue)
+hl('@boolean', tc.bright_blue)
+hl('@constant.builtin', tc.bright_blue)
+hl('@character', tc.bright_blue)
+hl('@character.special', tc.blue)
+
+ 

@@ -70,13 +70,18 @@ local treesitter_langs = {
     'sql',
 }
 require('nvim-treesitter').install(treesitter_langs)
---
+
 -- Enables treesitter features for installed parsers
 vim.api.nvim_create_autocmd('FileType', {
     pattern = treesitter_langs,
-    callback = function()
+    callback = function(args)
         vim.treesitter.start()
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+        if args.match == 'c' or args.match == 'cpp' then
+            vim.bo.cindent = true
+        else
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
     end,
 }
 )

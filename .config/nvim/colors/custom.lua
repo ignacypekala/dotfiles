@@ -17,7 +17,7 @@ local tc = {
     bright_blue = 12,
     bright_magenta = 13,
     bright_cyan = 14,
-    birght_white = 15,
+    bright_white = 15,
     none = "NONE"
 }
 
@@ -32,25 +32,40 @@ end
 
 -- GUI
 hl('Normal', tc.bright_white, tc.none)
-hl('NormalFloat', tc.bright_white, tc.bright_black)
+hl('NormalFloat', tc.white, tc.black)
 
-hl('ColorColumn', tc.none, tc.bright_black)
+hl('WinSeparator', tc.black)
+
+hl('ColorColumn', tc.none, tc.black)
 hl('LineNr', tc.bright_white, tc.none)
-hl('LineNrAbove', tc.white, tc.none)
-hl('LineNrBelow', tc.white, tc.none)
-hl('CursorLineNr', tc.bright_white, tc.none)
+hl('LineNrAbove', tc.bright_black, tc.none)
+hl('LineNrBelow', tc.bright_black, tc.none)
+hl('CursorLine', tc.none, tc.black)
+hl('CursorLineNr', tc.white, tc.none)
+hl('EndOfBuffer', tc.bright_black, tc.none)
 
-hl('Pmenu', tc.bright_white, tc.bright_black)
+hl('Pmenu', tc.bright_white, tc.black)
+hl('PmenuSel', tc.bright_green, tc.black)
+hl('PmenuThumb', tc.none, tc.bright_black)
+hl('PmenuExtra', tc.white)
 
 hl('StatusLine', tc.none, tc.none)
 hl('StatusLineNC', tc.none, tc.none, {})
 
+hl('CurSearch', tc.black, tc.white)
+hl('Search', tc.black, tc.white)
+hl('Substitute', tc.black, tc.white)
 hl('SnippetTabstop', tc.white, tc.bright_black)
-hl('Visual', tc.none, tc.white)
+hl('Visual', tc.bright_white, tc.bright_black)
+
+hl('TelescopeNormal', tc.bright_white, tc.black)
+hl('TelescopeBorder', tc.black, tc.black)
+hl('TelescopePromptTitle', tc.white, tc.none, { bold = true })
+hl('TelescopePreviewTitle', tc.none, tc.none)
 
 -- Highlighting
 -- -- Syntax
-hl('Comment', tc.white)
+hl('Comment', tc.bright_black)
 hl('Constant', tc.bright_blue)
 hl('String', tc.bright_blue)
 hl('Identifier', tc.bright_white)
@@ -60,7 +75,7 @@ hl('Type', tc.green)
 hl('Special', tc.blue)
 
 -- -- Treesitter
-hl('@comment', tc.white)
+hl('@comment', tc.bright_black)
 
 hl('@variable.builtin', tc.bright_green)
 hl('@variable.parameter.builtin', tc.bright_green)
@@ -100,4 +115,3 @@ hl('@constant.builtin', tc.bright_blue)
 hl('@character', tc.bright_blue)
 hl('@character.special', tc.blue)
 
- 

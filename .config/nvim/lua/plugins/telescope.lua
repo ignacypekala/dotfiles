@@ -10,41 +10,61 @@ return {
         event = "VeryLazy",
         config = function()
             require('telescope').setup({
+                color_devicons = false,
                 extensions = {
                     fzf = {}
                 },
-                mappings = {
+                defaults = {
+                    border = true,
+                    mappings = {
+
+                    },
                 },
                 pickers = {
+                    git_files = {
+                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
+                        theme = "dropdown"
+                    },
                     find_files = {
-                        theme = 'dropdown'
+                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
+                        theme = "dropdown"
                     },
                     help_tags = {
-                        theme = 'dropdown',
+                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
+                        theme = "dropdown"
                     },
                     buffers = {
-                        theme = 'dropdown',
+                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
+                        theme = "dropdown"
                     }
                 },
 
             })
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>f',
+
+            vim.keymap.set('n', '<leader>ff',
                 function()
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
-                end,
-                { desc = 'Telescope files' })
+                end
+            )
+            vim.keymap.set('n', '<leader>g', builtin.git_files)
+
             vim.keymap.set('n', '<leader>nv',
                 function()
                     builtin.find_files({ cwd = vim.fn.stdpath('config') })
-                end,
-                { desc = 'Telescope files in nvim config' }
+                end
             )
-            vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
-            vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
-            vim.keymap.set('n', '<leader>k', builtin.keymaps, { desc = 'Telescope keymappings' })
-            vim.keymap.set('n', '<leader>m', builtin.man_pages, { desc = 'Telescope man pages' })
+
+            vim.keymap.set('n', '<leader>ndv',
+                function()
+                    builtin.find_files({ cwd = vim.fn.stdpath('data') })
+                end
+            )
+            vim.keymap.set('n', '<leader>b', builtin.buffers)
+            vim.keymap.set('n', '<leader>h', builtin.help_tags)
+            vim.keymap.set('n', '<leader>k', builtin.keymaps)
+            vim.keymap.set('n', '<leader>m', builtin.man_pages)
         end
     }
 }

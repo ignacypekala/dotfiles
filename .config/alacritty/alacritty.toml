@@ -23,24 +23,24 @@ background = "#121212"
 foreground = "#cccccc"
 
 [colors.normal]
-black = "#050505"
+black = "#202020"
 red = "#d44d4f"
 green = "#67a376"
 yellow = "#f4c451"
 blue = "#78a7f0"
 magenta = "#b575e9"
 cyan = "#4eccf2"
-white = "#7d7d7d"
+white = "#b3b3b3"
 
 [colors.bright]
-black = "#202020"
+black = "#5e5d5d"
 red = "#ed7375"
 green = "#9ae3ac"
 yellow = "#f9f1a5"
 blue = "#8bc4f0"
 magenta = "#c59be7"
 cyan = "#9fd3ed"
-white = "#f2f2f2"
+white = "#d6d6d6"
 
 [font]
 normal = { family = "JetBrainsMono NF", style = "SemiBold" }

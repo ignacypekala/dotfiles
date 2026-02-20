@@ -36,12 +36,12 @@ config.colors = {
     selection_bg = "#212121"
 }
 
-config.window_frame = {
-    font = wezterm.font(
-        'JetBrainsMono Nerd Font',
-        { weight = 'ExtraBold' }
-    ),
-    font_size = 10.0,
+config.font = wezterm.font('JetBrains Mono', { weight = "DemiBold" })
+config.font_rules = {
+    {
+        intensity = 'Bold',
+        font = wezterm.font('JetBrains Mono', { weight = "ExtraBold" })
+    }
 }
 
 config.enable_tab_bar = false
@@ -64,54 +64,64 @@ config.keys = {
     {
         key = 'Tab',
         mods = 'CTRL',
-        action = act.SendString '\x1b[27;5;9~',
+        action = act.SendString('\x1b[27;5;9~'),
     },
     -- Map Control+Shift+Tab to Control+Shift+Left escape sequence
     {
         key = 'Tab',
         mods = 'CTRL|SHIFT',
-        action = act.SendString '\x1b[1;6D',
+        action = act.SendString('\x1b[1;6D'),
     },
-
-    -- Navigate through the prompt with Alt+hjkl
+    -- Ctrl+B for home
     {
-        key = 'h',
-        mods = 'ALT',
-        action = act.SendString '\x1b[D',
+        key = 'b',
+        mods = "CTRL",
+        action = act.SendString('\x1b[H')
     },
+    -- Ctrl+E for end
     {
-        key = 'l',
-        mods = 'ALT',
-        action = act.SendString '\x1b[C',
+        key = 'e',
+        mods = "CTRL",
+        action = act.SendString('\x1b[F')
     },
+    -- Sends the escape sequence for Control + Delete
     {
-        key = 'j',
-        mods = 'ALT',
-        action = act.SendString '\x1b[B',
+        key = 'w',
+        mods = 'CTRL',
+        action = act.SendString('\x17'),
     },
-    {
-        key = 'k',
-        mods = 'ALT',
-        action = act.SendString '\x1b[A',
-    },
-
-    -- Alt+Shift+H/L (mapped to Control+Left/Right sequences)
+    -- Alt+Shift+H/L (mapped to Ctrl+Shift+LEFT/RIGHT sequences)
     {
         key = 'H',
         mods = 'ALT|SHIFT',
-        action = act.SendString '\x1b[1;5D',
+        action = act.SendString('\x1b[1;5D')
     },
     {
         key = 'L',
         mods = 'ALT|SHIFT',
-        action = act.SendString '\x1b[1;5C',
+        action = act.SendString('\x1b[1;5C')
+    },
+    -- Alt+h/j/k/l (LEFT/UP/DOWN/RIGHT)
+    {
+        key = 'h',
+        mods = 'ALT',
+        action = act.SendString('\x1b[D')
     },
     {
-        key = 'w',
-        mods = 'CTRL',
-        -- Sends the escape sequence for Control + Delete
-        action = act.SendString '\x17',
+        key = 'j',
+        mods = 'ALT',
+        action = act.SendString('\x1b[A')
     },
+    {
+        key = 'k',
+        mods = 'ALT',
+        action = act.SendString('\x1b[B'),
+    },
+    {
+        key = 'l',
+        mods = 'ALT',
+        action = act.SendString('\x1b[C'),
+    }
 }
 
 return config

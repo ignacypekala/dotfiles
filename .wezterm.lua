@@ -1,5 +1,10 @@
 local wezterm = require('wezterm')
 local config = wezterm.config_builder()
+config.window_decorations = "TITLE | RESIZE"
+
+wezterm.on('format-window-title', function(tab)
+    return tab.active_tab.title
+end)
 
 config.initial_cols = 120
 config.initial_rows = 35

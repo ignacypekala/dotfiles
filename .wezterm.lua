@@ -115,12 +115,12 @@ config.keys = {
     {
         key = 'j',
         mods = 'ALT',
-        action = act.SendString('\x1b[A')
+        action = act.SendString('\x1b[B'),
     },
     {
         key = 'k',
         mods = 'ALT',
-        action = act.SendString('\x1b[B'),
+        action = act.SendString('\x1b[A')
     },
     {
         key = 'l',

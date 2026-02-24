@@ -2,6 +2,7 @@
 # ~/.bashrc
 #
 GREEN="\[\e[32m\]"
+GRAY="\[\e[90m\]"
 BOLD="\[\e[1m\]"
 RESET="\[\e[0m\]"
 
@@ -14,7 +15,7 @@ alias grep='grep --color=auto'
 export MANPAGER="nvim +Man!"
 
 export PROMPT_DIRTRIM=3
-export PS1="${GREEN}\w${RESET} ${BOLD}λ${RESET} "
+export PS1="${GREEN}\w${RESET} ${BOLD}${GRAY}>_${RESET} "
 
 
 # Dont save duplicates in history

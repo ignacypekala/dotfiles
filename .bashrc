@@ -11,6 +11,8 @@ RESET="\[\e[0m\]"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
+export MANPAGER="nvim +Man!"
+
 export PROMPT_DIRTRIM=3
 export PS1="${GREEN}\w${RESET} ${BOLD}λ${RESET} "
 
@@ -25,3 +27,4 @@ add_paths() {
 }
 
 add_paths ~/.cargo/bin
+. "$HOME/.cargo/env"

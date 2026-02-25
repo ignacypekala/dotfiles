@@ -83,7 +83,7 @@ hl('@module.builtin', tc.bright_green)
 hl('@type.builtin', tc.bright_green)
 
 hl('@attribute.builtin', tc.bright_green)
-hl('@property', tc.green)
+hl('@property', tc.white)
 
 hl('@function', tc.bright_green)
 hl('@function.builtin', tc.bright_green)
@@ -94,10 +94,12 @@ hl('@type.builtin', tc.green)
 
 hl('@punctuation.special', tc.bright_green)
 hl('@comment.note', tc.bright_green)
-hl('@markup.quote', tc.bright_green)
-hl('@markup.math', tc.bright_green)
-hl('@markup.raw', tc.bright_green)
-hl('@markup.list', tc.bright_green)
+
+hl('@markup.heading', tc.green)
+hl('@markup.quote', tc.white)
+hl('@markup.math', tc.white)
+hl('@markup.raw', tc.white)
+hl('@markup.list', tc.white)
 hl('@tag', tc.bright_green)
 hl('@tag.builtin', tc.bright_green)
 

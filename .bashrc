@@ -22,12 +22,3 @@ echo -e -n "\x1b[\x36 q"
 
 # Dont save duplicates in history
 export HISTCONTROL=ignoreboth:erasedups
-
-add_paths() {
-	for d in "$@"; do
-		[[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
-	done
-}
-
-add_paths ~/.cargo/bin
-. "$HOME/.cargo/env"

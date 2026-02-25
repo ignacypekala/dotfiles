@@ -20,12 +20,3 @@ export PS1="${GREEN}\w${RESET} ${BOLD}${GRAY}>_${RESET} "
 
 # Dont save duplicates in history
 export HISTCONTROL=ignoreboth:erasedups
-
-add_paths() {
-	for d in "$@"; do
-		[[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
-	done
-}
-
-add_paths ~/.cargo/bin
-. "$HOME/.cargo/env"

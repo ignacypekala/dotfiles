@@ -15,7 +15,7 @@ config.colors = {
     background = "#121212",
     foreground = "#cccccc",
     ansi = {
-        "#202020",
+        "#191919",
         "#d44d4f",
         "#67a376",
         "#f4c451",

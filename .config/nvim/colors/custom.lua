@@ -1,4 +1,5 @@
 vim.g.colors_name = 'custom'
+vim.opt.background = 'dark'
 
 -- Terminal colors
 local tc = {

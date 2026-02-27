@@ -52,18 +52,38 @@ if [[ $HOSTNAME == "Grzejnik" ]]; then
             "$HOME"
             "$HOME/wdp"
         )
+    export TMUX_ACCENT="green"
+    PATH_COLOR=$GREEN
 elif [[ $HOSTNAME == "Laptop" ]]; then
-    export WORKDIRS=(
+    export WORK_DIRS=(
             "$HOME"
         )
+    export TMUX_ACCENT="yellow"
+    PATH_COLOR=$YELLOW
 elif [[ $HOSTNAME == "students" ]]; then
-    export WORKDIRS=(
+    export WORK_DIRS=(
             "$HOME"
         )
+    export TMUX_ACCENT="blue"
+    PATH_COLOR=$BLUE
+else
+    export WORK_DIRS=(
+        "$HOME"
+        )
+    export TMUX_ACCENT="red"
+    PATH_COLOR=$RED
 fi
 
+# Write the WORK_DIRS to a temp file
+# It is accessed by tmux-sessions.sh
+update_work_dirs() {
+    mkdir -p ~/.cache
+    printf "%s\n" "${WORK_DIRS[@]}" > ~/.cache/work_dirs
+    echo "Tmux directory cache updated with ${#WORK_DIRS[@]} paths."
+}
+
 export PROMPT_DIRTRIM=3
-export PS1="${GREEN}\w${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
+export PS1="${PATH_COLOR}\w${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
 
 # Change the cursor to a blinking bar
 # echo -e -n "\x1b[\x36 q"

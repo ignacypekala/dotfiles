@@ -1,5 +1,5 @@
 #!/bin/bash
-# Based on tmux-session-dispensary by Sylvan Franklin
+# Based on the tmux-session-dispensary by Sylvan Franklin
 # https://github.com/SylvanFranklin/.config/blob/main/scripts/tmux-session-dispensary.sh
 #
 # Depends on skim
@@ -10,6 +10,7 @@
 #     "$HOME"
 #     "$HOME/wdp"
 # )
+mapfile -t WORK_DIRS < ~/.cache/work_dirs
 
 if [[ $# -eq 1 ]]; then
     selected=$1
@@ -18,7 +19,7 @@ else
         | sed "s|^$HOME/|~/|" \
         | sk --margin 10% --color="bw")
 
-    [[ $selected ]] && selected="$HOME/$selected"
+    [[ $selected ]] && selected="$selected"
 fi
 
 [[ ! $selected ]] && exit 0

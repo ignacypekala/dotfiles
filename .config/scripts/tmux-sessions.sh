@@ -19,7 +19,7 @@ else
         | sed "s|^$HOME/|~/|" \
         | sk --margin 10% --color="bw")
 
-    [[ $selected ]] && selected="$selected"
+    [[ $selected ]] && selected="$HOME/$selected"
 fi
 
 [[ ! $selected ]] && exit 0

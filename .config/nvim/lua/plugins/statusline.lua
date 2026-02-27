@@ -9,7 +9,7 @@ return {{
                 section_separators = { left = "", right = "" },
             },
             sections = {
-                lualine_a = { 'mode', { 'selectioncount', padding = 0 } },
+                lualine_a = { 'mode', { 'selectioncount', padding = 1 } },
                 lualine_b = { {
                    'filename',
                     icons_enabled = false,

@@ -17,15 +17,8 @@ export MANPAGER="nvim +Man!"
 export PROMPT_DIRTRIM=3
 export PS1="${GREEN}\w${RESET} ${BOLD}${GRAY}>_${RESET} "
 
+# Change the cursor to a blinking bar
+echo -e -n "\x1b[\x36 q"
 
 # Dont save duplicates in history
 export HISTCONTROL=ignoreboth:erasedups
-
-add_paths() {
-	for d in "$@"; do
-		[[ -d "$d" && ! "$PATH" =~ (^|:)$d(:|$) ]] && PATH="$PATH:$d"
-	done
-}
-
-add_paths ~/.cargo/bin
-. "$HOME/.cargo/env"

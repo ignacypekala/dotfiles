@@ -9,13 +9,14 @@ end)
 config.initial_cols = 120
 config.initial_rows = 35
 
-config.font_size =  10
+
+config.bold_brightens_ansi_colors = false
 
 config.colors = {
     background = "#121212",
     foreground = "#cccccc",
     ansi = {
-        "#202020",
+        "#191919",
         "#d44d4f",
         "#67a376",
         "#f4c451",
@@ -41,6 +42,7 @@ config.colors = {
     selection_bg = "#212121"
 }
 
+config.font_size =  10
 config.font = wezterm.font('JetBrains Mono', { weight = "DemiBold" })
 config.font_rules = {
     {

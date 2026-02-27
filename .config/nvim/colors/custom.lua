@@ -50,8 +50,8 @@ hl('PmenuSel', tc.bright_green, tc.black)
 hl('PmenuThumb', tc.none, tc.bright_black)
 hl('PmenuExtra', tc.white)
 
-hl('StatusLine', tc.none, tc.none)
-hl('StatusLineNC', tc.none, tc.none, {})
+hl('StatusLine', tc.none, tc.black)
+hl('StatusLineNC', tc.none, tc.black)
 
 hl('CurSearch', tc.black, tc.white)
 hl('Search', tc.black, tc.white)

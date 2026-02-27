@@ -34,7 +34,8 @@ vim.g.maplocalleader = "\\"
 
 -- alt+hjkl in command mode
 -- Currently not used as i have the same overwrites in alacritty config
--- Leaving this just in case I switch terminal emulators
+-- Leaving this just in case I have to work in 
+-- an unconfigured terminal emulator
 vim.keymap.set({"c"}, "<m-h>", "<left>")
 vim.keymap.set({"c"}, "<m-h>", "<s-left>")
 vim.keymap.set({"c"}, "<m-l>", "<right>")
@@ -61,6 +62,7 @@ local treesitter_langs = {
     'python','lua',
     'typst', 'markdown',
     'javascript', 'jsdoc',
+    'java',
     'json', 'csv',
     'yaml', 'toml', 'ini',
     'html', 'css',

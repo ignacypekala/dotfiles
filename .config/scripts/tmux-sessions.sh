@@ -10,16 +10,40 @@
 #     "$HOME"
 #     "$HOME/wdp"
 # )
+#
+# Usage:
+# Select and open session
+# tmux-sessions.sh
+# tmux-sessions.sh select
+#
+# Select and open session (including hidden directories)
+# tmux.sessions.sh select all
+#
+# Open/load a session in a directory
+# tmux-sessions.sh open [DIRECTORY]
+
 mapfile -t WORK_DIRS < ~/.cache/work_dirs
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
+if [[ $1 == "open" ]]; then
+    selected=$2
 else
-    selected=$(find "${WORK_DIRS[@]}" -maxdepth 1 -type 'd'  \
-        | sed "s|^$HOME/|~/|" \
-        | sk --margin 10% --color="bw")
+    # command array
+    finder=( find "${WORK_DIRS[@]}" -maxdepth 1 -type 'd' )
+    if [[ $1 == "select" && $2 != "all" ]]; then
+        # disclude hidden directories
+        finder+=(-not -name '.*')
+    fi
 
-    [[ $selected ]] && selected="$HOME/$selected"
+    # 1. invoke finder
+    # 2. replace $HOME prefix with ~ 
+    # 3. launch fuzzy picker
+    # 4. remove ~
+    selected=$("${finder[@]}"  \
+        | sed "s|^$HOME/|~/|" \
+        | sk --margin 10% --color="bw" \
+        | sed "s|^~/|$HOME/|")
+
+    [[ $selected ]] && selected="$selected"
 fi
 
 [[ ! $selected ]] && exit 0

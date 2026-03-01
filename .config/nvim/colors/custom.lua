@@ -45,10 +45,6 @@ hl('CursorLine', tc.none, tc.black)
 hl('CursorLineNr', tc.white, tc.none)
 hl('EndOfBuffer', tc.bright_black, tc.none)
 
-hl('Pmenu', tc.bright_white, tc.black)
-hl('PmenuSel', tc.bright_green, tc.black)
-hl('PmenuThumb', tc.none, tc.bright_black)
-hl('PmenuExtra', tc.white)
 
 hl('StatusLine', tc.none, tc.black)
 hl('StatusLineNC', tc.none, tc.black)
@@ -56,13 +52,35 @@ hl('StatusLineNC', tc.none, tc.black)
 hl('CurSearch', tc.black, tc.white)
 hl('Search', tc.black, tc.white)
 hl('Substitute', tc.black, tc.white)
-hl('SnippetTabstop', tc.white, tc.bright_black)
+hl('SnippetTabstop', tc.bright_white, tc.bright_black)
 hl('Visual', tc.bright_white, tc.bright_black)
+
 
 hl('TelescopeNormal', tc.bright_white, tc.black)
 hl('TelescopeBorder', tc.black, tc.black)
 hl('TelescopePromptTitle', tc.white, tc.none, { bold = true })
 hl('TelescopePreviewTitle', tc.none, tc.none)
+
+hl('Pmenu', tc.bright_white, tc.black)
+hl('PmenuSel', tc.black, tc.green)
+hl('PmenuMatchSel', tc.none, tc.none, { underline = true })
+hl('PmenuThumb', tc.none, tc.bright_black)
+hl('PmenuExtra', tc.bright_black)
+
+-- Blink
+hl('BlinkCmpKindText', tc.bright_black)
+hl('BlinkCmpKindFunction', tc.bright_green)
+hl('BlinkCmpKindMethod', tc.bright_green)
+hl('BlinkCmpKindUnit', tc.bright_blue)
+hl('BlinkCmpKindValue', tc.bright_blue)
+hl('BlinkCmpKindConstant', tc.bright_blue)
+hl('BlinkCmpKindConstructor', tc.bright_blue)
+hl('BlinkCmpKindField', tc.white)
+hl('BlinkCmpKindEnum', tc.white)
+hl('BlinkCmpKindEnumMember', tc.white)
+hl('BlinkCmpKindStruct', tc.green)
+hl('BlinkCmpKindClass', tc.green)
+hl('BlinkCmpKindInterface', tc.green)
 
 -- Highlighting
 -- -- Syntax

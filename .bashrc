@@ -62,7 +62,8 @@ elif [[ $HOSTNAME == "Laptop" ]]; then
     PATH_COLOR=$YELLOW
 elif [[ $HOSTNAME == "students" ]]; then
     export WORK_DIRS=(
-            "$HOME"
+            "$HOME",
+            "$HOME/laby"
         )
     export TMUX_ACCENT="blue"
     PATH_COLOR=$BLUE

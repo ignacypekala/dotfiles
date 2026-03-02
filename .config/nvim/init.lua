@@ -1,4 +1,3 @@
-
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.numberwidth = 4
@@ -79,7 +78,6 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = treesitter_langs,
     callback = function(args)
         vim.treesitter.start()
-
         if args.match == 'c' or args.match == 'cpp' then
             vim.bo.cindent = true
         else

@@ -10,6 +10,7 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias car='cat'
 
 export MANPAGER="nvim +Man!"
 
@@ -62,7 +63,7 @@ elif [[ $HOSTNAME == "Laptop" ]]; then
     PATH_COLOR=$YELLOW
 elif [[ $HOSTNAME == "students" ]]; then
     export WORK_DIRS=(
-            "$HOME",
+            "$HOME"
             "$HOME/laby"
         )
     export TMUX_ACCENT="blue"
@@ -85,6 +86,7 @@ update_work_dirs() {
 
 export PROMPT_DIRTRIM=3
 export PS1="${PATH_COLOR}\w${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
+export LANG=en_US.UTF-8
 
 # Change the cursor to a blinking bar
 # echo -e -n "\x1b[\x36 q"

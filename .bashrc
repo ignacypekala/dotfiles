@@ -2,15 +2,13 @@
 # ~/.bashrc
 #
 
-# Background codes are:
-# 40-47 and 100-107
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias car='cat'
+alias nv='nvim'
 
 export MANPAGER="nvim +Man!"
 
@@ -40,6 +38,9 @@ BRIGHT_BLUE="\e[94m"
 BRIGHT_MAGENTA="\e[95m"
 BRIGHT_CYAN="\e[96m"
 BRIGHT_WHTIE="\e[97m"
+
+# Background codes are:
+# 40-47 and 100-107
 
 # Add a directory to PATH only if it exists and isn't already there
 add_path() {

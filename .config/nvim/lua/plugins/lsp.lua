@@ -1,6 +1,8 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local setup_lua_ls = function()
     vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
         on_init = function(client)
             if client.workspace_folders then
                 local path = client.workspace_folders[1].name
@@ -34,6 +36,7 @@ end
 
 local setup_clangd = function()
     vim.lsp.config('clangd', {
+        capabilities = capabilities,
         cmd = {
             "clangd",
             "--fallback-style=webkit"
@@ -47,6 +50,7 @@ return {
         lazy = true,
         event = 'VeryLazy',
         config = function()
+
             -- https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8
             vim.lsp.enable('clangd')
             setup_clangd()
@@ -58,6 +62,7 @@ return {
             -- https://github.com/Myriad-Dreamin/tinymist
             vim.lsp.enable('tinymist')
             vim.lsp.config('tinymist', {
+                capabilities = capabilities,
                 settings = {
                     semanticTokens = "disable",
                     formatterMode = "typstyle",

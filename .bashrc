@@ -49,6 +49,7 @@ add_path() {
     fi
 }
 
+# Machine specific environment variables
 if [[ $HOSTNAME == "Grzejnik" ]]; then
     export WORK_DIRS=(
             "$HOME"

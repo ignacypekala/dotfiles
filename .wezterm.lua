@@ -38,8 +38,8 @@ config.colors = {
     cursor_bg = "#cccccc",
     cursor_fg = "#121212",
     cursor_border = "#cccccc",
-    selection_fg = 'none',
-    selection_bg = "#212121"
+    selection_fg = '#121212',
+    selection_bg = "#5e5d5d"
 }
 
 config.font_size =  10
@@ -79,20 +79,18 @@ config.keys = {
         mods = 'CTRL|SHIFT',
         action = act.SendString('\x1b[1;6D'),
     },
-    -- These had to be disabled as they interfere with the 
-    -- Normal mode mappings in nvim
     -- Ctrl+B for home
-    -- {
-    --     key = 'b',
-    --     mods = "CTRL",
-    --     action = act.SendString('\x1b[H')
-    -- },
+    {
+        key = 'b',
+        mods = "CTRL",
+        action = act.SendString('\x1b[H')
+    },
     -- Ctrl+E for end
-    -- {
-    --     key = 'e',
-    --     mods = "CTRL",
-    --     action = act.SendString('\x1b[F')
-    -- },
+    {
+        key = 'e',
+        mods = "CTRL",
+        action = act.SendString('\x1b[F')
+    },
     -- Sends the escape sequence for Control + Delete
     {
         key = 'w',

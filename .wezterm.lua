@@ -80,55 +80,55 @@ config.keys = {
         action = act.SendString('\x1b[1;6D'),
     },
     -- Ctrl+B for home
-    {
-        key = 'b',
-        mods = "CTRL",
-        action = act.SendString('\x1b[H')
-    },
+    -- {
+    --     key = 'b',
+    --     mods = "CTRL",
+    --     action = act.SendString('\x1b[H')
+    -- },
     -- Ctrl+E for end
-    {
-        key = 'e',
-        mods = "CTRL",
-        action = act.SendString('\x1b[F')
-    },
+    -- {
+    --     key = 'e',
+    --     mods = "CTRL",
+    --     action = act.SendString('\x1b[F')
+    -- },
     -- Sends the escape sequence for Control + Delete
-    {
-        key = 'w',
-        mods = 'CTRL',
-        action = act.SendString('\x17'),
-    },
+    -- {
+    --     key = 'w',
+    --     mods = 'CTRL',
+    --     action = act.SendString('\x17'),
+    -- },
     -- Alt+Shift+H/L (mapped to Ctrl+Shift+LEFT/RIGHT sequences)
-    {
-        key = 'H',
-        mods = 'ALT|SHIFT',
-        action = act.SendString('\x1b[1;5D')
-    },
-    {
-        key = 'L',
-        mods = 'ALT|SHIFT',
-        action = act.SendString('\x1b[1;5C')
-    },
+    -- {
+    --     key = 'H',
+    --     mods = 'ALT|SHIFT',
+    --     action = act.SendString('\x1b[1;5D')
+    -- },
+    -- {
+    --     key = 'L',
+    --     mods = 'ALT|SHIFT',
+    --     action = act.SendString('\x1b[1;5C')
+    -- },
     -- Alt+h/j/k/l (LEFT/UP/DOWN/RIGHT)
-    {
-        key = 'h',
-        mods = 'ALT',
-        action = act.SendString('\x1b[D')
-    },
-    {
-        key = 'j',
-        mods = 'ALT',
-        action = act.SendString('\x1b[B'),
-    },
-    {
-        key = 'k',
-        mods = 'ALT',
-        action = act.SendString('\x1b[A')
-    },
-    {
-        key = 'l',
-        mods = 'ALT',
-        action = act.SendString('\x1b[C'),
-    }
+    -- {
+    --     key = 'h',
+    --     mods = 'ALT',
+    --     action = act.SendString('\x1b[D')
+    -- },
+    -- {
+    --     key = 'j',
+    --     mods = 'ALT',
+    --     action = act.SendString('\x1b[B'),
+    -- },
+    -- {
+    --     key = 'k',
+    --     mods = 'ALT',
+    --     action = act.SendString('\x1b[A')
+    -- },
+    -- {
+    --     key = 'l',
+    --     mods = 'ALT',
+    --     action = act.SendString('\x1b[C'),
+    -- }
 }
 
 return config

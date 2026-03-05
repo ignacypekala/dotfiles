@@ -22,19 +22,18 @@ return {
                 },
                 pickers = {
                     git_files = {
-                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
                         theme = "dropdown"
                     },
                     find_files = {
-                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
                         theme = "dropdown"
                     },
                     help_tags = {
-                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
                         theme = "dropdown"
                     },
                     buffers = {
-                        -- borderchars = {'█', '█', '█', '█', '█', '█', '█', '█'},
+                        theme = "dropdown"
+                    },
+                    man_pages = {
                         theme = "dropdown"
                     }
                 },
@@ -42,20 +41,17 @@ return {
             })
 
             local builtin = require('telescope.builtin')
-
             vim.keymap.set('n', '<leader>ff',
                 function()
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
                 end
             )
             vim.keymap.set('n', '<leader>g', builtin.git_files)
-
             vim.keymap.set('n', '<leader>nv',
                 function()
                     builtin.find_files({ cwd = vim.fn.stdpath('config') })
                 end
             )
-
             vim.keymap.set('n', '<leader>ndv',
                 function()
                     builtin.find_files({ cwd = vim.fn.stdpath('data') })

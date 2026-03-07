@@ -46,7 +46,11 @@ return {
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
                 end
             )
-            vim.keymap.set('n', '<leader>g', builtin.git_files)
+            vim.keymap.set('n', '<leader>g', 
+                function()
+                    builtin.git_files()
+                end
+            )
             vim.keymap.set('n', '<leader>nv',
                 function()
                     builtin.find_files({ cwd = vim.fn.stdpath('config') })

@@ -13,7 +13,7 @@ alias nv='nvim'
 export MANPAGER="nvim +Man!"
 
 # Dont save duplicates in history
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoredupes
 
 RESET="\e[0m"
 BOLD="\e[1m"

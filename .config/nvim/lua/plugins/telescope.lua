@@ -39,6 +39,17 @@ return {
                 },
 
             })
+            local has_git = function()
+                vim.system({'git', 'status'}, {},
+                    function(obj)
+                        vim.g.cwd_has_git = obj.code == 0
+                    end
+                )
+            end
+            vim.api.nvim_create_autocmd('DirChanged', {
+                callback = has_git
+            })
+            has_git()
 
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<leader>ff',
@@ -46,9 +57,13 @@ return {
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
                 end
             )
-            vim.keymap.set('n', '<leader>g', 
+            vim.keymap.set('n', '<leader>g',
                 function()
-                    builtin.git_files()
+                    if vim.g.cwd_has_git then
+                        builtin.git_files()
+                    else
+                        vim.notify("Not a git repository", vim.log.levels.WARN)
+                    end
                 end
             )
             vim.keymap.set('n', '<leader>nv',

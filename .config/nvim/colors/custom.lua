@@ -57,9 +57,9 @@ hl('Visual', tc.bright_white, tc.bright_black)
 
 
 hl('TelescopeNormal', tc.bright_white, tc.black)
-hl('TelescopeBorder', tc.black, tc.black)
-hl('TelescopePromptTitle', tc.white, tc.none, { bold = true })
-hl('TelescopePreviewTitle', tc.none, tc.none)
+hl('TelescopeBorder', tc.black, tc.none)
+hl('TelescopePromptTitle', tc.white, tc.none)
+hl('TelescopePreviewTitle', tc.white, tc.none)
 
 hl('Pmenu', tc.bright_white, tc.black)
 hl('PmenuSel', tc.black, tc.green)

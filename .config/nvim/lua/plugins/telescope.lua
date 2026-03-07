@@ -9,33 +9,36 @@ return {
         },
         event = "VeryLazy",
         config = function()
+            local dropdown = {
+                dynamic_preview_title = true;
+                borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+                theme = "dropdown"
+            }
+            local dropdown_no_preview = {
+                preview = false,
+                borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+                theme = "dropdown"
+            }
             require('telescope').setup({
-                color_devicons = false,
                 extensions = {
                     fzf = {}
                 },
                 defaults = {
                     border = true,
+                    color_devicons = false,
                     mappings = {
 
                     },
                 },
                 pickers = {
-                    git_files = {
-                        theme = "dropdown"
-                    },
-                    find_files = {
-                        theme = "dropdown"
-                    },
-                    help_tags = {
-                        theme = "dropdown"
-                    },
-                    buffers = {
-                        theme = "dropdown"
-                    },
+                    git_files = dropdown_no_preview,
+                    find_files = dropdown_no_preview,
+                    help_tags = dropdown,
+                    buffers = dropdown_no_preview,
                     man_pages = {
                         theme = "dropdown"
-                    }
+                    },
+                    keymaps = dropdown
                 },
 
             })

@@ -35,9 +35,7 @@ return {
                     find_files = dropdown_no_preview,
                     help_tags = dropdown,
                     buffers = dropdown_no_preview,
-                    man_pages = {
-                        theme = "dropdown"
-                    },
+                    man_pages = dropdown,
                     keymaps = dropdown
                 },
 

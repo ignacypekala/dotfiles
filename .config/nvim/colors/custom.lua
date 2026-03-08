@@ -49,12 +49,14 @@ hl('EndOfBuffer', tc.bright_black, tc.none)
 hl('StatusLine', tc.none, tc.black)
 hl('StatusLineNC', tc.none, tc.black)
 
-hl('CurSearch', tc.black, tc.white)
-hl('Search', tc.black, tc.white)
+hl('CurSearch', tc.bright_white, tc.bright_black, { underline = true, bold = true })
+hl('Search', tc.none, tc.none, { underline = true, bold = true })
 hl('Substitute', tc.black, tc.white)
 hl('SnippetTabstop', tc.bright_white, tc.bright_black)
 hl('Visual', tc.bright_white, tc.bright_black)
 
+-- used in init.lua
+hl('Yank', tc.bright_whtie, tc.bright_black)
 
 hl('TelescopeNormal', tc.bright_white, tc.black)
 hl('TelescopeBorder', tc.black, tc.none)

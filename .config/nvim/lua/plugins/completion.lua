@@ -14,6 +14,7 @@ return {
         },
         completion = {
             menu = {
+                border = 'none',
                 auto_show = true,
                 auto_show_delay_ms = 0,
                 draw = {

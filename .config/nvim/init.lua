@@ -6,12 +6,14 @@ vim.opt.wrap = false
 
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'both'
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 5
 -- Normal cursor but with a beam when typing
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,"..
     "r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
+
+vim.opt.laststatus = 2
 
 vim.opt.colorcolumn = "80"
 
@@ -49,7 +51,7 @@ vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
 -- Appearance
 vim.opt.termguicolors = false
-vim.opt.winborder = "none"
+vim.opt.winborder = "solid"
 vim.cmd.colorscheme('custom')
 
 require('config.clipboard')
@@ -87,3 +89,9 @@ vim.api.nvim_create_autocmd('FileType', {
 }
 )
 
+-- Highlight when yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function ()
+        vim.highlight.on_yank({ higroup = "Yank" })
+    end
+})

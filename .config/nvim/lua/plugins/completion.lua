@@ -5,7 +5,10 @@ return {
     lazy = true,
     event = 'VeryLazy',
     opts = {
-        keymap = { preset = 'default' },
+        keymap = {
+            preset = 'default',
+            ['<C-k>'] = false
+        },
         appearance = {
             nerd_font_variant = 'Nerd Font Mono'
         },

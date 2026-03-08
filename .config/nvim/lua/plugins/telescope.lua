@@ -9,36 +9,50 @@ return {
         },
         event = "VeryLazy",
         config = function()
+            local dropdown = {
+                dynamic_preview_title = true;
+                borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+                theme = "dropdown"
+            }
+            local dropdown_no_preview = {
+                preview = false,
+                borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+                theme = "dropdown"
+            }
             require('telescope').setup({
-                color_devicons = false,
                 extensions = {
                     fzf = {}
                 },
                 defaults = {
                     border = true,
+                    color_devicons = false,
                     mappings = {
 
                     },
                 },
                 pickers = {
-                    git_files = {
-                        theme = "dropdown"
-                    },
-                    find_files = {
-                        theme = "dropdown"
-                    },
-                    help_tags = {
-                        theme = "dropdown"
-                    },
-                    buffers = {
-                        theme = "dropdown"
-                    },
+                    git_files = dropdown_no_preview,
+                    find_files = dropdown_no_preview,
+                    help_tags = dropdown,
+                    buffers = dropdown_no_preview,
                     man_pages = {
                         theme = "dropdown"
-                    }
+                    },
+                    keymaps = dropdown
                 },
 
             })
+            local has_git = function()
+                vim.system({'git', 'status'}, {},
+                    function(obj)
+                        vim.g.cwd_has_git = obj.code == 0
+                    end
+                )
+            end
+            vim.api.nvim_create_autocmd('DirChanged', {
+                callback = has_git
+            })
+            has_git()
 
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<leader>ff',
@@ -46,9 +60,13 @@ return {
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
                 end
             )
-            vim.keymap.set('n', '<leader>g', 
+            vim.keymap.set('n', '<leader>g',
                 function()
-                    builtin.git_files()
+                    if vim.g.cwd_has_git then
+                        builtin.git_files()
+                    else
+                        vim.notify("Not a git repository", vim.log.levels.WARN)
+                    end
                 end
             )
             vim.keymap.set('n', '<leader>nv',

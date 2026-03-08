@@ -60,6 +60,7 @@ if [[ $HOSTNAME == "Grzejnik" ]]; then
 elif [[ $HOSTNAME == "Laptop" ]]; then
     export WORK_DIRS=(
             "$HOME"
+            "$HOME/laby"
         )
     export TMUX_ACCENT="yellow"
     PATH_COLOR=$YELLOW

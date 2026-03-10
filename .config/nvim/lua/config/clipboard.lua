@@ -1,9 +1,8 @@
-
 local copy = '/mnt/c/Windows/System32/clip.exe'
 local paste = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
 
 -- Clipboard setup for WSL
-if (vim.fn.getenv("WSL_DISTRO_NAME") ~= "") then
+if (vim.fn.getenv("WSL_DISTRO_NAME") ~= vim.NIL) then
     vim.g.clipboard = {
         name = 'win32yank-wsl',
         copy = {

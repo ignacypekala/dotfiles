@@ -1,3 +1,4 @@
+local actions = require('telescope.actions')
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -27,7 +28,9 @@ return {
                     border = true,
                     color_devicons = false,
                     mappings = {
-
+                        i = {
+                            ["<esc>"] = actions.close,
+                        }
                     },
                 },
                 pickers = {
@@ -36,7 +39,8 @@ return {
                     help_tags = dropdown,
                     buffers = dropdown_no_preview,
                     man_pages = dropdown,
-                    keymaps = dropdown
+                    keymaps = dropdown,
+                    treesitter = dropdown
                 },
 
             })
@@ -81,6 +85,7 @@ return {
             vim.keymap.set('n', '<leader>h', builtin.help_tags)
             vim.keymap.set('n', '<leader>k', builtin.keymaps)
             vim.keymap.set('n', '<leader>m', builtin.man_pages)
+            vim.keymap.set('n', '<leader>t', builtin.treesitter)
         end
     }
 }

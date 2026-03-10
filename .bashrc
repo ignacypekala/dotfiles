@@ -1,6 +1,25 @@
 #
 # ~/.bashrc
 #
+source ~/.colors.sh
+
+# Source global environment variables
+global_env=~/.config/env/global.sh
+if [[ -f $global_env ]]; then
+    source $global_env
+else
+    echo $global_env doesn\'t exist
+fi
+
+# Source machine specific environment variables
+hostname=$(echo $HOSTNAME)
+local_env=~/.config/env/env-$hostname.sh
+if [[ -f $local_env ]]; then
+    source $local_env
+else
+    echo $local_env doesn\'t exist
+fi
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -15,29 +34,6 @@ export MANPAGER="nvim +Man!"
 # Dont save duplicates in history
 export HISTCONTROL=ignoredupes
 
-RESET="\e[0m"
-BOLD="\e[1m"
-FAINT="\e[2m"
-ITALIC="\e[3m"
-UNDERLINE="\e[4m"
-
-BLACK="\e[30m"
-RED="\e[31m"
-GREEN="\e[32m"
-YELLOW="\e[33m"
-BLUE="\e[34m"
-MAGENTA="\e[35m"
-CYAN="\e[36m"
-WHITE="\e[37m"
-
-BRIGHT_BLACK="\e[90m"
-BRIGHT_RED="\e[91m"
-BRIGHT_GREEN="\e[92m"
-BRIGHT_YELLOW="\e[93m"
-BRIGHT_BLUE="\e[94m"
-BRIGHT_MAGENTA="\e[95m"
-BRIGHT_CYAN="\e[96m"
-BRIGHT_WHTIE="\e[97m"
 
 # Background codes are:
 # 40-47 and 100-107
@@ -49,36 +45,6 @@ add_path() {
     fi
 }
 
-# Machine specific environment variables
-if [[ $HOSTNAME == "Grzejnik" ]]; then
-    export WORK_DIRS=(
-            "$HOME"
-            "$HOME/wdp"
-        )
-    export TMUX_ACCENT="green"
-    PATH_COLOR=$GREEN
-elif [[ $HOSTNAME == "Laptop" ]]; then
-    export WORK_DIRS=(
-            "$HOME"
-            "$HOME/laby"
-        )
-    export TMUX_ACCENT="yellow"
-    PATH_COLOR=$YELLOW
-elif [[ $HOSTNAME == "students" ]]; then
-    export WORK_DIRS=(
-            "$HOME"
-            "$HOME/laby"
-        )
-    export TMUX_ACCENT="blue"
-    PATH_COLOR=$BLUE
-else
-    export WORK_DIRS=(
-        "$HOME"
-        )
-    export TMUX_ACCENT="red"
-    PATH_COLOR=$RED
-fi
-
 # Write the WORK_DIRS to a temp file
 # It is accessed by tmux-sessions.sh
 update_work_dirs() {
@@ -89,8 +55,4 @@ update_work_dirs() {
 
 export PROMPT_DIRTRIM=3
 export PS1="${PATH_COLOR}\w${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
-export LANG=en_US.UTF-8
-
-# Change the cursor to a blinking bar
-# echo -e -n "\x1b[\x36 q"
 

@@ -4,7 +4,7 @@ local paste = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -c 
 -- Clipboard setup for WSL
 if (vim.fn.getenv("WSL_DISTRO_NAME") ~= vim.NIL) then
     vim.g.clipboard = {
-        name = 'win32yank-wsl',
+        name = 'wsl',
         copy = {
             ['+'] = copy,
             ['*'] = copy,

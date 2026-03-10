@@ -1,0 +1,62 @@
+! Disable beeps
+XTerm*visualBell: false
+XTerm*bellIsUrgent: false
+! Disable lighter bold text
+XTerm*boldColors: false
+
+XTerm*faceSize: 12
+XTerm*faceName: JetBrains Mono:style=DemiBold
+
+XTerm*boldFont: JetBrains Mono:style=ExtraBold
+XTerm*renderFont: true
+
+XTerm*geometry: 120x35
+
+XTerm*internalBorder: 10
+
+! XTerm*cursorShape: bar
+XTerm*cursorBar: true
+XTerm*cursorBlink: true
+
+XTerm*background: #121212
+XTerm*foreground: #cccccc
+XTerm*highlightTextColor: #b3b3b3
+XTerm*highlightColor: #d6d6d6
+XTerm*cursorColor: #cccccc
+
+! ANSI Colors (0-7)
+XTerm*color0: #232323
+XTerm*color1: #d44d4f
+XTerm*color2: #67a376
+XTerm*color3: #f4c451
+XTerm*color4: #78a7f0
+XTerm*color5: #b575e9
+XTerm*color6: #4eccf2
+XTerm*color7: #b3b3b3
+
+! Bright Colors (8-15)
+XTerm*color8: #5e5d5d
+XTerm*color9: #ed7375
+XTerm*color10: #9ae3ac
+XTerm*color11: #f9f1a5
+XTerm*color12: #8bc4f0
+XTerm*color13: #c59be7
+XTerm*color14: #9fd3ed
+XTerm*color15: #d6d6d6
+
+! Format: Modifier <Key>KeyName: string("escape_sequence")
+! \033 is octal for ESC (\x1b)
+! \027 is octal for \x17
+!
+! Ctrl <Key>b: string("\033[H") \n\
+! Ctrl <Key>e: string("\033[F") \n\
+! XTerm*vt100.translations: #override \n\
+!     Ctrl <Key>Tab: string("\033[27;5;9~") \n\
+!     Ctrl Shift <Key>Tab: string("\033[1;6D") \n\
+!     Ctrl <Key>w: string("\027") \n\
+!     Alt Shift <Key>H: string("\033[1;5D") \n\
+!     Alt Shift <Key>L: string("\033[1;5C") \n\
+!     Alt <Key>h: string("\033[D") \n\
+!     Alt <Key>k: string("\033[A") \n\
+!     Alt <Key>j: string("\033[B") \n\
+!     Alt <Key>l: string("\033[C")

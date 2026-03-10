@@ -2,5 +2,5 @@ export WORK_DIRS=(
     "$HOME"
     "$HOME/laby"
 )
-PATH_COLOR=$GREEN
-export TMUX_ACCENT="green"
+PATH_COLOR=$BLUE
+export TMUX_ACCENT="blue"

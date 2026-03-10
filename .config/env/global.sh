@@ -8,3 +8,5 @@ export WORK_DIRS=(
 )
 export TMUX_ACCENT="red"
 PATH_COLOR=$RED
+
+add_path ~/.config/scripts

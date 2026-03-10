@@ -3,6 +3,14 @@
 #
 source ~/.colors.sh
 
+# Add a directory to PATH only if it exists and isn't already there
+add_path() {
+    if [ -d "$1" ] && ! [[ "$PATH" =~ $1 ]]; then
+        export PATH="$PATH:$1"
+    fi
+}
+
+
 # Source global environment variables
 global_env=~/.config/env/global.sh
 if [[ -f $global_env ]]; then
@@ -37,13 +45,6 @@ export HISTCONTROL=ignoredupes
 
 # Background codes are:
 # 40-47 and 100-107
-
-# Add a directory to PATH only if it exists and isn't already there
-add_path() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        export PATH="$PATH:$1"
-    fi
-}
 
 # Write the WORK_DIRS to a temp file
 # It is accessed by tmux-sessions.sh

@@ -14,6 +14,7 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.laststatus = 2
+vim.opt.showmode = false
 
 vim.opt.colorcolumn = "80"
 

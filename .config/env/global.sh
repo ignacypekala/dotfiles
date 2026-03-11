@@ -1,3 +1,4 @@
+# Sourced by .bashrc but also .xsessionrc
 export LANG=en_US.UTF-8
 export TMUX_ACCENT="red"
 export EDITOR="nvim"

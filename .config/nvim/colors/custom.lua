@@ -64,7 +64,7 @@ hl('TelescopePromptTitle', tc.white, tc.none)
 hl('TelescopePreviewTitle', tc.white, tc.none)
 
 hl('Pmenu', tc.bright_white, tc.black)
-hl('PmenuSel', tc.black, tc.green)
+hl('PmenuSel', tc.bright_white, tc.bright_black)
 hl('PmenuMatchSel', tc.none, tc.none, { underline = true })
 hl('PmenuThumb', tc.none, tc.bright_black)
 hl('PmenuExtra', tc.bright_black)

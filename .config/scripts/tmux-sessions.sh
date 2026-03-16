@@ -1,5 +1,5 @@
 #!/bin/bash
-# Based on the tmux-session-dispensary by Sylvan Franklin
+# Based on tmux-session-dispensary by Sylvan Franklin
 # https://github.com/SylvanFranklin/.config/blob/main/scripts/tmux-session-dispensary.sh
 #
 # Depends on skim
@@ -50,7 +50,7 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-if ! tmux has-session -t "$selected_name"; then
+if ! tmux has-session -t="$selected_name"; then
     tmux new-session -ds "$selected_name" -c "$selected"
     tmux select-window -t "$selected_name:1"
 fi

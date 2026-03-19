@@ -1,0 +1,15 @@
+set keymap vi
+set keyseq-timeout 50
+
+# 1 = blinking block, 2 = solid block, 5 = blinking bar, 6 = solid bar
+set show-mode-in-prompt On
+set vi-ins-mode-string "\1\e[6 q\2"
+set vi-cmd-mode-string "\1\e[2 q\2"
+
+set keymap vi-insert
+# "\C-u": unix-line-discard
+"\C-l": clear-screen
+set keymap vi-command
+# "\C-u": unix-line-discard
+"\C-l": clear-screen
+

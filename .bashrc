@@ -40,8 +40,10 @@ alias nv='nvim'
 export MANPAGER="nvim +Man!"
 
 # Dont save duplicates in history
-export HISTCONTROL=ignoredupes
+export HISTCONTROL=ignoredups
 
+export INPUTRC=$HOME/.inputrc
+set -o vi
 
 # Background codes are:
 # 40-47 and 100-107

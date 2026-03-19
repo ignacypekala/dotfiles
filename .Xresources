@@ -1,26 +1,24 @@
-! Disable beeps
 XTerm*visualBell: false
 XTerm*bellIsUrgent: false
-! Disable lighter bold text
+
 XTerm*boldColors: false
 
 ! Default value with SetSelection allowed
 disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetWinLines,SetXprop
 
-
 XTerm*faceSize: 12
 XTerm*faceName: JetBrains Mono:style=DemiBold
+XTerm.vt100.translations: #override \
+    Ctrl <KeyPress> Plus: larger-vt-font() \n\
+    Ctrl <KeyPress> Minus: smaller-vt-font() \n\
+    Ctrl <KeyPress> Equal: larger-vt-font() \n\
+    Ctrl <KeyPress> 0: set-vt-font(d)
 
 XTerm*boldFont: JetBrains Mono:style=ExtraBold
 XTerm*renderFont: true
 
 XTerm*geometry: 120x35
-
 XTerm*internalBorder: 10
-
-! XTerm*cursorShape: bar
-XTerm*cursorBar: true
-XTerm*cursorBlink: true
 
 XTerm*background: #121212
 XTerm*foreground: #cccccc

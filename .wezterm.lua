@@ -55,10 +55,10 @@ config.window_padding = {
 }
 config.adjust_window_size_when_changing_font_size = false
 
-config.default_cursor_style = "BlinkingBar"
-config.cursor_blink_ease_in = "Constant"
-config.cursor_blink_ease_out = "Constant"
-config.cursor_thickness = 1
+-- config.default_cursor_style = "BlinkingBar"
+-- config.cursor_blink_ease_in = "Constant"
+-- config.cursor_blink_ease_out = "Constant"
+-- config.cursor_thickness = 1
 
 local act = wezterm.action
 config.keys = {

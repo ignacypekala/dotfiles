@@ -33,7 +33,7 @@ config.colors = {
     cursor_bg = "#cccccc",
     cursor_fg = "#121212",
     cursor_border = "#cccccc",
-    selection_fg = '#121212',
+    selection_fg = '#d6d6d6',
     selection_bg = "#5e5d5d"
 }
 

@@ -6,7 +6,7 @@ source ~/.colors.sh
 # Add a directory to PATH only if it exists and isn't already there
 add_path() {
     if [ -d "$1" ] && ! [[ "$PATH" =~ $1 ]]; then
-        export PATH="$PATH:$1"
+        export PATH="$1:$PATH"
     fi
 }
 
@@ -15,8 +15,6 @@ add_path() {
 global_env=~/.config/env/global.sh
 if [[ -f $global_env ]]; then
     source $global_env
-else
-    echo $global_env doesn\'t exist
 fi
 
 # Source machine specific environment variables
@@ -24,8 +22,6 @@ hostname=$(echo $HOSTNAME)
 local_env=~/.config/env/env-$hostname.sh
 if [[ -f $local_env ]]; then
     source $local_env
-else
-    echo $local_env doesn\'t exist
 fi
 
 

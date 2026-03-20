@@ -4,3 +4,4 @@ export WORK_DIRS=(
 )
 PATH_COLOR=$BLUE
 export TMUX_ACCENT="blue"
+add_path ~/.local/bin

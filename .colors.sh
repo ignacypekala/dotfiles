@@ -1,3 +1,6 @@
+# Background codes are:
+# 40-47 and 100-107
+
 RESET="\[\e[0m\]"
 BOLD="\[\e[1m\]"
 FAINT="\[\e[2m\]"

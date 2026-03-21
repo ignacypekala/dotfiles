@@ -11,19 +11,34 @@ add_path() {
 }
 
 
-# Source global environment variables
-global_env=~/.config/env/global.sh
-if [[ -f $global_env ]]; then
-    source $global_env
-fi
 
 # Source machine specific environment variables
-hostname=$(echo $HOSTNAME)
-local_env=~/.config/env/env-$hostname.sh
-if [[ -f $local_env ]]; then
-    source $local_env
-fi
+source_env() {
+    env_file=~/.config/env/$1.sh
+    if [[ -e $env_file ]]; then
+        source $env_file
+    else
+        echo $env_file doesn\'t exist
+        echo $?
+    fi
+}
 
+source_env global
+
+hostname=$(echo $HOSTNAME)
+envdir="~/env"
+if [[ $hostname == "Grzejnik" ]]; then
+    source_env grzejnik
+elif [[ $hostname == "Laptop" ]]; then
+    source_env laptop
+elif [[ -f ~/.mim ]]; then
+    source_env mim
+    if [[ $hostname == "students" ]]; then
+        source_env mim-students
+    else
+        source_env mim-labs
+    fi
+fi
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -39,10 +54,8 @@ export MANPAGER="nvim +Man!"
 export HISTCONTROL=ignoredups
 
 export INPUTRC=$HOME/.inputrc
-set -o vi
 
-# Background codes are:
-# 40-47 and 100-107
+set -o vi
 
 # Write the WORK_DIRS to a temp file
 # It is accessed by tmux-sessions.sh

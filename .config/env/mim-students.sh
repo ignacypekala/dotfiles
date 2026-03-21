@@ -1,0 +1,3 @@
+PATH_COLOR=$BLUE
+export TMUX_ACCENT="blue"
+

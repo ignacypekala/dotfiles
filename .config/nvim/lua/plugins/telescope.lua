@@ -57,7 +57,7 @@ return {
             has_git()
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff',
+            vim.keymap.set('n', '<leader>f',
                 function()
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
                 end

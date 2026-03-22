@@ -1,6 +1,8 @@
-export WORK_DIRS=(
+project_roots=(
     "$HOME"
     "$HOME/laby"
+)
+extra_projects=(
 )
 add_path ~/.local/bin
 

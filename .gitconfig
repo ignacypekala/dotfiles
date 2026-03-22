@@ -1,16 +1,16 @@
 [user]
-	email = ignacy@pekala.eu
-	name = Ignacy Pękała
+    email = ignacy@pekala.eu
+    name = Ignacy Pękała
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+    helper = 
+    helper = !/usr/bin/gh auth git-credential
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [core]
-	editor = nvim
+    editor = nvim
 [alias]
     cm = commit
     cma = commit -a

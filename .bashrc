@@ -47,6 +47,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias car='cat'
 alias nv='nvim'
+alias tm="tmux-sessions.sh open \"$PWD\""
 
 export MANPAGER="nvim +Man!"
 

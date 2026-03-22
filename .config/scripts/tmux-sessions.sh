@@ -5,11 +5,17 @@
 # Depends on skim
 # https://github.com/skim-rs/skim
 
-# Assumes an environment variable DIRS:
-# WORK_DIRS=(
+# Assumes the following environment variables:
+# PROJECT_ROOTS=(
 #     "$HOME"
-#     "$HOME/wdp"
+#     "$HOME/projects"
 # )
+# EXTRA_PROJECTS=(
+#     "$HOME/junk/project"
+# )
+#
+# 
+# 
 #
 # Usage:
 # Select and open session
@@ -17,33 +23,33 @@
 # tmux-sessions.sh select
 #
 # Select and open session (including hidden directories)
-# tmux.sessions.sh select all
+# tmux.sessions.sh select-all
 #
 # Open/load a session in a directory
 # tmux-sessions.sh open [DIRECTORY]
 
-mapfile -t WORK_DIRS < ~/.cache/work_dirs
-
 if [[ $1 == "open" ]]; then
     selected=$2
 else
+    mapfile -t project_roots < ~/.cache/project_roots
+    mapfile -t extra_projects < ~/.cache/extra_projects
+
     # command array
-    finder=( find "${WORK_DIRS[@]}" -maxdepth 1 -type 'd' )
-    if [[ $1 == "select" && $2 != "all" ]]; then
+    finder=( find "${project_roots[@]}" -maxdepth 1 -type 'd' )
+    if [[ $1 != "select-all" ]]; then
         # disclude hidden directories
-        finder+=(-not -name '.*')
+        finder+=( -not -name '.*' )
     fi
 
-    # 1. invoke finder
-    # 2. replace $HOME prefix with ~ 
-    # 3. launch fuzzy picker
-    # 4. remove ~
-    selected=$("${finder[@]}"  \
-        | sed "s|^$HOME/|~/|" \
-        | sk --margin 10% --color="bw" \
-        | sed "s|^~/|$HOME/|")
-
-    [[ $selected ]] && selected="$selected"
+    # Fuzzy-find across the subdirectories of $project_roots and the 
+    # directories from $extra_projects
+    selected=$(
+        { "${finder[@]}"; printf '%s\n' "${extra_projects[@]}"; } \
+        | path-formatter.sh format \
+        | fzf --margin 10% --color="bw,gutter:0,pointer:7,separator:0" \
+        --no-scrollbar --no-separator \
+        | path-formatter.sh parse \
+    )
 fi
 
 [[ ! $selected ]] && exit 0

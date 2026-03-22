@@ -10,8 +10,6 @@ add_path() {
     fi
 }
 
-
-
 # Source machine specific environment variables
 source_env() {
     env_file=~/.config/env/$1.sh
@@ -49,23 +47,23 @@ alias car='cat'
 alias nv='nvim'
 alias tm="tmux-sessions.sh open \"$PWD\""
 
-export MANPAGER="nvim +Man!"
-
 # Dont save duplicates in history
 export HISTCONTROL=ignoredups
-
 export INPUTRC=$HOME/.inputrc
 
 set -o vi
 
-# Write the WORK_DIRS to a temp file
-# It is accessed by tmux-sessions.sh
-update_work_dirs() {
-    mkdir -p ~/.cache
-    printf "%s\n" "${WORK_DIRS[@]}" > ~/.cache/work_dirs
-    echo "Tmux directory cache updated with ${#WORK_DIRS[@]} paths."
-}
+# Populated when setting environment variables, accessed by tmux-sessions.sh
+mkdir -p ~/.cache
+printf "%s\n" "${project_roots[@]}" > ~/.cache/project_roots
+printf "%s\n" "${extra_projects[@]}" > ~/.cache/extra_projects
 
-export PROMPT_DIRTRIM=3
-export PS1="${PATH_COLOR}\w${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
+# export PROMPT_DIRTRIM=3
+
+set_custom_prompt() {
+    local path=$(pwd | path-formatter.sh format | path-trimmer.sh)
+    export PS1="$path_color$path${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
+}
+PROMPT_COMMAND=set_custom_prompt
+
 

@@ -3,7 +3,7 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export TMUX_ACCENT="red"
-PATH_COLOR=$RED
+path_color=$RED
     
 project_roots=(
     "$HOME"

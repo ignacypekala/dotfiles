@@ -12,5 +12,5 @@ extra_projects=(
     "$WINDOWS_HOME/.ssh"
     "$WINDOWS_HOME/Documents"
 )
-PATH_COLOR=$YELLOW
+path_color=$YELLOW
 export TMUX_ACCENT="yellow"

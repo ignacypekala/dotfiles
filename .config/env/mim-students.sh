@@ -1,3 +1,3 @@
-PATH_COLOR=$BLUE
+path_color=$BLUE
 export TMUX_ACCENT="blue"
 

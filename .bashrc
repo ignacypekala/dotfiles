@@ -66,4 +66,3 @@ set_custom_prompt() {
 }
 PROMPT_COMMAND=set_custom_prompt
 
-

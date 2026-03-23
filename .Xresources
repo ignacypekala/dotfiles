@@ -4,15 +4,11 @@ XTerm*bellIsUrgent: false
 XTerm*boldColors: false
 
 ! Default value with SetSelection allowed
-XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetWinLines,SetXprop
+XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21, \n\
+    GetSelection,SetWinLines,SetXprop
 
 XTerm*faceSize: 12
 XTerm*faceName: JetBrains Mono:style=DemiBold
-XTerm.vt100.translations: #override \
-    Ctrl <KeyPress> Plus: larger-vt-font() \n\
-    Ctrl <KeyPress> Minus: smaller-vt-font() \n\
-    Ctrl <KeyPress> Equal: larger-vt-font() \n\
-    Ctrl <KeyPress> 0: set-vt-font(d)
 
 XTerm*boldFont: JetBrains Mono:style=ExtraBold
 XTerm*renderFont: true
@@ -47,6 +43,10 @@ XTerm*color14: #9fd3ed
 XTerm*color15: #d6d6d6
 
 XTerm*translations: #override \
+    Ctrl <KeyPress> Plus: larger-vt-font() \n\
+    Ctrl <KeyPress> Minus: smaller-vt-font() \n\
+    Ctrl <KeyPress> Equal: larger-vt-font() \n\
+    Ctrl <KeyPress> 0: set-vt-font(d) \n\
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 ! Format: Modifier <Key>KeyName: string("escape_sequence")
 ! \033 is octal for ESC (\x1b)

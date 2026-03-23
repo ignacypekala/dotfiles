@@ -4,7 +4,7 @@ XTerm*bellIsUrgent: false
 XTerm*boldColors: false
 
 ! Default value with SetSelection allowed
-disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetWinLines,SetXprop
+XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetWinLines,SetXprop
 
 XTerm*faceSize: 12
 XTerm*faceName: JetBrains Mono:style=DemiBold
@@ -46,6 +46,8 @@ XTerm*color13: #c59be7
 XTerm*color14: #9fd3ed
 XTerm*color15: #d6d6d6
 
+XTerm*translations: #override \
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 ! Format: Modifier <Key>KeyName: string("escape_sequence")
 ! \033 is octal for ESC (\x1b)
 ! \027 is octal for \x17

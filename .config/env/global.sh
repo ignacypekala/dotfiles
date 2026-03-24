@@ -3,6 +3,9 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 export TMUX_ACCENT="red"
+export FZF_DEFAULT_OPTS="--margin 10% 
+--color bw,gutter:0,pointer:7,separator:0 --no-scrollbar --no-separator"
+
 path_color=$RED
     
 project_roots=(

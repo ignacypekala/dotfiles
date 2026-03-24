@@ -46,8 +46,7 @@ else
     selected=$(
         { "${finder[@]}"; printf '%s\n' "${extra_projects[@]}"; } \
         | path-formatter.sh format \
-        | fzf --margin 10% --color="bw,gutter:0,pointer:7,separator:0" \
-        --no-scrollbar --no-separator \
+        | fzf \
         | path-formatter.sh parse \
     )
 fi

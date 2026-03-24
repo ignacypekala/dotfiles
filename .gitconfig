@@ -12,6 +12,8 @@
 [core]
     editor = nvim
 [alias]
+    st = status
+    sts = status -s
     cm = commit
     cma = commit -a
     cmv = commit -v

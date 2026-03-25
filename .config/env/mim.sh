@@ -3,6 +3,7 @@ project_roots=(
     "$HOME/laby"
 )
 extra_projects=(
+    "$HOME/.ssh"
 )
 add_path ~/.local/bin
 

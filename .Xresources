@@ -45,24 +45,8 @@ XTerm*color15: #d6d6d6
 XTerm*vt100.translations: #override \n\
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
     Ctrl <Key> Tab: string("\033[27;5;9~") \n\
-    Ctrl <KeyPress> Plus: larger-vt-font() \n\
-    Ctrl <KeyPress> Minus: smaller-vt-font() \n\
-    Ctrl <KeyPress> Equal: larger-vt-font() \n\
-    Ctrl <KeyPress> 0: set-vt-font(d)
-
-! Format: Modifier <Key>KeyName: string("escape_sequence")
-! \033 is octal for ESC (\x1b)
-! \027 is octal for \x17
-!
-! Ctrl <Key>b: string("\033[H") \n\
-! Ctrl <Key>e: string("\033[F") \n\
-! XTerm*vt100.translations: #override \n\
-!     Ctrl <Key>Tab: string("\033[27;5;9~") \n\
-!     Ctrl Shift <Key>Tab: string("\033[1;6D") \n\
-!     Ctrl <Key>w: string("\027") \n\
-!     Alt Shift <Key>H: string("\033[1;5D") \n\
-!     Alt Shift <Key>L: string("\033[1;5C") \n\
-!     Alt <Key>h: string("\033[D") \n\
-!     Alt <Key>k: string("\033[A") \n\
-!     Alt <Key>j: string("\033[B") \n\
-!     Alt <Key>l: string("\033[C")
+    Shift Ctrl <Key> Tab: string("\033[1;6D") \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> equal: larger-vt-font() \n\
+    Ctrl <Key> 0: set-vt-font(d)

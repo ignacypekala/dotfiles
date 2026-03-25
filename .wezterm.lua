@@ -55,11 +55,6 @@ config.window_padding = {
 }
 config.adjust_window_size_when_changing_font_size = false
 
--- config.default_cursor_style = "BlinkingBar"
--- config.cursor_blink_ease_in = "Constant"
--- config.cursor_blink_ease_out = "Constant"
--- config.cursor_thickness = 1
-
 local act = wezterm.action
 config.keys = {
     -- Send Control+Tab code
@@ -74,56 +69,6 @@ config.keys = {
         mods = 'CTRL|SHIFT',
         action = act.SendString('\x1b[1;6D'),
     },
-    -- Ctrl+B for home
-    -- {
-    --     key = 'b',
-    --     mods = "CTRL",
-    --     action = act.SendString('\x1b[H')
-    -- },
-    -- Ctrl+E for end
-    -- {
-    --     key = 'e',
-    --     mods = "CTRL",
-    --     action = act.SendString('\x1b[F')
-    -- },
-    -- Sends the escape sequence for Control + Delete
-    -- {
-    --     key = 'w',
-    --     mods = 'CTRL',
-    --     action = act.SendString('\x17'),
-    -- },
-    -- Alt+Shift+H/L (mapped to Ctrl+Shift+LEFT/RIGHT sequences)
-    -- {
-    --     key = 'H',
-    --     mods = 'ALT|SHIFT',
-    --     action = act.SendString('\x1b[1;5D')
-    -- },
-    -- {
-    --     key = 'L',
-    --     mods = 'ALT|SHIFT',
-    --     action = act.SendString('\x1b[1;5C')
-    -- },
-    -- Alt+h/j/k/l (LEFT/UP/DOWN/RIGHT)
-    -- {
-    --     key = 'h',
-    --     mods = 'ALT',
-    --     action = act.SendString('\x1b[D')
-    -- },
-    -- {
-    --     key = 'j',
-    --     mods = 'ALT',
-    --     action = act.SendString('\x1b[B'),
-    -- },
-    -- {
-    --     key = 'k',
-    --     mods = 'ALT',
-    --     action = act.SendString('\x1b[A')
-    -- },
-    -- {
-    --     key = 'l',
-    --     mods = 'ALT',
-    --     action = act.SendString('\x1b[C'),
-    -- }
 }
 
 return config

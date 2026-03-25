@@ -42,12 +42,14 @@ XTerm*color13: #c59be7
 XTerm*color14: #9fd3ed
 XTerm*color15: #d6d6d6
 
-XTerm*translations: #override \
+XTerm*vt100.translations: #override \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD) \n\
+    Ctrl <Key> Tab: string("\033[27;5;9~") \n\
     Ctrl <KeyPress> Plus: larger-vt-font() \n\
     Ctrl <KeyPress> Minus: smaller-vt-font() \n\
     Ctrl <KeyPress> Equal: larger-vt-font() \n\
-    Ctrl <KeyPress> 0: set-vt-font(d) \n\
-    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+    Ctrl <KeyPress> 0: set-vt-font(d)
+
 ! Format: Modifier <Key>KeyName: string("escape_sequence")
 ! \033 is octal for ESC (\x1b)
 ! \027 is octal for \x17

@@ -1,6 +1,5 @@
 local M = {}
 
-
 -- Reads OUT filepath from a Makefile located at tthe root of the project
 local function read_makefile_var(varname)
     local makefile = io.open("Makefile", "r")
@@ -24,8 +23,7 @@ local function read_makefile_var(varname)
     error("[dap]".. varname .."variable not found in Makefile")
 end
 
-function M.setup()
-    local dap = require('dap')
+function M.setup(dap)
     dap.adapters.gdb = {
         type = "executable",
         command = "gdb",
@@ -33,7 +31,7 @@ function M.setup()
     }
     dap.configurations.c = {
         {
-            name = "Debug", 
+            name = "Debug",
             type = "gdb",
             request = "launch",
             program = function()

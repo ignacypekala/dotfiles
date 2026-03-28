@@ -8,8 +8,16 @@ return {
         event = 'VeryLazy',
         config = function()
             local dap = require('dap')
-            dap.adapters = {}
-            dap.configurations = {}
+
+            -- Dap adapters
+            -- Java adapter is attached by nvim-jdtls in ftplugin/java.lua
+            dap.adapters = {
+                lldb = {
+                    type = "executable",
+                    command = "lldb-dap",
+                }
+            }
+
             vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
             vim.keymap.set('n', '<leader>dn', dap.continue)
         end

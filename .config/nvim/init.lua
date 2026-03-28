@@ -58,6 +58,7 @@ vim.cmd.colorscheme('custom')
 
 require('config.clipboard')
 require('config.lazy')
+require('config.winbar')
 
 -- Treesitter configuration
 local treesitter_langs = {

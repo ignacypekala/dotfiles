@@ -69,6 +69,12 @@ hl('PmenuMatchSel', tc.none, tc.none, { underline = true })
 hl('PmenuThumb', tc.none, tc.bright_black)
 hl('PmenuExtra', tc.bright_black)
 
+hl('Winbar', tc.bright_white)
+hl('WinbarDapStatus', tc.white)
+hl('WinbarDapStopped', tc.white)
+hl('WinbarDapRunning', tc.green)
+hl('WinbarDapBreakpoints', tc.red)
+
 -- Blink
 hl('BlinkCmpKindText', tc.bright_black)
 hl('BlinkCmpKindFunction', tc.bright_green)

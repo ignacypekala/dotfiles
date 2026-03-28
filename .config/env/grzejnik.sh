@@ -15,4 +15,6 @@ extra_projects=(
 )
 path_color=$GREEN
 export TMUX_ACCENT="green"
+
 export JAVA_DEBUG="/usr/share/java-debug/com.microsoft.java.debug.plugin-*.jar"
+add_path /opt/llvm-22/bin

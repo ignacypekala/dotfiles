@@ -75,7 +75,7 @@ return {
             -- Solution for document preview
             -- https://github.com/chomosuke/typst-preview.nvim
 
-            vim.lsp.enable('jdtls')
+            -- vim.lsp.enable('jdtls')
         end,
     }
 }

@@ -1,4 +1,4 @@
-local actions = require('telescope.actions')
+
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -6,12 +6,19 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             { "nvim-tree/nvim-web-devicons", opts = {} },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' }
+            { "nvim-telescope/telescope-fzf-native.nvim", build = 'make' },
+            "nvim-telescope/telescope-ui-select.nvim",
         },
         event = "VeryLazy",
         config = function()
+            local telescope = require('telescope')
+            local themes = require('telescope.themes')
+            local actions = require('telescope.actions')
+            local builtin = require('telescope.builtin')
+            telescope.load_extension("ui-select")
+
             local dropdown = {
-                dynamic_preview_title = true;
+                dynamic_preview_title = true,
                 borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
                 theme = "dropdown"
             }
@@ -20,13 +27,26 @@ return {
                 borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
                 theme = "dropdown"
             }
-            require('telescope').setup({
+
+            telescope.setup({
                 extensions = {
-                    fzf = {}
+                    fzf = {},
+                    ["ui-select"] = {
+                        themes.get_dropdown({
+                            preview = false,
+                        })
+                    },
                 },
                 defaults = {
                     border = true,
                     color_devicons = false,
+                    borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+                    layout_config = {
+                        prompt_position = "top",
+                        width = 0.5,
+                        height = 20,
+                    },
+                    preview = false,
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
@@ -40,10 +60,12 @@ return {
                     buffers = dropdown_no_preview,
                     man_pages = dropdown,
                     keymaps = dropdown,
-                    treesitter = dropdown
+                    treesitter = dropdown,
                 },
 
             })
+
+
             local has_git = function()
                 vim.system({'git', 'status'}, {},
                     function(obj)
@@ -56,7 +78,6 @@ return {
             })
             has_git()
 
-            local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<leader>f',
                 function()
                     builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })

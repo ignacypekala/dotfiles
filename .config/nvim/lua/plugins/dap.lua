@@ -27,6 +27,7 @@ return {
             vim.keymap.set('n', '<leader>dbl', dap.list_breakpoints)
             vim.keymap.set('n', '<leader>dbc', dap.clear_breakpoints)
             vim.keymap.set('n', '<leader>dr', dap.restart)
+            vim.keymap.set('n', '<leader>dl', dap.run_last)
             vim.keymap.set('n', '<leader>dt', dap.terminate)
 
             vim.keymap.set('n', '<Up>',

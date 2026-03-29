@@ -4,7 +4,6 @@ if java_debug ~= 0 then
     bundles = {
         vim.fn.glob(java_debug, true)
     }
-    -- print(table.concat(bundles[1], '\n'))
 end
 
 local config = {

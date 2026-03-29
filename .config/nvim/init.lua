@@ -98,3 +98,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank({ higroup = "Yank" })
     end
 })
+
+-- Close the associated location list before quitting a window
+vim.api.nvim_create_autocmd("WinClosed", {
+    desc = "Close location list when the parent window is closed",
+    callback = function()
+        if vim.bo.buftype ~= "quickfix" then
+            pcall(vim.cmd.lclose)
+        end
+    end,
+})

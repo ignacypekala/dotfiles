@@ -45,6 +45,8 @@ hl('CursorLine', tc.none, tc.black)
 hl('CursorLineNr', tc.white, tc.none)
 hl('EndOfBuffer', tc.bright_black, tc.none)
 
+hl('Winbar', tc.bright_white)
+hl('WinbarNC', tc.bright_white)
 
 hl('StatusLine', tc.none, tc.black)
 hl('StatusLineNC', tc.none, tc.black)

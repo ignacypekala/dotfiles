@@ -1,50 +1,49 @@
 local dap = require('dap')
+local telescope = {
+    builtin = require("telescope.builtin"),
+    finders = require("telescope.finders"),
+    conf = require("telescope.config").values,
+    actions = require("telescope.actions"),
+    action_state = require("telescope.actions.state")
+}
 
--- Prompts user for a new debuggee executable
--- Returns 0 on success
+-- Prompts for a file and saves the location to a global variable
 local prompt_file = function(variable_name, display_name)
-    local file = vim.g[variable_name]
-    local prompt = "Enter the path for the "..display_name..": "
-    if file == nil then
-        file = vim.fn.input(
-            prompt,
-            vim.fn.getcwd() .. '/',
-            'file'
-        )
+    telescope.builtin.find_files({
+        prompt_title = "Select the "..display_name,
+        attach_mappings = function(prompt_bufnr, _)
+            telescope.actions.select_default:replace(function()
+                telescope.actions.close(prompt_bufnr)
+                local selection = telescope.action_state.get_selected_entry()
+                local path = selection[1]
+                vim.g[variable_name] = path
+            end)
+            return true
+        end,
+    })
+end
+
+-- Sets the executable or input_file variable 
+-- 
+local set_or_prompt = function (payload)
+    local varname = ''
+    local displayname = ''
+    if payload.name == "SetExecutable" or payload.name == "Sex" then
+        varname = "debugee_executable"
+        displayname = "executable"
     else
-        file = vim.fn.input(
-            prompt,
-            file,
-            'file'
-        )
+        varname = "debugee_input_file"
+        displayname = "input file"
     end
-    if vim.fn.filereadable(file) == false then
-        print("File "..file.." doesn't exist")
-        return 1
+    if payload.args == '' then
+        prompt_file(varname, displayname)
+    else
+        vim.g[varname] = vim.fn.glob(payload.args)
     end
-    vim.g[variable_name] = file
-    return 0
 end
-
-local set_executable = function ()
-    prompt_file('debugee_executable', 'executable')
+for _, name in ipairs({"SetExecutable", "Sex", "SetInputFile", "Sin"}) do
+    vim.api.nvim_create_user_command(name, set_or_prompt, { nargs = "?" })
 end
-vim.api.nvim_create_user_command('SetExecutable', set_executable, {
-    desc = "Set executable for DAP"
-})
-vim.api.nvim_create_user_command('Sex', set_executable, {
-    desc = "Set executable for DAP"
-})
-
-local set_inputfile = function ()
-    prompt_file('debugee_input_file', 'input file')
-end
-vim.api.nvim_create_user_command('SetInputFile', set_inputfile, {
-    desc = "Set input file for DAP"
-})
-vim.api.nvim_create_user_command('Sin', set_inputfile, {
-    desc = "Set input file for DAP"
-})
 
 dap.configurations.c = {
     {
@@ -54,7 +53,7 @@ dap.configurations.c = {
         program = function()
             local executable = vim.g.debugee_executable
             if executable == nil then
-                set_executable()
+                prompt_file('debugee_executable', 'executable')
             end
             return vim.g.debugee_executable
         end,

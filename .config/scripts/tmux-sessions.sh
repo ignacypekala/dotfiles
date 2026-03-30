@@ -2,9 +2,6 @@
 # Based on tmux-session-dispensary by Sylvan Franklin
 # https://github.com/SylvanFranklin/.config/blob/main/scripts/tmux-session-dispensary.sh
 #
-# Depends on skim
-# https://github.com/skim-rs/skim
-
 # Assumes the following environment variables:
 # PROJECT_ROOTS=(
 #     "$HOME"
@@ -13,9 +10,6 @@
 # EXTRA_PROJECTS=(
 #     "$HOME/junk/project"
 # )
-#
-# 
-# 
 #
 # Usage:
 # Select and open session

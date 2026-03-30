@@ -8,7 +8,7 @@ return {
             local dap = require('dap')
 
             -- Dap adapters
-            -- Java adapter is attached by nvim-jdtls in ftplugin/java.lua
+            -- Java adapter is managed by nvim-jdtls in ftplugin/java.lua
             dap.adapters = {
                 lldb = {
                     type = "executable",
@@ -31,6 +31,7 @@ return {
             vim.keymap.set('n', '<leader>dt', dap.terminate)
 
             vim.keymap.set('n', '<Up>',
+
                 function() require('dap').continue() end
             )
             vim.keymap.set('n', '<Down>',

@@ -31,7 +31,6 @@ return {
             vim.keymap.set('n', '<leader>dt', dap.terminate)
 
             vim.keymap.set('n', '<Up>',
-
                 function() require('dap').continue() end
             )
             vim.keymap.set('n', '<Down>',
@@ -94,6 +93,10 @@ return {
                 }
             })
             vim.keymap.set('n', '<leader>dv', dap_view.toggle)
+            -- local dap = require('dap')
+            -- dap.listeners.before['process']['dap-view-open'] = function()
+            --     dap_view.open()
+            -- end
         end
     }
 

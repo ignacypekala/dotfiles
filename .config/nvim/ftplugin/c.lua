@@ -1,30 +1,15 @@
 local dap = require('dap')
-local telescope = {
-    builtin = require("telescope.builtin"),
-    finders = require("telescope.finders"),
-    conf = require("telescope.config").values,
-    actions = require("telescope.actions"),
-    action_state = require("telescope.actions.state")
-}
-
--- Prompts for a file and saves the location to a global variable
-local prompt_file = function(variable_name, display_name)
-    telescope.builtin.find_files({
-        prompt_title = "Select the "..display_name,
-        attach_mappings = function(prompt_bufnr, _)
-            telescope.actions.select_default:replace(function()
-                telescope.actions.close(prompt_bufnr)
-                local selection = telescope.action_state.get_selected_entry()
-                local path = selection[1]
-                vim.g[variable_name] = path
-            end)
-            return true
-        end,
-    })
-end
+local file_picker = require('utils.file_picker')
 
 -- Sets the executable or input_file variable 
--- 
+local prompt_file = function (varname, displayname)
+    file_picker.run(displayname, function (file)
+        vim.g[varname] = file
+    end)
+end
+
+-- User command configuration handler
+-- Sets or prompts for a specific file
 local set_or_prompt = function (payload)
     local varname = ''
     local displayname = ''
@@ -52,8 +37,15 @@ dap.configurations.c = {
         request = "launch",
         program = function()
             local executable = vim.g.debugee_executable
-            if executable == nil then
-                prompt_file('debugee_executable', 'executable')
+            if executable == nil or executable == '' then
+                return coroutine.create(
+                    function(dap_run_co)
+                        file_picker.run("executable", function (file)
+                            vim.g.debugee_executable = file
+                            coroutine.resume(dap_run_co, file)
+                        end)
+                    end
+                )
             end
             return vim.g.debugee_executable
         end,

@@ -1,11 +1,9 @@
 export WINDOWS_HOME="/mnt/c/Users/Ignacy"
-project_roots=(
-    "$HOME"
+project_roots+=(
     "$HOME/wdp"
-    "$HOME/laby"
     "$WINDOWS_HOME/Desktop"
 )
-extra_projects=(
+extra_projects+=(
     "$WINDOWS_HOME/Downloads"
     "$WINDOWS_HOME/Pictures/"
     "$WINDOWS_HOME/AppData/"

@@ -36,6 +36,8 @@ elif [[ -f ~/.mim ]]; then
     else
         source_env mim-labs
     fi
+else
+    source_env unknown
 fi
 
 # If not running interactively, don't do anything

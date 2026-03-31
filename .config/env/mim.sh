@@ -1,8 +1,8 @@
-project_roots=(
+project_roots+=(
     "$HOME"
     "$HOME/laby"
 )
-extra_projects=(
+extra_projects+=(
     "$HOME/.ssh"
 )
 add_path ~/.local/bin

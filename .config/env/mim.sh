@@ -1,6 +1,4 @@
 project_roots+=(
-    "$HOME"
-    "$HOME/laby"
 )
 extra_projects+=(
     "$HOME/.ssh"

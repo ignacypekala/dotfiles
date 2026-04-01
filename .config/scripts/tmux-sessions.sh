@@ -12,12 +12,17 @@
 # )
 #
 # Usage:
-# Select and open session
+# Select a project and open a session
 # tmux-sessions.sh
-# tmux-sessions.sh select
+# tmux-sessions.sh select project
+#
+# Select a directory and open a session
+# tmux-sessions.sh select directory
 #
 # Select and open session (including hidden directories)
 # tmux.sessions.sh select-all
+# tmux.sessions.sh select-all project
+# tmux.sessions.sh select-all directory
 #
 # Open/load a session in a directory
 # tmux-sessions.sh open [DIRECTORY]
@@ -25,20 +30,27 @@
 if [[ $1 == "open" ]]; then
     selected=$2
 else
-    mapfile -t project_roots < ~/.cache/project_roots
-    mapfile -t extra_projects < ~/.cache/extra_projects
+    finder=()
+    extra_results=()
 
-    # command array
-    finder=( find "${project_roots[@]}" -maxdepth 1 -type 'd' )
+    # Craft the find command array
+    if [[ $2 == "project" ]]; then
+        mapfile -t project_roots < ~/.cache/project_roots
+        mapfile -t extra_projects < ~/.cache/extra_projects
+
+        finder=( find "${project_roots[@]}" -maxdepth 1 -type 'd' )
+        extra_results+=( "${extra_projects[@]}" )
+    else
+        finder=( find "$PWD" -maxdepth 1 -type 'd' )
+    fi
+
+    # disclude hidden directories
     if [[ $1 != "select-all" ]]; then
-        # disclude hidden directories
         finder+=( -not -name '.*' )
     fi
 
-    # Fuzzy-find across the subdirectories of $project_roots and the 
-    # directories from $extra_projects
     selected=$(
-        { "${finder[@]}"; printf '%s\n' "${extra_projects[@]}"; } \
+        { "${finder[@]}"; echo ${extra_results[@]}; } \
         | path-formatter.sh format \
         | fzf \
         | path-formatter.sh parse \

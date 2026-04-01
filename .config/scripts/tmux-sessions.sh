@@ -50,7 +50,7 @@ else
     fi
 
     selected=$(
-        { "${finder[@]}"; echo ${extra_results[@]}; } \
+        { "${finder[@]}"; printf "%s\n" ${extra_results[@]}; } \
         | path-formatter.sh format \
         | fzf \
         | path-formatter.sh parse \

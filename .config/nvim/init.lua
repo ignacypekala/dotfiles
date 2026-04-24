@@ -35,17 +35,6 @@ vim.opt.splitright = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- alt+hjkl in command mode
--- Currently not used as i have the same overwrites in alacritty config
--- Leaving this just in case I have to work in 
--- an unconfigured terminal emulator
-vim.keymap.set({"c"}, "<m-h>", "<left>")
-vim.keymap.set({"c"}, "<m-h>", "<s-left>")
-vim.keymap.set({"c"}, "<m-l>", "<right>")
-vim.keymap.set({"c"}, "<m-l>", "<s-right>")
-vim.keymap.set({"c"}, "<m-j>", "<down>")
-vim.keymap.set({"c"}, "<m-k>", "<up>")
-
 -- Move chunks of text in visual mode
 -- github.com/ThePrimeagen/neovimrc
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
@@ -63,38 +52,6 @@ require('vim._core.ui2').enable({})
 require('config.clipboard')
 require('config.plugins')
 require('config.winbar')
-
--- Treesitter configuration
-local treesitter_langs = {
-    'c', 'make', 'cpp',
-    'python','lua',
-    'typst', 'markdown',
-    'javascript', 'jsdoc',
-    'java',
-    'json', 'csv',
-    'yaml', 'toml', 'ini',
-    'html', 'css',
-    'bash',
-    'tmux',
-    'gitignore',
-    'vimdoc',
-    'sql',
-}
--- require('nvim-treesitter').install(treesitter_langs)
-
--- Enables treesitter features for installed parsers
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = treesitter_langs,
-    callback = function(args)
-        vim.treesitter.start()
-        if args.match == 'c' or args.match == 'cpp' then
-            vim.bo.cindent = true
-        else
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end
-    end,
-}
-)
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {

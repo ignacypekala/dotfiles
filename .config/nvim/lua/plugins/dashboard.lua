@@ -1,3 +1,9 @@
+local github = require("utils.pack_providers").github
+
+vim.pack.add({
+    github .. "nvimdev/dashboard-nvim"
+})
+
 local banner = {
     "                                            o8o                     ",
     "                                             `o                     ", 
@@ -8,46 +14,29 @@ local banner = {
     "o888o o888o `Y8bod8P' `Y8bod8P'     `8'     o888o o888o o888o o888o ", 
 }
 
-return {
-    {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            local header = function()
-                local fortune = vim.fn.systemlist('fortune -s')
-                local header = vim.deepcopy(banner)
-                table.insert(header, '')
-                vim.list_extend(header, fortune)
-                table.insert(header, '')
-                return header
-            end
+local header = function()
+    local fortune = vim.fn.systemlist('fortune -s')
+    local header = vim.deepcopy(banner)
+    table.insert(header, '')
+    vim.list_extend(header, fortune)
+    table.insert(header, '')
+    return header
+end
 
-            require('dashboard').setup({
-                theme = "doom",
-                disable_move = false,
-                hide = {
-                    statusline = true,
-                },
-                config = {
-                    header = header(),
-                    center = {
-                        {
-                            desc = ""
-                        }
-                        -- {
-                        --     icon = " ",
-                        --     desc = "Open config",
-                        --     key_format = " [%s]",
-                        --     action = ":exe 'cd' stdpath('config')"
-                        -- }
-                    },
-                    footer = {""},
-                    vertical_center = true
-
-                }
-
-            })
-        end,
-        dependencies = { {'nvim-tree/nvim-web-devicons' } }
+require('dashboard').setup({
+    theme = "doom",
+    disable_move = false,
+    hide = {
+        statusline = true,
+    },
+    config = {
+        header = header(),
+        center = {
+            {
+                desc = ""
+            }
+        },
+        footer = {""},
+        vertical_center = true
     }
-}
+})

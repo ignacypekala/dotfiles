@@ -56,8 +56,12 @@ vim.opt.termguicolors = false
 vim.opt.winborder = "solid"
 vim.cmd.colorscheme('custom')
 
+-- Enables the experimental UI version (updates message and cmdline system)
+-- g< opens the full output
+require('vim._core.ui2').enable({})
+
 require('config.clipboard')
-require('config.lazy')
+require('config.plugins')
 require('config.winbar')
 
 -- Treesitter configuration
@@ -76,7 +80,7 @@ local treesitter_langs = {
     'vimdoc',
     'sql',
 }
-require('nvim-treesitter').install(treesitter_langs)
+-- require('nvim-treesitter').install(treesitter_langs)
 
 -- Enables treesitter features for installed parsers
 vim.api.nvim_create_autocmd('FileType', {

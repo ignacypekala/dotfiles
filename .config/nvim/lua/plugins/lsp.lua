@@ -1,3 +1,4 @@
+local github = require("utils.pack_providers").github
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local setup_lua_ls = function()
@@ -44,38 +45,25 @@ local setup_clangd = function()
     })
 end
 
-return {
-    {
-        "neovim/nvim-lspconfig",
-        lazy = true,
-        event = 'VeryLazy',
-        config = function()
+vim.pack.add({ github .. "neovim/nvim-lspconfig" })
 
-            -- https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8
-            vim.lsp.enable('clangd')
-            setup_clangd()
+vim.lsp.enable('clangd')
+setup_clangd()
 
-            -- https://github.com/LuaLS/lua-language-server/releases
-            vim.lsp.enable('lua_ls')
-            setup_lua_ls()
+vim.lsp.enable('lua_ls')
+setup_lua_ls()
 
-            -- https://github.com/Myriad-Dreamin/tinymist
-            vim.lsp.enable('tinymist')
-            vim.lsp.config('tinymist', {
-                capabilities = capabilities,
-                settings = {
-                    semanticTokens = "disable",
-                    formatterMode = "typstyle",
-                    formatterProseWrap = true,
-                    formatterPrintWidth = 80,
-                    formatterIndentSize = 4,
+vim.lsp.enable('tinymist')
+vim.lsp.config('tinymist', {
+    capabilities = capabilities,
+    settings = {
+        semanticTokens = "disable",
+        formatterMode = "typstyle",
+        formatterProseWrap = true,
+        formatterPrintWidth = 80,
+        formatterIndentSize = 4,
 
-                }
-            })
-            -- Solution for document preview
-            -- https://github.com/chomosuke/typst-preview.nvim
-
-            -- vim.lsp.enable('jdtls')
-        end,
     }
-}
+})
+-- Solution for document preview
+-- https://github.com/chomosuke/typst-preview.nvim

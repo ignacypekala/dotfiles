@@ -1,20 +1,14 @@
-vim.api.nvim_create_autocmd("PackChanged", {
-    callback = function(event)
-        local kind = event.data.kind
-        local name = event.data.spec.name
-        if (name == "blink.cmp") and (kind == "install" or kind == "update") then
-            require('blink.cmp').build():wait(60000)
-        end
-    end
-})
-
 local github = require("utils.pack_providers").github
 
 vim.pack.add({
     github .. "saghen/blink.cmp",
     github .. "saghen/blink.lib"
 })
-require('blink.cmp').setup({
+
+local blink = require('blink.cmp')
+
+blink.build():wait(60000)
+blink.setup({
     keymap = {
         preset = 'default',
         ['<C-k>'] = false

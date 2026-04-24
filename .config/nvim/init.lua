@@ -14,8 +14,24 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 
-vim.opt.laststatus = 2
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 1
+vim.opt.foldnestmax = 4
+vim.opt.foldcolumn = "auto:1"
+vim.opt.foldtext = ""
+
 vim.opt.showmode = false
+
+vim.opt.laststatus = 2
+vim.opt.statuscolumn = "%s%=%l %C "
+vim.opt.fillchars = {
+    fold = " ",
+    foldopen = "",
+    foldclose = "",
+    foldsep = " ",
+    foldinner = " ",
+}
+
 
 vim.opt.colorcolumn = "80"
 

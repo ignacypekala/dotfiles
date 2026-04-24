@@ -57,6 +57,9 @@ hl('Substitute', tc.black, tc.white)
 hl('SnippetTabstop', tc.bright_white, tc.bright_black)
 hl('Visual', tc.bright_white, tc.bright_black)
 
+-- hl('Folded', nil, tc.black)
+hl('FoldColumn', tc.bright_black, nil)
+
 hl('DiffAdd', tc.black, tc.green)
 hl('DiffDelete', tc.bright_red, nil, { bold = true })
 hl('DiffText', tc.black, tc.blue, {bold = false})

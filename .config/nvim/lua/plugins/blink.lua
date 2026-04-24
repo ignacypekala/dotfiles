@@ -11,7 +11,7 @@ blink.build():wait(60000)
 blink.setup({
     keymap = {
         preset = 'default',
-        ['<C-k>'] = false
+        ['<C-k>'] = false,
     },
     appearance = {
         nerd_font_variant = 'mono'

@@ -6,12 +6,12 @@ vim.pack.add({
 
 local banner = {
     "                                            o8o                     ",
-    "                                             `o                     ", 
+    "                                             `o                     ",
     "ooo. .oo.    .ooooo.   .ooooo.  oooo    ooo oooo  ooo. .oo.  .oo.   ",
     "`888P\"Y88b  d88\' `88b d88\' `88b  `88.  .8\'  `888  `888P\"Y88bP\"Y88b  ",
-    " 888   888  888ooo888 888   888   `88..8'    888   888   888   888  ", 
-    " 888   888  888    .o 888   888    `888'     888   888   888   888  ", 
-    "o888o o888o `Y8bod8P' `Y8bod8P'     `8'     o888o o888o o888o o888o ", 
+    " 888   888  888ooo888 888   888   `88..8'    888   888   888   888  ",
+    " 888   888  888    .o 888   888    `888'     888   888   888   888  ",
+    "o888o o888o `Y8bod8P' `Y8bod8P'     `8'     o888o o888o o888o o888o ",
 }
 
 local header = function()

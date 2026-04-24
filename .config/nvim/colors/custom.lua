@@ -57,6 +57,11 @@ hl('Substitute', tc.black, tc.white)
 hl('SnippetTabstop', tc.bright_white, tc.bright_black)
 hl('Visual', tc.bright_white, tc.bright_black)
 
+hl('DiffAdd', tc.black, tc.green)
+hl('DiffDelete', tc.bright_red, nil, { bold = true })
+hl('DiffText', tc.black, tc.blue, {bold = false})
+-- hl('DiffChange', tc.black, tc.blue)
+
 -- used in init.lua
 hl('Yank', tc.bright_whtie, tc.bright_black)
 

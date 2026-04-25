@@ -17,7 +17,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 1
+-- vim.opt.foldlevelstart = 3
 vim.opt.foldnestmax = 4
 vim.opt.foldcolumn = "auto:1"
 vim.opt.foldtext = "" -- replaced with treesitter-highlighted text

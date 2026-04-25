@@ -97,3 +97,20 @@ vim.api.nvim_create_autocmd("WinClosed", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+    pattern = "*.java",
+    callback = function (opts)
+        local lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
+        local file_empty = #lines == 0 or (#lines == 1 and lines[1] == "")
+        if not file_empty then return end
+
+        local name = vim.fn.expand("%:t:r")
+        vim.api.nvim_buf_set_lines(opts.buf, 0, 0, false, {
+            "public class ".. name .. " {",
+            "",
+            "}"
+        })
+        vim.cmd.normal("goj")
+    end
+})

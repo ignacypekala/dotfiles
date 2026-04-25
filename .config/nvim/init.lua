@@ -7,6 +7,7 @@ vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.scrolloff = 5
+
 -- Normal cursor but with a beam when typing
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,"..
     "r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
@@ -18,7 +19,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 1
 vim.opt.foldnestmax = 4
 vim.opt.foldcolumn = "auto:1"
-vim.opt.foldtext = ""
+vim.opt.foldtext = "" -- replaced with treesitter-highlighted text
 
 vim.opt.showmode = false
 

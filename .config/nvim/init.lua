@@ -13,6 +13,7 @@ vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,"..
     "r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.foldlevel = 99

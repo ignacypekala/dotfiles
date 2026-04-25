@@ -56,6 +56,9 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
+vim.cmd.packadd('nvim.undotree')
+vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
+
 -- Appearance
 vim.opt.termguicolors = false
 vim.opt.winborder = "solid"
@@ -67,7 +70,14 @@ require('vim._core.ui2').enable({})
 
 require('config.clipboard')
 require('config.plugins')
-require('config.winbar')
+require('config.tabline')
+
+vim.api.nvim_create_user_command('DiffOrig', function()
+  local file = vim.fn.expand('%')
+  vim.cmd('vert new')
+  vim.cmd('set buftype=nofile | read ++edit ' .. file .. ' | 0d_ | diffthis')
+  vim.cmd('wincmd p | diffthis')
+end, { desc = 'Diff current unsaved buffer with file on disk' })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {

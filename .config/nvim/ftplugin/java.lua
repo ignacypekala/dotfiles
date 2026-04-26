@@ -21,11 +21,3 @@ local config = {
 }
 
 require('jdtls').start_or_attach(config)
-
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-    pattern = "*.java",
-    callback = function (opts)
-        local lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
-        print('"'..lines[1]..'" - '..#lines)
-    end
-})

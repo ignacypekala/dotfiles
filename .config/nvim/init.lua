@@ -109,7 +109,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
         local luasnip = require("luasnip")
         local java_snippets = luasnip.get_snippets("java")
         luasnip.snip_expand(java_snippets[1], {pos = {0, 0}}) -- package
-        vim.cmd.normal("o")
-        luasnip.snip_expand(java_snippets[2], {pos = {2, 0}}) -- class
+
+        lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
+        luasnip.snip_expand(java_snippets[2], {pos = {#lines - 1, 0}}) -- class
     end
 })

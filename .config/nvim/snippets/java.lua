@@ -5,12 +5,12 @@ local function get_package_name()
 
     local package_name
     if not src_match then
-        package_name = ""
+        return ""
     else
         package_name = src_match.gsub(src_match, "/", ".")
     end
 
-    return package_name
+    return {'package "' .. package_name .. '";', ''}
 end
 
 local function get_class_name()
@@ -19,9 +19,7 @@ local function get_class_name()
 end
 
 return {
-    s("package", {
-        t("package \""), f(get_package_name), t({"\";", ""})
-    }),
+    s("package", { f(get_package_name) }),
     s("class", {
         t("public class "), f(get_class_name), t({" {", "   "}),
         i(0),

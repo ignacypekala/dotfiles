@@ -1,6 +1,7 @@
 ---@meta
 -- Defines luasnips symbols for snippet files
 
+vim = vim or {}
 s = require("luasnip.nodes.snippet").S
 sn = require("luasnip.nodes.snippet").SN
 isn = require("luasnip.nodes.snippet").ISN

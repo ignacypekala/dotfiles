@@ -1,0 +1,30 @@
+local function get_package_name()
+    local path = vim.fn.expand("%:p")
+    local src_match = string.match(path, "/src/main/java/(.*)/[^/]+%.java$")
+        or string.match(path, "/src/test/java/(.+)/[^/]+%.java$")
+
+    local package_name
+    if not src_match then
+        package_name = ""
+    else
+        package_name = src_match.gsub(src_match, "/", ".")
+    end
+
+    return package_name
+end
+
+local function get_class_name()
+    local name = vim.fn.expand("%:t:r")
+    return name
+end
+
+return {
+    s("package", {
+        t("package \""), f(get_package_name), t({"\";", ""})
+    }),
+    s("class", {
+        t("public class "), f(get_class_name), t({" {", "   "}),
+        i(0),
+        t({"", "}"})
+    })
+}

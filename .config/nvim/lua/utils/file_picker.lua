@@ -20,6 +20,7 @@ function M.run(name, callback)
             end)
             return true
         end,
+        no_ignore = true;
     })
 end
 

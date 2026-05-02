@@ -66,6 +66,7 @@ vim.lsp.config('tinymist', {
     }
 })
 
-vim.lsp.enable("asm-lsp")
+vim.lsp.enable('asm_lsp')
+
 -- Solution for document preview
 -- https://github.com/chomosuke/typst-preview.nvim

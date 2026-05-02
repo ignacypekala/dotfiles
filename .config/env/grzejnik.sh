@@ -17,3 +17,5 @@ export TMUX_ACCENT="green"
 export JAVA_DEBUG="/usr/share/java-debug/com.microsoft.java.debug.plugin-*.jar"
 
 start_ssh_agent
+add_path ~/.cargo/bin
+

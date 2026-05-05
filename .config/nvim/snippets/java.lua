@@ -21,8 +21,6 @@ end
 return {
     s("package", { f(get_package_name) }),
     s("class", {
-        t("public class "), f(get_class_name), t({" {", "   "}),
-        i(0),
-        t({"", "}"})
+        t("public class "), f(get_class_name), t(" {"), i(0), t("}")
     })
 }

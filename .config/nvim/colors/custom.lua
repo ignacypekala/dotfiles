@@ -116,7 +116,7 @@ hl('Special', tc.blue)
 hl('@comment', tc.bright_black)
 hl('@comment.note.comment', tc.white, nil, { bold = true })
 
-hl('@variable.builtin', tc.bright_green)
+hl('@variable.builtin', tc.white)
 hl('@variable.parameter.builtin', tc.bright_green)
 hl('@module.builtin', tc.bright_green)
 hl('@type.builtin', tc.bright_green)

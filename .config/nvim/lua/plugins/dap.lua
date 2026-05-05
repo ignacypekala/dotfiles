@@ -67,3 +67,20 @@ dap_view.setup({
     }
 })
 vim.keymap.set('n', '<leader>dv', dap_view.toggle)
+
+vim.api.nvim_create_autocmd("BufNew", {
+    pattern = { "*.c", "*.cpp", "*.asm" },
+    once = true,
+    callback = function ()
+        require('debuggers.lldb')
+    end
+})
+
+vim.api.nvim_create_autocmd("BufNew", {
+    pattern = { "*.java "},
+    once = true,
+    callback = function ()
+        require('debuggers.java')
+    end
+})
+

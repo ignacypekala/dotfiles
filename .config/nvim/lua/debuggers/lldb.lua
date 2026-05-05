@@ -63,6 +63,9 @@ dap.configurations.c = {
             end
             return stdio
         end,
-
+        args = { "1", "2", "1", "4" }
     },
 }
+
+dap.configurations.cpp = dap.configurations.c
+dap.configurations.asm = dap.configurations.c

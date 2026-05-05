@@ -1,13 +1,16 @@
 local github = require("utils.pack_providers").github
 
 vim.pack.add({
-    github .. "saghen/blink.cmp",
+    {
+        src = github .. "saghen/blink.cmp",
+        version = "v1"
+    },
     github .. "saghen/blink.lib"
 })
 
 local blink = require('blink.cmp')
 
-blink.build():wait(60000)
+-- blink.build():wait(60000)
 blink.setup({
     keymap = {
         preset = 'default',

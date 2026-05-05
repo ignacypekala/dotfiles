@@ -5,6 +5,7 @@ vim.pack.add(
 )
 
 local treesitter_langs = {
+    'comment',
     'c', 'make', 'cpp',
     'asm',
     'python','lua',

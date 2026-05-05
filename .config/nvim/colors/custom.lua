@@ -103,6 +103,7 @@ hl('BlinkCmpKindInterface', tc.green)
 -- Highlighting
 -- -- Syntax
 hl('Comment', tc.bright_black)
+hl('Todo', tc.white, nil, { bold = true })
 hl('Constant', tc.bright_blue)
 hl('String', tc.bright_blue)
 hl('Identifier', tc.bright_white)
@@ -113,6 +114,7 @@ hl('Special', tc.blue)
 
 -- -- Treesitter
 hl('@comment', tc.bright_black)
+hl('@comment.note.comment', tc.white, nil, { bold = true })
 
 hl('@variable.builtin', tc.bright_green)
 hl('@variable.parameter.builtin', tc.bright_green)

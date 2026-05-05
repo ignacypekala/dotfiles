@@ -6,6 +6,7 @@ vim.pack.add(
 
 local treesitter_langs = {
     'c', 'make', 'cpp',
+    'asm',
     'python','lua',
     'typst', 'markdown',
     'javascript', 'jsdoc',

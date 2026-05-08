@@ -1,3 +1,5 @@
+local M = {}
+
 local bundles = {}
 local java_debug = vim.env.JAVA_DEBUG
 if java_debug ~= 0 then
@@ -20,4 +22,8 @@ local config = {
     }
 }
 
-require('jdtls').start_or_attach(config)
+function M.start_or_attach()
+    require('jdtls').start_or_attach(config)
+end
+
+return M

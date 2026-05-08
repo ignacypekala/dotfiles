@@ -76,11 +76,3 @@ vim.api.nvim_create_autocmd("BufNew", {
     end
 })
 
-vim.api.nvim_create_autocmd("BufNew", {
-    pattern = { "*.java "},
-    once = true,
-    callback = function ()
-        require('debuggers.java')
-    end
-})
-

@@ -4,7 +4,8 @@ vim.pack.add({ github .. "Wansmer/treesj" })
 local treesj = require('treesj')
 
 treesj.setup({
-    use_default_keymaps = false
+    use_default_keymaps = false,
+    max_join_length = 200,
 })
 
 vim.keymap.set("n", "<leader>m", treesj.toggle)

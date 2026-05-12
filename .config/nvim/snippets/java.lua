@@ -10,7 +10,7 @@ local function get_package_name()
         package_name = src_match.gsub(src_match, "/", ".")
     end
 
-    return {'package "' .. package_name .. '";', ''}
+    return {'package ' .. package_name .. ';', ''}
 end
 
 local function get_class_name()
@@ -21,6 +21,10 @@ end
 return {
     s("package", { f(get_package_name) }),
     s("class", {
-        t("public class "), f(get_class_name), t(" {"), i(0), t("}")
+        t("public class "),
+        f(get_class_name), t(" "), i(1),
+        t(" {"),
+        i(0),
+        t("}"),
     })
 }

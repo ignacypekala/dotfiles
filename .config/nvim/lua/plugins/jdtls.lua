@@ -24,8 +24,8 @@ local config = {
     }
 }
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "java",
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.java",
     callback = function()
         require('jdtls').start_or_attach(config)
     end

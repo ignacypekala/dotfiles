@@ -114,3 +114,5 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
         luasnip.snip_expand(java_snippets[2], {pos = {#lines - 1, 0}}) -- class
     end
 })
+
+vim.api.nvim_create_user_command("Format", "normal gggqG", {})

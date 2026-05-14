@@ -28,6 +28,7 @@ telescope.load_extension("ui-select")
 local dropdown = {
     dynamic_preview_title = true,
     borderchars = { "▄", "█", "▀", "█", "▄", "▄", "▀", "▀" },
+    preview = true,
     theme = "dropdown"
 }
 local dropdown_no_preview = {
@@ -75,7 +76,7 @@ telescope.setup({
 
 
 local has_git = function()
-    vim.system({'git', 'status'}, {},
+    vim.system({ 'git', 'status' }, {},
         function(obj)
             vim.g.cwd_has_git = obj.code == 0
         end
@@ -88,18 +89,41 @@ has_git()
 
 vim.keymap.set('n', '<leader>f',
     function()
-        builtin.find_files({ cwd = vim.fn.getcwd(), hidden = true })
+        builtin.find_files({
+            cwd = vim.fn.getcwd(),
+            hidden = false,
+        })
     end
 )
+vim.keymap.set('n', '<leader>F',
+    function()
+        builtin.find_files({
+            cwd = vim.fn.getcwd(),
+            hidden = true,
+        })
+    end
+)
+
 vim.keymap.set('n', '<leader>g',
     function()
         if vim.g.cwd_has_git then
-            builtin.git_files()
+            builtin.git_files({
+                git_command = {
+                    "git",
+                    "-c",
+                    "core.quotepath=false",
+                    "ls-files",
+                    "--exclude-standard",
+                    "--cached",
+                    "--others", -- include untracked
+                }
+            })
         else
-            vim.notify("Not a git repository", vim.log.levels.WARN)
+            builtin.find_files({ cwd = vim.fn.stdpath('config') })
         end
     end
 )
+
 vim.keymap.set('n', '<leader>nv',
     function()
         builtin.find_files({ cwd = vim.fn.stdpath('config') })
@@ -110,6 +134,7 @@ vim.keymap.set('n', '<leader>ndv',
         builtin.find_files({ cwd = vim.fn.stdpath('data') })
     end
 )
+
 vim.keymap.set('n', '<leader>b', builtin.buffers)
 vim.keymap.set('n', '<leader>h', builtin.help_tags)
 vim.keymap.set('n', '<leader>k', builtin.keymaps)

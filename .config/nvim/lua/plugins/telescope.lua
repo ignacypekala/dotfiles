@@ -127,7 +127,6 @@ vim.keymap.set('n', '<leader>v',
                     "core.quotepath=false",
                     "ls-files",
                     "--exclude-standard",
-                    "--cached",
                     "--modified",
                 }
             })

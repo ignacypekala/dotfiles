@@ -108,6 +108,19 @@ vim.keymap.set('n', '<leader>g',
     function()
         if vim.g.cwd_has_git then
             builtin.git_files({
+                show_untracked = true
+            })
+        else
+            builtin.find_files({ cwd = vim.fn.stdpath('config') })
+        end
+    end
+)
+
+vim.keymap.set('n', '<leader>v',
+    function()
+        if vim.g.cwd_has_git then
+            builtin.git_files({
+                prompt_title = "Git modified files",
                 git_command = {
                     "git",
                     "-c",
@@ -115,14 +128,16 @@ vim.keymap.set('n', '<leader>g',
                     "ls-files",
                     "--exclude-standard",
                     "--cached",
-                    "--others", -- include untracked
+                    "--modified",
                 }
             })
         else
-            builtin.find_files({ cwd = vim.fn.stdpath('config') })
+            vim.notify("This is not a git repository.", vim.log.levels.WARN)
         end
     end
 )
+
+
 
 vim.keymap.set('n', '<leader>nv',
     function()

@@ -14,12 +14,25 @@ local blink = require('blink.cmp')
 blink.setup({
     keymap = {
         preset = 'default',
-        ['<C-k>'] = false,
+        ['<C-y>'] = false,
+        ['<Tab>'] = { 'select_next', 'fallback'},
+        ['<S-Tab>'] = { 'select_prev', 'fallback'},
+        ['<Enter>'] = { 'accept', 'fallback'},
+        ['<C-n>'] = { 'snippet_forward', 'fallback' },
+        ['<C-p>'] = { 'snippet_backward', 'fallback' },
+        ['<C-k>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-c>'] = { 'cancel', 'fallback' }
     },
     appearance = {
         nerd_font_variant = 'mono'
     },
     completion = {
+        list = {
+            selection = {
+                preselect = false,
+                auto_insert = true,
+            }
+        },
         menu = {
             border = 'none',
             auto_show = true,
@@ -31,10 +44,16 @@ blink.setup({
                 },
             },
         },
-        documentation = { auto_show = false },
+        documentation = {
+            auto_show = false,
+            auto_show_delay_ms = 0,
+        },
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+    snippets = {
+        preset = 'luasnip'
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
     signature = {

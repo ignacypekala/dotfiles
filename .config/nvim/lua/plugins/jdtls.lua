@@ -16,7 +16,7 @@ local config = {
     root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
     settings = {
         java = {
-
+            signatureHelp = { enabled = true }
         }
     },
     init_options = {

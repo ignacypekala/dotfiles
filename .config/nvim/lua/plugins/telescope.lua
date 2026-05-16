@@ -70,6 +70,7 @@ telescope.setup({
         man_pages = dropdown,
         keymaps = dropdown,
         treesitter = dropdown,
+        live_grep = dropdown,
     },
 
 })
@@ -154,3 +155,7 @@ vim.keymap.set('n', '<leader>h', builtin.help_tags)
 vim.keymap.set('n', '<leader>k', builtin.keymaps)
 vim.keymap.set('n', '<leader>m', builtin.man_pages)
 vim.keymap.set('n', '<leader>t', builtin.treesitter)
+vim.keymap.set('n', '<leader>l', builtin.live_grep)
+vim.keymap.set('n', '<leader>L', function()
+    builtin.live_grep({ hidden = true })
+end)

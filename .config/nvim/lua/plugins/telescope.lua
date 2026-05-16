@@ -59,6 +59,10 @@ telescope.setup({
         mappings = {
             i = {
                 ["<esc>"] = actions.close,
+                ["<Tab>"] = actions.move_selection_next,
+                ["<S-Tab>"] = actions.move_selection_previous,
+                ["<C-p>"] = actions.cycle_history_prev,
+                ["<C-n>"] = actions.cycle_history_next
             }
         },
     },
@@ -159,3 +163,5 @@ vim.keymap.set('n', '<leader>l', builtin.live_grep)
 vim.keymap.set('n', '<leader>L', function()
     builtin.live_grep({ hidden = true })
 end)
+
+vim.keymap.set('n', '<leader>r', builtin.resume)

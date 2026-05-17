@@ -10,23 +10,29 @@ if java_debug ~= 0 then
     }
 end
 
-local config = {
-    name = "jdtls",
-    cmd = { "jdtls" },
-    root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
-    settings = {
-        java = {
-            signatureHelp = { enabled = true }
-        }
-    },
-    init_options = {
-        bundles = bundles,
-    }
-}
-
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*.java",
     callback = function()
+        local config = {
+            name = "jdtls",
+            cmd = { "jdtls" },
+            root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
+            settings = {
+                java = {
+                    signatureHelp = { enabled = true },
+                    format = {
+                        settings = {
+                            url = vim.fn.stdpath("config") .. "/eclipse-java-google-style.xml",
+                            profile = "GoogleStyle",
+                        }
+                    }
+                },
+                init_options = {
+                    bundles = bundles,
+                }
+            }
+        }
+
         require('jdtls').start_or_attach(config)
     end
 })

@@ -61,8 +61,8 @@ vim.lsp.config('tinymist', {
         formatterMode = "typstyle",
         formatterProseWrap = true,
         formatterPrintWidth = 80,
-        formatterIndentSize = 4,
-
+        formatterIndentSize = 2,
+        exportPdf = "onType"
     }
 })
 

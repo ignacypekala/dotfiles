@@ -116,7 +116,11 @@ vim.keymap.set('n', '<leader>g',
                 show_untracked = true
             })
         else
-            builtin.find_files({ cwd = vim.fn.stdpath('config') })
+            builtin.find_files({
+                prompt_title = "Find files (no git in this directory)",
+                cwd = vim.fn.getcwd(),
+                hidden = false,
+            })
         end
     end
 )

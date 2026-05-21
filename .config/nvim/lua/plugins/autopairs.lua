@@ -23,5 +23,7 @@ autopairs.add_rules({
             local col = vim.api.nvim_win_get_cursor(0)[2]
             local context = opts.line:sub(col - 1, col + 2)
             return context == "$  $"
-        end)
+        end),
+    rule("|", "|", { "typst" })
+        :with_pair(ts_conds.is_not_ts_node({ "math" })),
 })

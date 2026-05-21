@@ -115,4 +115,4 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
     end
 })
 
-vim.api.nvim_create_user_command("Format", "normal gggqG", {})
+vim.api.nvim_create_user_command("Format", "lua vim.lsp.buf.format()", {})

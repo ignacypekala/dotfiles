@@ -63,7 +63,7 @@ dap.configurations.c = {
             end
             return stdio
         end,
-        args = { "1", "2", "1", "4" }
+        args = { "0" }
     },
 }
 

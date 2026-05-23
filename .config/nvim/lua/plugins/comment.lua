@@ -1,7 +1,7 @@
-local github = require("utils.pack_providers").github
-
-vim.pack.add({{
-    src = github .. "numtostr/comment.nvim",
-    name = "Comment"
-}})
-require("Comment").setup()
+-- local github = require("utils.pack_providers").github
+--
+-- vim.pack.add({{
+--     src = github .. "numtostr/comment.nvim",
+--     name = "Comment"
+-- }})
+-- require("Comment").setup()

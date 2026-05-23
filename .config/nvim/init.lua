@@ -46,6 +46,8 @@ vim.opt.smarttab = true
 -- LF Line terminators 
 vim.opt.fileformat = 'unix'
 
+vim.opt.exrc = true
+
 -- Default window locations
 vim.opt.splitbelow = true
 vim.opt.splitright = true

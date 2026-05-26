@@ -2,8 +2,8 @@ local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 config.window_decorations = "TITLE | RESIZE"
 
-config.initial_cols = 240
-config.initial_rows = 70
+config.initial_cols = 180
+config.initial_rows = 48
 
 config.bold_brightens_ansi_colors = false
 

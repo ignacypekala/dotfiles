@@ -2,8 +2,8 @@ local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 config.window_decorations = "TITLE | RESIZE"
 
-config.initial_cols = 120
-config.initial_rows = 35
+config.initial_cols = 240
+config.initial_rows = 70
 
 config.bold_brightens_ansi_colors = false
 
@@ -37,7 +37,7 @@ config.colors = {
     selection_bg = "#5e5d5d"
 }
 
-config.font_size =  10
+config.font_size =  12
 config.font = wezterm.font('JetBrains Mono', { weight = "DemiBold" })
 config.font_rules = {
     {

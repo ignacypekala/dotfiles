@@ -2,14 +2,7 @@
 # Based on tmux-session-dispensary by Sylvan Franklin
 # https://github.com/SylvanFranklin/.config/blob/main/scripts/tmux-session-dispensary.sh
 #
-# Assumes the following environment variables:
-# PROJECT_ROOTS=(
-#     "$HOME"
-#     "$HOME/projects"
-# )
-# EXTRA_PROJECTS=(
-#     "$HOME/junk/project"
-# )
+# Assumes presence of files ~/.cache/project_roots and ~/.cache/extra_projects.
 #
 # Usage:
 # Select a project and open a session

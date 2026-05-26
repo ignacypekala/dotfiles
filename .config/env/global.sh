@@ -20,3 +20,4 @@ extra_projects=(
 
 add_path ~/.config/scripts
 add_path ~/go/bin
+add_path ~/.cargo/bin

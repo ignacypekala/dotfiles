@@ -31,10 +31,10 @@ else
         mapfile -t project_roots < ~/.cache/project_roots
         mapfile -t extra_projects < ~/.cache/extra_projects
 
-        finder=( find "${project_roots[@]}" -maxdepth 1 -type 'd' )
+        finder=( find "${project_roots[@]}" -mindepth 1 -maxdepth 1 -type 'd' )
         extra_results+=( "${extra_projects[@]}" )
     else
-        finder=( find "$PWD" -maxdepth 1 -type 'd' )
+        finder=( find "$PWD" -mindepth 1 -maxdepth 1 -type 'd' )
     fi
 
     # disclude hidden directories

@@ -56,6 +56,7 @@ hl('Search', tc.none, tc.none, { underline = true, bold = true })
 hl('Substitute', tc.black, tc.white)
 hl('SnippetTabstop', tc.bright_white, tc.bright_black)
 hl('Visual', tc.bright_white, tc.bright_black)
+hl('Whitespace', tc.black)
 
 -- hl('Folded', nil, tc.black)
 hl('FoldColumn', tc.bright_black, nil)

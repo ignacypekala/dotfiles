@@ -48,10 +48,10 @@ config.font_rules = {
 
 config.enable_tab_bar = false
 config.window_padding = {
-    left = 10,
-    right = 10,
-    top = 10,
-    bottom = 10,
+    left = 15,
+    right = 15,
+    top = 15,
+    bottom = 15,
 }
 config.adjust_window_size_when_changing_font_size = false
 

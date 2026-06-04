@@ -47,6 +47,8 @@ vim.opt.smarttab = true
 vim.opt.fileformat = 'unix'
 
 vim.opt.exrc = true
+vim.opt.undofile = true
+vim.opt.autowriteall = true
 
 -- Default window locations
 vim.opt.splitbelow = true

@@ -8,4 +8,4 @@ treesj.setup({
     max_join_length = 200,
 })
 
-vim.keymap.set("n", "<leader>m", treesj.toggle)
+vim.keymap.set("n", "<leader>j", treesj.toggle)

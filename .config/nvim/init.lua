@@ -120,3 +120,10 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
 })
 
 vim.api.nvim_create_user_command("Format", "lua vim.lsp.buf.format()", {})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit",
+    callback = function ()
+        vim.opt_local.textwidth = 72
+    end
+})

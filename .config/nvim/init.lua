@@ -102,22 +102,22 @@ vim.api.nvim_create_autocmd("WinClosed", {
     end,
 })
 
--- Automatically write class declaration boilerplate for empty java files
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
-    pattern = "*.java",
-    callback = function (opts)
-        local lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
-        local file_empty = #lines == 0 or (#lines == 1 and lines[1] == "")
-        if not file_empty then return end
-
-        local luasnip = require("luasnip")
-        local java_snippets = luasnip.get_snippets("java")
-        luasnip.snip_expand(java_snippets[1], {pos = {0, 0}}) -- package
-
-        -- lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
-        -- luasnip.snip_expand(java_snippets[2], {pos = {#lines - 1, 0}}) -- class
-    end
-})
+-- -- Automatically write class declaration boilerplate for empty java files
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
+--     pattern = "*.java",
+--     callback = function (opts)
+--         local lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
+--         local file_empty = #lines == 0 or (#lines == 1 and lines[1] == "")
+--         if not file_empty then return end
+--
+--         local luasnip = require("luasnip")
+--         local java_snippets = luasnip.get_snippets("java")
+--         luasnip.snip_expand(java_snippets[1], {pos = {0, 0}}) -- package
+--
+--         -- lines = vim.api.nvim_buf_get_lines(opts.buf, 0, -1, false)
+--         -- luasnip.snip_expand(java_snippets[2], {pos = {#lines - 1, 0}}) -- class
+--     end
+-- })
 
 vim.api.nvim_create_user_command("Format", "lua vim.lsp.buf.format()", {})
 

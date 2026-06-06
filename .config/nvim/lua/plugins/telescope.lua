@@ -159,7 +159,7 @@ vim.keymap.set('n', '<leader>ndv',
 )
 
 vim.keymap.set('n', '<leader>b', builtin.buffers)
-vim.keymap.set('n', '<leader>h', builtin.help_tags)
+vim.keymap.set('n', '<leader>ht', builtin.help_tags)
 vim.keymap.set('n', '<leader>k', builtin.keymaps)
 vim.keymap.set('n', '<leader>m', builtin.man_pages)
 vim.keymap.set('n', '<leader>t', builtin.treesitter)

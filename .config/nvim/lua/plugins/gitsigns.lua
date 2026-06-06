@@ -30,34 +30,38 @@ require('gitsigns').setup{
         end)
 
         -- Actions
-        map('n', '<leader>ss', gitsigns.stage_hunk)
-        map('n', '<leader>sr', gitsigns.reset_hunk)
+        map('n', '<leader>hs', gitsigns.stage_hunk)
+        map('n', '<leader>hr', gitsigns.reset_hunk)
 
-        map('v', '<leader>ss', function()
+        map('v', '<leader>hs', function()
             gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end)
 
-        map('v', '<leader>sr', function()
+        map('v', '<leader>hr', function()
             gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end)
 
-        map('n', '<leader>sS', gitsigns.stage_buffer)
-        map('n', '<leader>sR', gitsigns.reset_buffer)
-        map('n', '<leader>sp', gitsigns.preview_hunk)
-        map('n', '<leader>si', gitsigns.preview_hunk_inline)
+        map('n', '<leader>hS', gitsigns.stage_buffer)
+        map('n', '<leader>hR', gitsigns.reset_buffer)
+        map('n', '<leader>hp', gitsigns.preview_hunk)
+        map('n', '<leader>hi', gitsigns.preview_hunk_inline)
 
-        map('n', '<leader>sb', function()
+        map('n', '<leader>hb', function()
             gitsigns.blame_line({ full = true })
         end)
 
-        map('n', '<leader>sd', gitsigns.diffthis)
+        map('n', '<leader>hd', gitsigns.diffthis)
 
-        map('n', '<leader>sD', function()
+        map('n', '<leader>hD', function()
             gitsigns.diffthis('~')
         end)
 
-        map('n', '<leader>sQ', function() gitsigns.setqflist('all') end)
-        map('n', '<leader>sq', gitsigns.setqflist)
+        map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
+        map('n', '<leader>hq', gitsigns.setqflist)
+
+        -- Toggles
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+        map('n', '<leader>tw', gitsigns.toggle_word_diff)
 
         -- Text object
         map({'o', 'x'}, 'ih', gitsigns.select_hunk)

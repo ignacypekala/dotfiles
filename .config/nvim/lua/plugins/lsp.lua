@@ -68,5 +68,30 @@ vim.lsp.config('tinymist', {
 
 vim.lsp.enable('asm_lsp')
 
+vim.lsp.config('pyright', {
+  settings = {
+    pyright = { disableOrganizeImports = true },
+    python = {
+      analysis = {
+        -- Let Ruff handle unused imports/variables
+        diagnosticSeverityOverrides = {
+          reportUnusedImport = "none",
+          reportUnusedVariable = "none",
+        },
+      },
+    },
+  },
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('ruff', {
+    on_attach = function(client, bufnr)
+        -- Disable Ruff's hover provider so Pyright handles Shift+K
+        if client.name == 'ruff' then
+          client.server_capabilities.hoverProvider = false
+        end
+    end })
+vim.lsp.enable('ruff')
+
 -- Solution for document preview
 -- https://github.com/chomosuke/typst-preview.nvim

@@ -25,6 +25,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
                             url = vim.fn.stdpath("config") .. "/eclipse-java-google-style.xml",
                             profile = "GoogleStyle",
                         }
+                    },
+                    codeGeneration = {
+                        useBlockes = true,
+                        hashCodeEquals = {
+                            useJava7Objects = true,
+                        }
                     }
                 },
                 init_options = {

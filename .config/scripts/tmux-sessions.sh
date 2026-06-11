@@ -37,7 +37,7 @@ else
         finder=( find "$PWD" -mindepth 1 -maxdepth 1 -type 'd' )
     fi
 
-    # disclude hidden directories
+    # Exclude hidden directories
     if [[ $1 != "select-all" ]]; then
         finder+=( -not -name '.*' )
     fi

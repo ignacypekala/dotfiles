@@ -50,6 +50,9 @@ vim.opt.exrc = true
 vim.opt.undofile = true
 vim.opt.autowriteall = true
 
+vim.opt.spell = true
+vim.opt.spelllang = { "en", "pl" }
+
 -- Default window locations
 vim.opt.splitbelow = true
 vim.opt.splitright = true

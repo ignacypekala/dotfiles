@@ -66,6 +66,9 @@ hl('DiffDelete', tc.bright_red, nil, { bold = true })
 hl('DiffText', tc.black, tc.blue, {bold = false})
 -- hl('DiffChange', tc.black, tc.blue)
 
+hl('SpellBad', nil, nil, { underline = true })
+hl('SpellRare', nil, nil, { italic = true })
+
 -- used in init.lua
 hl('Yank', tc.bright_whtie, tc.bright_black)
 

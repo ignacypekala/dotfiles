@@ -67,8 +67,6 @@ mkdir -p ~/.cache
 printf "%s\n" "${project_roots[@]}" > ~/.cache/project_roots
 printf "%s\n" "${extra_projects[@]}" > ~/.cache/extra_projects
 
-# export PROMPT_DIRTRIM=3
-
 set_custom_prompt() {
     local path=$(pwd | path-format.sh | path-trim.sh)
     export PS1="$path_color$path${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "

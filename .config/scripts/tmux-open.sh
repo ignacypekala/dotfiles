@@ -18,7 +18,7 @@ absolute_dir=$(realpath "$dir")
 session_name=$(tmux-name-sanitize.sh "$absolute_dir")
 
 # Ensure session exists
-if ! tmux has-session -t "$session_name"; then
+if ! tmux has-session -t "$session_name" 2> /dev/null; then
     tmux new-session -c "$absolute_dir" -s "$session_name" -d
 fi
 

@@ -3,7 +3,8 @@
 #
 # Usage
 # path-trim-relative.sh [p%] [minimum width]
+p=${1:-30}
 
 columns=$(tput cols)
-columns=$(( $columns * p / 100 ))
+columns=$(( $columns * $p / 100 ))
 path-trim.sh $columns

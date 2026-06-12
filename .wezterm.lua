@@ -39,11 +39,17 @@ config.colors = {
 
 config.font_size =  12
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-config.font = wezterm.font('JetBrains Mono', { weight = "DemiBold" })
+config.font = wezterm.font_with_fallback({
+    { family = 'JetBrains Mono', weight = "DemiBold" },
+    { family = 'Symbols Nerd Font', weight = "Regular", stretch = "SemiExpanded" }
+})
 config.font_rules = {
     {
         intensity = 'Bold',
-        font = wezterm.font('JetBrains Mono', { weight = "ExtraBold" }),
+        font = wezterm.font_with_fallback({
+            { family = 'JetBrains Mono', weight = "ExtraBold" },
+            { family = 'Symbols Nerd Font', weight = "Regular" }
+        }),
     }
 }
 

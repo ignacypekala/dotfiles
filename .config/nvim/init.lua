@@ -130,3 +130,9 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.textwidth = 72
     end
 })
+vim.api.nvim_create_user_command("Path",
+    function()
+        print(vim.fn.expand('%'))
+    end,
+    {}
+)

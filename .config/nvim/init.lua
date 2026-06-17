@@ -53,6 +53,17 @@ vim.opt.autowriteall = true
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "pl" }
 
+local diffopt = {
+    "internal",
+    "filler",
+    "closeoff",
+    "indent-heuristic",
+    "inline:char",
+    "linematch:60",
+}
+vim.opt.diffopt = table.concat(diffopt, ",")
+vim.cmd.packadd('nvim.difftool')
+
 -- Default window locations
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -69,7 +80,7 @@ vim.cmd.packadd('nvim.undotree')
 vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
 
 -- Appearance
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.winborder = "solid"
 vim.cmd.colorscheme('custom')
 

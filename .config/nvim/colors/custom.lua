@@ -15,7 +15,7 @@ hl('NormalFloat', { fg = c.ansi.white, bg = c.ansi.black })
 
 hl('WinSeparator', { fg = c.ansi.black })
 
-hl('ColorColumn', { fg = c.ansi.black })
+hl('ColorColumn', { bg = c.ansi.black })
 hl('LineNr', { fg = c.bright.white })
 hl('LineNrAbove', { fg = c.bright.black })
 hl('LineNrBelow', { fg = c.bright.black, bg = c.none })

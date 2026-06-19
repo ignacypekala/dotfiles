@@ -146,3 +146,13 @@ vim.api.nvim_create_user_command("Path",
     end,
     {}
 )
+
+vim.api.nvim_create_user_command("WSLPath",
+    function()
+        local path = vim.fn.expand('%')
+        local cmd = vim.system({ 'wslpath', '-w', path }):wait(50)
+        print(cmd.stdout)
+    end,
+    {}
+)
+

@@ -10,9 +10,13 @@ if java_debug ~= 0 then
     }
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd({"BufEnter", "BufWrite"}, {
     pattern = "*.java",
-    callback = function()
+    callback = function(args)
+        if vim.fn.filereadable(args.file) == 0 then
+            return
+        end
+
         local config = {
             name = "jdtls",
             cmd = { "jdtls" },

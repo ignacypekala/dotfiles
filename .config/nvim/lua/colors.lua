@@ -23,13 +23,13 @@ local M = {
     },
     dim = {
        black = "#121212",
-       red = "#1f1c1c",
-       green = "#1c1f1c",
+       red = "#4b2526",
+       green = "#233726",
        yellow = "#1f1e1c",
-       blue = "#1c1d1f", -- up to here (inclusive)
-       purple = "#c59be7",
-       cyan = "#9fd3ed",
-       white = "#d6d6d6",
+       blue = "#28364d", -- up to here (inclusive)
+       purple = "#493857",
+       cyan = "#32424a",
+       white = "#343638",
     },
     primary = "",
     secondary = "",

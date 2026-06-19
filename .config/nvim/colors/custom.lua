@@ -36,13 +36,23 @@ hl('SnippetTabstop', { fg = c.bright.white, bg = c.bright.black })
 hl('Visual', { fg = c.bright.white, bg = c.bright.black })
 hl('Whitespace', { fg = c.ansi.black })
 
--- hl('Folded', { bg = c.ansi.black })
+hl('Folded', { bg = c.dim.white })
 hl('FoldColumn', { fg = c.bright.black })
 
-hl('DiffAdd', { fg = c.ansi.black, bg = c.ansi.green })
-hl('DiffDelete', { fg = c.bright.red, bold = true })
-hl('DiffText', { fg = c.ansi.black, bg = c.ansi.blue, bold = false })
--- hl('DiffChange', { fg = c.ansi.black, bg = c.ansi.blue })
+hl('Added', { bg = c.dim.green })
+hl('Changed', { bg = c.dim.blue })
+hl('Removed', { bg = c.dim.red })
+
+hl('DiffAdd', { bg = c.dim.green })
+hl('DiffChange', { bg = c.dim.blue })
+hl('DiffDelete', { bg = c.dim.red })
+hl('DiffText', { bg = c.bright.blue, fg = c.ansi.black })
+
+hl('GitSignsAdd', { fg = c.ansi.green, bg = nil })
+hl('GitSignsChange', { fg = c.ansi.blue, bg = nil })
+hl('GitSignsDelete', { fg = c.ansi.red, bg = nil })
+hl('GitSignsChangeDelete', { fg = c.ansi.blue, bg = nil })
+hl('GitSignsUntracked', { fg = c.bright.black, bg = nil })
 
 hl('SpellBad', { underline = true })
 hl('SpellRare', { italic = true })

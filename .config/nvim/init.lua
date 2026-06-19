@@ -156,3 +156,9 @@ vim.api.nvim_create_user_command("WSLPath",
     {}
 )
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "java",
+    callback = function ()
+        vim.opt_local.colorcolumn = "101"
+    end
+})

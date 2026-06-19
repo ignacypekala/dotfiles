@@ -113,13 +113,50 @@ vim.keymap.set('n', '<leader>g',
     function()
         if vim.g.cwd_has_git then
             builtin.git_files({
-                show_untracked = true
+                prompt_title = "Git files",
+                git_command = {
+                    "git",
+                    "-c",
+                    "core.quotepath=false",
+                    "ls-files",
+                    "--exclude-standard",
+                    "--cached", -- all
+                    "--others", -- untracked
+                    "--modified",
+                }
             })
         else
             builtin.find_files({
                 prompt_title = "Find files (no git in this directory)",
                 cwd = vim.fn.getcwd(),
                 hidden = false,
+            })
+        end
+    end
+)
+
+vim.keymap.set('n', '<leader>G',
+    function()
+        if vim.g.cwd_has_git then
+            builtin.git_files({
+                prompt_title = "Git files (all)",
+                git_command = {
+                    "git",
+                    "-c",
+                    "core.quotepath=false",
+                    "ls-files",
+                    "--exclude-standard",
+                    "--cached", -- all
+                    "--others", -- untracked
+                    "--modified",
+                    "--ignored",
+                }
+            })
+        else
+            builtin.find_files({
+                prompt_title = "Find files (all) (no git in this directory)",
+                cwd = vim.fn.getcwd(),
+                hidden = true,
             })
         end
     end

@@ -11,6 +11,10 @@
     defaultBranch = main
 [core]
     editor = nvim
+[difftool "nvim_difftool"]
+    cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[diff]
+    tool = nvim_difftool
 [alias]
     st = status
     sts = status -s

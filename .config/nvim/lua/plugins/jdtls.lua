@@ -13,7 +13,7 @@ end
 vim.api.nvim_create_autocmd({"BufEnter", "BufWrite"}, {
     pattern = "*.java",
     callback = function(args)
-        if vim.fn.filereadable(args.file) == 0 then
+        if vim.fn.filereadable(args.file) == 0 or not vim.lsp.is_enabled("jdtls") then
             return
         end
 

@@ -10,6 +10,8 @@ if java_debug ~= 0 then
     }
 end
 
+vim.lsp.enable("jdtls")
+
 vim.api.nvim_create_autocmd({"BufEnter", "BufWrite"}, {
     pattern = "*.java",
     callback = function(args)

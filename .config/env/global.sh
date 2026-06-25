@@ -1,6 +1,7 @@
 # Sourced by .bashrc but also .xsessionrc
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
+export MANWIDTH=80
 export MANPAGER="nvim +Man!"
 
 export FZF_DEFAULT_OPTS="--margin 5% --color bw,gutter:0,pointer:7,separator:0 \

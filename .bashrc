@@ -43,6 +43,8 @@ elif [[ -f ~/.mim ]]; then
     else
         source_env mim-labs
     fi
+elif [[ -f "/etc/NIXOS" ]]; then
+    source_env nixos
 else
     source_env unknown
 fi

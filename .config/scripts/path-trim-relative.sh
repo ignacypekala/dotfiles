@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Trim a path from standard input to a size equal to p% * terminal width
 #
 # Usage

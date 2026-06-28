@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Open a tmux session in a given directory or in $PWD if not specified.
 
 error() {

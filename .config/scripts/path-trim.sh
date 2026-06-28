@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Trim a path from stdin to a preferred maximum length. Keep the first limb and
 # as many trailing limbs as will fit. By default trims to 30 characters.
 #

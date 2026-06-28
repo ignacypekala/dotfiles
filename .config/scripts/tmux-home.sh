@@ -1,1 +1,2 @@
+#!/usr/bin/env bash
 tmux new-session -A -s home -c ~

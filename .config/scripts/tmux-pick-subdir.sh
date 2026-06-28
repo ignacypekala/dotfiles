@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Pick a local subdirectory and open a tmux session there.
 #
 # Usage:

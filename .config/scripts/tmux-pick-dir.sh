@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Pick a directory and open a tmux session there.
 #
 # Usage:

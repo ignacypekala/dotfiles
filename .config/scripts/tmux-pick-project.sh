@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Open tmux in one of the project directories. Optionally include hidden files.
 # 
 # Usage:

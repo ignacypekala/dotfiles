@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Reformat tmux session display path for a given client.
 #
 # Usage:

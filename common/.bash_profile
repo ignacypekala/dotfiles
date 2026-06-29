@@ -2,6 +2,8 @@ source ~/.bashrc
 
 if [[ -d ~/.config/bash_profile.d ]]; then
     for bash_profiled in ~/.config/bash_profile.d/*.sh; do
-        source $bash_profiled || warn "failed to source $bash_profiled"
+        if [[ -e $bash_profiled ]]; then
+            source $bash_profiled
+        fi
     done
 fi

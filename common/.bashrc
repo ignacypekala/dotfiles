@@ -33,7 +33,9 @@ start_ssh_agent() {
 
 if [[ -d ~/.config/bashrc.d ]]; then
     for bashrcd in ~/.config/bashrc.d/*.sh; do
-        source $bashrcd || warn "failed to source $bashrcd"
+        if [[ -e "$bashrcd" ]]; then
+            source $bashrcd
+        fi
     done
 fi
 

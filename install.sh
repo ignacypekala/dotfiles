@@ -30,13 +30,15 @@ stow_directory() {
 }
 
 stow_directory "common"
+force_known=false
 
 hostname=${HOSTNAME:-$(hostname)}
 if [[ "$hostname" == "Grzejnik" || "$hostname" == "Laptop" ]]; then
     stow_directory "profiles/wsl"
 
-elif [[ -f "~/.mim" ]]; then
+elif [[ -f ~/.mim ]]; then
     stow_directory "profiles/mim"
+    force_known=true
 
     if [[ "$hostname" == "students" ]]; then
         stow_directory "profiles/mim-students"
@@ -52,7 +54,7 @@ fi
 host_package="hosts/$hostname"
 if [[ -d "$host_package" ]]; then
     stow_directory "$host_package"
-else
+elif [[ "$force_known" != "true" ]]; then
     stow_directory "hosts/unknown"
 fi
 

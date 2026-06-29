@@ -12,10 +12,20 @@ set $term wezterm
 set $menu wmenu-run
 
 ### Output configuration
-output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+set $wallpaper "~/wallpapers/copenhagen-harbor-by-moonligh.jpg"
 
-output DP-2 resolution 1920x1080@240Hz position 0 0
-output DP-4 resolution 1920x1080 position 1920 0 transform "270"
+output * {
+    background $wallpaper fill
+}
+
+output DP-2 {
+    resolution 1920x1080@240Hz 
+    position 0 0
+}
+output DP-4 {
+    resolution 1920x1080 
+    position 1920 0 transform "270"
+}
 
 focus output DP-2
 

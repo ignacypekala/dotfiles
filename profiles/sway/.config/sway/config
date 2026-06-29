@@ -21,14 +21,14 @@ focus output DP-2
 
 ### Idle configuration
 exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
-input type:keyboard {
-    xkb_layout "eu"
-}
+         input type:keyboard {
+             xkb_layout "eu"
+         }
 
 ### Key bindings
 bindsym $mod+Return exec $term
@@ -99,17 +99,17 @@ bindsym $mod+minus scratchpad show
 
 mode "resize" {
     bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    bindsym Shift+$left resize shrink width 30px
-    bindsym Shift+$down resize grow height 30px
-    bindsym Shift+$up resize shrink height 30px
-    bindsym Shift+$right resize grow width 30px
+        bindsym $down resize grow height 10px
+        bindsym $up resize shrink height 10px
+        bindsym $right resize grow width 10px
+        bindsym Shift+$left resize shrink width 30px
+        bindsym Shift+$down resize grow height 30px
+        bindsym Shift+$up resize shrink height 30px
+        bindsym Shift+$right resize grow width 30px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+# Return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -134,22 +134,22 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 # Special key to take a screenshot with grim
 bindsym Print exec grim
 
-default_border none
+default_border pixel 3
 gaps outer 5
 gaps inner 10
 
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+# When the status_command prints a new line to stdout, swaybar updates.
+# The default just shows the current date and time.
+        status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
-    colors {
-        statusline #cccccc
-            background #121212
-            inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+        colors {
+            statusline #cccccc
+                background #121212
+                inactive_workspace #cccccc #8c8c8c #cccccc
+        }
 }
 
 include /etc/sway/config.d/*

@@ -79,12 +79,15 @@
     htop
   ];
 
+  fonts.packages = with pkgs; [
+    fira-sans
+  ];
+
   services.gnome.gnome-keyring.enable = true;
 
   programs.sway = {
  	enable = true;
  	wrapperFeatures.gtk = true;
-
   };
 
   # Some programs need SUID wrappers, can be configured further or are

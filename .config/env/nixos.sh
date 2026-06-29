@@ -1,4 +1,4 @@
-nixos_config="~/dotfiles/nixos/configuration.nix"
+nixos_config="$HOME/dotfiles/nixos/configuration.nix"
 alias rebuild="sudo nixos-rebuild switch -I nixos-config=$nixos_config"
 
 path_color=$GREEN

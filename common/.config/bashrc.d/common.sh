@@ -1,6 +1,7 @@
 # Sourced by .bashrc but also .xsessionrc
 export LANG=en_US.UTF-8
 export EDITOR="nvim"
+
 export MANWIDTH=80
 export MANPAGER="nvim +Man!"
 
@@ -16,9 +17,11 @@ project_roots=(
     "$HOME/laby/akso"
     "$HOME/laby/po"
 )
+
 extra_projects=(
 )
 
+add_path ~/.local/bin
 add_path ~/.config/scripts
 add_path ~/go/bin
 add_path ~/.cargo/bin

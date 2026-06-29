@@ -1,7 +1,10 @@
 #
 # ~/.bashrc
 #
-source ~/.colors.sh
+
+warn() {
+    echo "bashrc: warn: $@"
+}
 
 # Add a directory to PATH only if it exists and isn't already there
 add_path() {
@@ -14,9 +17,9 @@ add_path() {
 source_env() {
     env_file=~/.config/env/$1.sh
     if [[ -e $env_file ]]; then
-        source $env_file
+        source "$env_file"
     else
-        echo $env_file doesn\'t exist
+        echo "$env_file doesn't exist"
         echo $?
     fi
 }
@@ -28,26 +31,9 @@ start_ssh_agent() {
     fi
 }
 
-source_env global
-
-hostname=$(echo $HOSTNAME)
-envdir="~/env"
-if [[ $hostname == "Grzejnik" ]]; then
-    source_env grzejnik
-elif [[ $hostname == "Laptop" ]]; then
-    source_env laptop
-elif [[ -f ~/.mim ]]; then
-    source_env mim
-    if [[ $hostname == "students" ]]; then
-        source_env mim-students
-    else
-        source_env mim-labs
-    fi
-elif [[ -f "/etc/NIXOS" ]]; then
-    source_env nixos
-else
-    source_env unknown
-fi
+for bashrcd in ~/.config/bashrc.d/*.sh; do
+    source $bashrcd || warn "failed to source $bashrcd"
+done
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

@@ -66,6 +66,7 @@
 	librewolf
 	wezterm
     fastfetch
+    quickshell
 
 	neovim
     fortune

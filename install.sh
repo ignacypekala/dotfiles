@@ -32,24 +32,26 @@ stow_directory() {
 stow_directory "common"
 
 hostname=${HOSTNAME:-$(hostname)}
-if [[ "$hostname" == "Grzejnik" ]]; then
-    stow_directory "hosts/grzejnik-wsl"
-
-elif [[ "$hostname" == "Laptop" ]]; then 
-    stow_directory "hosts/laptop-wsl"
+if [[ "$hostname" == "Grzejnik" || "$hostname" == "Laptop" ]]; then
+    stow_directory "profiles/wsl"
 
 elif [[ -f "~/.mim" ]]; then
     stow_directory "profiles/mim"
-    stow_directory "profiles/x11"
 
     if [[ "$hostname" == "students" ]]; then
-        stow_directory "hosts/mim-students"
+        stow_directory "profiles/mim-students"
     else
-        stow_directory "hosts/mim-labs"
+        stow_directory "profiles/mim-labs"
+        stow_directory "profiles/x11"
     fi
 elif [[ -f "/etc/NIXOS" ]]; then
     stow_directory "profiles/nixos"
     stow_directory "profiles/sway"
+fi
+
+host_package="hosts/$hostname"
+if [[ -d "$host_package" ]]; then
+    stow_directory "$host_package"
 else
     stow_directory "hosts/unknown"
 fi

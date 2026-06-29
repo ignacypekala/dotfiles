@@ -3,7 +3,7 @@
 #
 
 warn() {
-    echo "bashrc: warn: $@"
+    echo ".bashrc: warn: $@"
 }
 
 # Add a directory to PATH only if it exists and isn't already there

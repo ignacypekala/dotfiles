@@ -54,4 +54,3 @@ else
     stow_directory "hosts/unknown"
 fi
 
-

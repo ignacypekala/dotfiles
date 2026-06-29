@@ -58,12 +58,25 @@
 	gcc
 	bash
   	git
-	neovim
 	tmux
 	stow
+    
 	wl-clipboard
+
 	librewolf
 	wezterm
+    fastfetch
+
+	neovim
+    fortune
+    fzf
+    ripgrep
+
+    tree
+    file
+    zip
+    unzip
+    htop
   ];
 
   services.gnome.gnome-keyring.enable = true;

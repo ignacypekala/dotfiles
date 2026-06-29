@@ -31,9 +31,11 @@ start_ssh_agent() {
     fi
 }
 
-for bashrcd in ~/.config/bashrc.d/*.sh; do
-    source $bashrcd || warn "failed to source $bashrcd"
-done
+if [[ -d ~/.config/bashrc.d ]]; then
+    for bashrcd in ~/.config/bashrc.d/*.sh; do
+        source $bashrcd || warn "failed to source $bashrcd"
+    done
+fi
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return

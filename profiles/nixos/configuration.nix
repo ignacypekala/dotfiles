@@ -49,6 +49,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     	tree-sitter
+        steam
+        discord
     ];
   };
 

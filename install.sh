@@ -26,7 +26,7 @@ stow_directory() {
     directory=$(dirname "$path")
     package=$(basename "$path")
     echo "Stowing $package from $directory into $STOW_TARGET"
-    stow -v --no-folding --target="$STOW_TARGET" --dir="$directory" "$package"
+    stow --no-folding --target="$STOW_TARGET" --dir="$directory" "$package"
 }
 
 stow_directory "common"

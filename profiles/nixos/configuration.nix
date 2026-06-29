@@ -49,7 +49,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     	tree-sitter
-        steam
         discord
     ];
   };
@@ -91,6 +90,10 @@
   programs.sway = {
  	enable = true;
  	wrapperFeatures.gtk = true;
+  };
+
+  programs.steam = {
+    enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

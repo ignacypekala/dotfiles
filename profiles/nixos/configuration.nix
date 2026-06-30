@@ -81,6 +81,8 @@
     zip
     unzip
     htop
+
+    libnotify
   ];
 
   fonts.packages = with pkgs; [

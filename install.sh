@@ -29,17 +29,27 @@ stow_directory() {
     stow --target="$STOW_TARGET" --dir="$directory" "$package"
 }
 
+declare -a nofolds
 # Prevents stow from linking an entire directory.
 prevent_stow_fold() {
     local dir="$1"
-    if ! [[ -d dir ]]; then
-        if ! [[ -e dir ]]; then
+    if ! [[ -d "$dir" ]]; then
+        if ! [[ -e "$dir" ]]; then
             mkdir -p "$dir"
         else
             error "$dir exists but isn't a directory"
         fi
     fi
-    touch "$dir/DONT_FOLD"
+    local nofold="$dir/DONT_FOLD"
+    touch "$nofold"
+    nofolds+=("$nofold")
+}
+
+cleanup_no_folds() {
+    for nofold in "${nofolds[@]}"; do
+        echo $nofold
+        rm "$nofold"
+    done
 }
 
 prevent_stow_fold "$HOME/.config"
@@ -78,3 +88,4 @@ elif [[ "$force_known" != "true" ]]; then
     stow_directory "hosts/unknown"
 fi
 
+cleanup_no_folds

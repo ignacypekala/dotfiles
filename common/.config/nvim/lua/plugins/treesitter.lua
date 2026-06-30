@@ -20,6 +20,8 @@ local treesitter_langs = {
     'gitignore',
     'vimdoc',
     'sql',
+
+    'nix', 'qmljs'
 }
 
 require('nvim-treesitter').install(treesitter_langs)

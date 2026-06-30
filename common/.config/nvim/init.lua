@@ -49,8 +49,14 @@ vim.opt.fileformat = 'unix'
 vim.opt.exrc = true
 vim.opt.undofile = true
 
-vim.opt.spell = true
 vim.opt.spelllang = { "en", "pl" }
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "text",
+    callback = function()
+        vim.opt_local.spell = true
+    end
+})
+
 
 local diffopt = {
     "internal",

@@ -48,8 +48,6 @@
     description = "ignacy";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    	tree-sitter
-        discord
     ];
   };
 
@@ -68,10 +66,17 @@
 	wezterm
     fastfetch
     quickshell
+    discord
 
     autotiling
 
 	neovim
+    tree-sitter
+    lua-language-server
+    libclang
+    jdt-language-server
+    kdePackages.qtdeclarative # for qmlls for quickshell
+
     fortune
     fzf
     ripgrep

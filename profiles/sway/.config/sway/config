@@ -154,6 +154,11 @@ default_border pixel 3
 gaps outer 5
 gaps inner 10
 
+client.focused $white $background $foreground $bright_black $white
+client.focused_inactive $white $dim_background $dim_foreground $bright_black $bright_black
+client.unfocused $white $dim_background $dim_foreground $bright_black $bright_black
+
+
 bar {
     position top
 

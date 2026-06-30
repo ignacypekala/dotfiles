@@ -162,9 +162,12 @@ bar {
         status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
         colors {
-            statusline #cccccc
-                background #121212
-                inactive_workspace #cccccc #8c8c8c #cccccc
+            statusline $foreground
+                focused_background $background
+                background $dim_background
+                focused_workspace $background $primary $black
+                active_workspace $background $white $black
+                inactive_workspace $background $bright_black $foreground
         }
 }
 

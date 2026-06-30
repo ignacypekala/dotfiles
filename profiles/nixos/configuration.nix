@@ -69,6 +69,8 @@
     fastfetch
     quickshell
 
+    autotiling
+
 	neovim
     fortune
     fzf

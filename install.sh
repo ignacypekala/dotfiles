@@ -26,10 +26,30 @@ stow_directory() {
     directory=$(dirname "$path")
     package=$(basename "$path")
     echo "Stowing $package from $directory into $STOW_TARGET"
-    stow --no-folding --target="$STOW_TARGET" --dir="$directory" "$package"
+    stow --target="$STOW_TARGET" --dir="$directory" "$package"
 }
 
+# Prevents stow from linking an entire directory.
+prevent_stow_fold() {
+    local dir="$1"
+    if ! [[ -d dir ]]; then
+        if ! [[ -e dir ]]; then
+            mkdir -p "$dir"
+        else
+            error "$dir exists but isn't a directory"
+        fi
+    fi
+    touch "$dir/DONT_FOLD"
+}
+
+prevent_stow_fold "$HOME/.config"
+prevent_stow_fold "$HOME/.config/bashrc.d"
+prevent_stow_fold "$HOME/.config/bash_profile.d"
+prevent_stow_fold "$HOME/.config/sway/config.d"
+prevent_stow_fold "$HOME/.local"
+
 stow_directory "common"
+
 force_known=false
 
 hostname=${HOSTNAME:-$(hostname)}

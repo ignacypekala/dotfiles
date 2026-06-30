@@ -11,7 +11,7 @@ set $right l
 set $term wezterm
 set $menu wmenu-run
 
-include ~/.config/sway/config.d/*
+include ~/.config/sway/config.d/*.conf
 
 ### Output configuration
 set $wallpaper "~/wallpapers/copenhagen-harbor-by-moonligh.jpg"

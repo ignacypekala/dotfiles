@@ -66,6 +66,11 @@ client.focused $white $background $foreground $background #00000000
 client.focused_inactive $white $dim_background $dim_foreground $bright_black #00000000
 client.unfocused $white #000000 $dim_foreground $bright_black #00000000
 
+for_window [title="Extension: \(Bitwarden Password Manager\) - Bitwarden — LibreWolf"] \
+    floating enable, \
+    resize set 400 px 600 px, \
+    move position mouse
+
 bar {
     position top
 

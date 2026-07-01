@@ -69,7 +69,8 @@
         discord
         gimp
 
-        autotiling
+        hyprlauncher
+        hypridle
 
         neovim
         tree-sitter
@@ -101,9 +102,10 @@
 
     services.gnome.gnome-keyring.enable = true;
 
-    programs.sway = {
+    programs.hyprland = {
         enable = true;
-        wrapperFeatures.gtk = true;
+        withUWSM = true;
+        xwayland.enable = true;
     };
 
     programs.steam = {

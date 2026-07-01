@@ -78,7 +78,7 @@ elif [[ -f ~/.mim ]]; then
     fi
 elif [[ -f "/etc/NIXOS" ]]; then
     stow_directory "profiles/nixos"
-    stow_directory "profiles/sway"
+    stow_directory "profiles/hyprland"
 fi
 
 host_package="hosts/$hostname"

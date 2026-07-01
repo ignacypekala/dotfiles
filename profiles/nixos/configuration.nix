@@ -67,6 +67,7 @@
     fastfetch
     quickshell
     discord
+    gimp
 
     autotiling
 

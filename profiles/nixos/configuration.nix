@@ -81,6 +81,7 @@
         fortune
         fzf
         ripgrep
+        jq
 
         tree
         file

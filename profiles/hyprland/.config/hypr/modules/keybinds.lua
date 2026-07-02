@@ -1,17 +1,10 @@
+local mod = require('utils.mod')
+local run_cmd = require('utils.run_cmd')
+
 local terminal    = "wezterm"
 local fileManager = "dolphin"
 local menu        = "hyprlauncher"
-
-local mainMod = "SUPER"
-
-local function mod(...)
-    local args = { ... }
-    return mainMod .. " + " .. table.concat(args, " + ")
-end
-
-local function run(app)
-    return "uwsm app " .. app
-end
+local browser     = "librewolf"
 
 hl.bind(mod("SHIFT", "Q"), hl.dsp.window.close())
 
@@ -24,10 +17,10 @@ hl.bind(mod("Z"), hl.dsp.window.fullscreen({ mode = "maximized", action = "toggl
 hl.bind(mod("F"), hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mod("V"), hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(mod("R"), hl.dsp.exec_cmd(run(menu)))
-hl.bind(mod("E"), hl.dsp.exec_cmd(run(fileManager)))
-hl.bind(mod("N"), hl.dsp.exec_cmd(run(terminal)))
-hl.bind(mod("RETURN"), hl.dsp.exec_cmd(run(terminal)))
+hl.bind(mod("R"), hl.dsp.exec_cmd(run_cmd(menu)))
+hl.bind(mod("E"), hl.dsp.exec_cmd(run_cmd(fileManager)))
+hl.bind(mod("N"), hl.dsp.exec_cmd(run_cmd(terminal)))
+hl.bind(mod("RETURN"), hl.dsp.exec_cmd(run_cmd(terminal)))
 
 hl.bind(mod("H"), hl.dsp.focus({ direction = "left" }))
 hl.bind(mod("L"), hl.dsp.focus({ direction = "right" }))

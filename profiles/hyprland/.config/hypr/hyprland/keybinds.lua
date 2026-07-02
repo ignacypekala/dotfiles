@@ -9,16 +9,25 @@ local function mod(...)
     return mainMod .. " + " .. table.concat(args, " + ")
 end
 
+local function run(app)
+    return "uwsm app " .. app
+end
+
 hl.bind(mod("SHIFT", "Q"), hl.dsp.window.close())
 
-hl.bind(mod("M"), hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mod("E"), hl.dsp.exec_cmd(fileManager))
-hl.bind(mod("V"), hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod("R"), hl.dsp.exec_cmd(menu))
+hl.bind(mod("SHIFT + P"), hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+
 hl.bind(mod("P"), hl.dsp.window.pseudo())
-hl.bind(mod("T"), hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind(mod("N"), hl.dsp.exec_cmd("uwsm app " .. terminal))
-hl.bind(mod("RETURN"), hl.dsp.exec_cmd("uwsm app " .. terminal))
+hl.bind(mod("T"), hl.dsp.layout("togglesplit"))
+
+hl.bind(mod("Z"), hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mod("F"), hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mod("V"), hl.dsp.window.float({ action = "toggle" }))
+
+hl.bind(mod("R"), hl.dsp.exec_cmd(run(menu)))
+hl.bind(mod("E"), hl.dsp.exec_cmd(run(fileManager)))
+hl.bind(mod("N"), hl.dsp.exec_cmd(run(terminal)))
+hl.bind(mod("RETURN"), hl.dsp.exec_cmd(run(terminal)))
 
 hl.bind(mod("H"), hl.dsp.focus({ direction = "left" }))
 hl.bind(mod("L"), hl.dsp.focus({ direction = "right" }))
@@ -36,6 +45,8 @@ for i = 1, 10 do
     hl.bind(mod("SHIFT", key), hl.dsp.window.move({ workspace = i }))
 end
 
+hl.bind(mod("M"), hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mod("SHIFT", "M"), hl.dsp.window.move({ monitor = "+1"}))
 
 -- Example special workspace (scratchpad)
 hl.bind(mod("S"), hl.dsp.workspace.toggle_special("magic"))

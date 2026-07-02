@@ -74,3 +74,19 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
+hl.bind("CTRL + W", function()
+    local window = hl.get_active_window()
+    if window ~= nil then
+        if window.class == browser then
+            hl.dispatch(hl.dsp.send_shortcut({
+                mods = "CTRL",
+                key = "BACKSPACE",
+                window = window
+            }))
+        else
+            hl.dispatch(hl.dsp.pass({
+                window = window
+            }))
+        end
+    end
+end)

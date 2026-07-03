@@ -31,3 +31,7 @@ hl.device({
     sensitivity = -0.5,
 })
 
+hl.device({
+    name = "wacom-intuos-s-pen",
+    output = "DP-2"
+})

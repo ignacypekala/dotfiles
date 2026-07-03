@@ -42,4 +42,4 @@ hl.define_submap("launch", "reset", function()
     hl.bind("catchall", function() end)
 end)
 
-hl.bind(combo(mod, "E"), hl.dsp.submap("launch"))
+hl.bind(combo(mod, "O"), hl.dsp.submap("launch"))

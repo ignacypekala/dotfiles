@@ -1,5 +1,5 @@
 local combo = require('utils.combo')
-local mod = require('config').mainMod
+local mod = require('preferences').mainMod
 local run_cmd = require('utils.run_cmd')
 
 local common_programs = {

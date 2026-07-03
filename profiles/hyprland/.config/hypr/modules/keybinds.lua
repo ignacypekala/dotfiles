@@ -1,6 +1,6 @@
 local combo = require('utils.combo')
-local mod = require('config').mainMod
-local programs = require('config').programs
+local mod = require('preferences').mainMod
+local programs = require('preferences').programs
 local run_cmd = require('utils.run_cmd')
 
 hl.bind(combo(mod, "SHIFT", "Q"), hl.dsp.window.close())

@@ -1,5 +1,7 @@
-# Source colors
+# System color palette, sourced by config.sh.
 
+
+# Source colors
 neutral_900="#050505"
 neutral_800="#121212"
 neutral_700="#262626"
@@ -10,23 +12,23 @@ neutral_300="#a6a6a6"
 neutral_200="#cccccc"
 neutral_100="#ffffff"
 
-# base_black="#232323"
+base_black="#232323"
 base_red="#d44d4f"
 base_green="#67a376"
 base_yellow="#3c372c"
 base_blue="#78a7f0"
 base_purple="#b575e9"
 base_cyan="#4eccf2"
-# base_gray="#b3b3b3"
+base_white="#b3b3b3"
 
-# base_bright_black="#5e5d5d"
+base_bright_black="#5e5d5d"
 base_bright_red="#ed7375"
 base_bright_green="#9ae3ac"
 base_bright_yellow="#f9f1a5"
 base_bright_blue="#8bc4f0"
 base_bright_purple="#c59be7"
 base_bright_cyan="#9fd3ed"
-# base_bright_gray="#d6d6d6"
+base_bright_white="#d6d6d6"
 
 base_tint_black="#121212"
 base_tint_red="#4b2526"
@@ -37,8 +39,9 @@ base_tint_purple="#493857"
 base_tint_cyan="#32424a"
 base_tint_white="#343638"
 
+#
 # Semantic aliases
-
+#
 ui_bg="$neutral_800"
 ui_bg_deep="$neutral_900"
 ui_bg_elevated="$neutral_700"

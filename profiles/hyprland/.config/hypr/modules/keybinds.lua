@@ -46,11 +46,14 @@ hl.bind(mod("CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0", monit
 hl.bind(mod("S"), hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mod("SHIFT", "S"), hl.dsp.window.move({ workspace = "special:magic" }))
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mod("TAB"), hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mod("mouse_down"), hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mod("SHIFT", "TAB"), hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mod("mouse_up"), hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod("SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", monitor = "+1"}))
+
+-- TODO: workspace selector empty for the windows + D behaviour
+
+hl.bind(mod("mouse_down"), hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mod("TAB"), hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mod("mouse_up"), hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mod("SHIFT", "TAB"), hl.dsp.focus({ workspace = "m-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mod("mouse:272"), hl.dsp.window.drag(), { mouse = true })

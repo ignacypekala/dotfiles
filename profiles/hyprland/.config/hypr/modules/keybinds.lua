@@ -40,6 +40,7 @@ end
 
 hl.bind(mod("M"), hl.dsp.focus({ monitor = "+1" }))
 hl.bind(mod("SHIFT", "M"), hl.dsp.window.move({ monitor = "+1"}))
+hl.bind(mod("CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0", monitor2 = "+1" }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mod("S"), hl.dsp.workspace.toggle_special("magic"))

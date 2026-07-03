@@ -1,4 +1,5 @@
-local mod = require('utils.mod')
+local combo = require('utils.combo')
+local mod = require('config').mainMod
 local run_cmd = require('utils.run_cmd')
 
 local common_programs = {
@@ -35,10 +36,10 @@ hl.define_submap("launch", "reset", function()
             end
         end
         hl.bind(program.key, handler)
-        hl.bind(mod(program.key), handler)
+        hl.bind(combo(mod, program.key), handler)
         hl.bind("SHIFT + " .. program.key, handler)
     end
     hl.bind("catchall", function() end)
 end)
 
-hl.bind(mod("E"), hl.dsp.submap("launch"))
+hl.bind(combo(mod, "E"), hl.dsp.submap("launch"))

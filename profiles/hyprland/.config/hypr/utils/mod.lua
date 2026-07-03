@@ -1,8 +1,2 @@
-local mainMod = "SUPER"
-
-local function mod(...)
-    local args = { ... }
-    return mainMod .. " + " .. table.concat(args, " + ")
-end
-
+local mod = "SUPER"
 return mod

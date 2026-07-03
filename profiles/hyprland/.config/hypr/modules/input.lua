@@ -8,7 +8,7 @@ hl.config({
 
         -- Supposedly fixes an issue with a ghost backspace hold.
         repeat_delay = 300,
-        repeat_rate = 35,
+        repeat_rate = 25,
 
         follow_mouse = 2,
 

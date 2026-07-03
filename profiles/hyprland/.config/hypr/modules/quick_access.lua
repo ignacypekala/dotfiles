@@ -23,7 +23,7 @@ local common_programs = {
     }
 }
 
-hl.define_submap("launch", "reset", function()
+hl.define_submap("quick_access", "reset", function()
     for _, program in ipairs(common_programs) do
         local handler = function()
             local window = hl.get_window("class:" .. program.class)
@@ -42,4 +42,4 @@ hl.define_submap("launch", "reset", function()
     hl.bind("catchall", function() end)
 end)
 
-hl.bind(combo(mod, "O"), hl.dsp.submap("launch"))
+hl.bind(combo(mod, "O"), hl.dsp.submap("quick_access"))

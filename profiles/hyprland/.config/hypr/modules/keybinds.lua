@@ -43,8 +43,8 @@ hl.bind(mod("SHIFT", "M"), hl.dsp.window.move({ monitor = "+1"}))
 hl.bind(mod("CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0", monitor2 = "+1" }))
 
 -- Example special workspace (scratchpad)
-hl.bind(mod("S"), hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mod("SHIFT", "S"), hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mod("S"), hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mod("SHIFT", "S"), hl.dsp.window.move({ workspace = "special:magic" }))
 
 hl.bind(mod("SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", monitor = "+1"}))
 

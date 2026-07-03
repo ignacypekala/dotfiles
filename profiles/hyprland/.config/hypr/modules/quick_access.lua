@@ -13,7 +13,7 @@ local common_programs = {
         class = "steam",
         workspace = "steam",
         app = "steam",
-        key = "G" -- Games
+        key = "S" -- Games
     },
     {
         class = "librewolf",

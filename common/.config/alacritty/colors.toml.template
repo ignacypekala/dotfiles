@@ -1,0 +1,28 @@
+[colors]
+cursor = { text = "{{ hex(neutral_800) }}", cursor = "{{ hex(neutral_200) }}" }
+
+[colors.primary]
+background = "{{ hex(ui_bg) }}"
+foreground = "{{ hex(ui_fg) }}"
+dim_foreground = "{{ hex(ui_fg_subtle) }}"
+bright_foreground = "{{ hex(ui_fg_bold) }}"
+
+[colors.normal]
+black = "{{ hex(base_black) }}"
+red = "{{ hex(base_red) }}"
+green = "{{ hex(base_green) }}"
+yellow = "{{ hex(base_yellow) }}"
+blue = "{{ hex(base_blue) }}"
+magenta = "{{ hex(base_purple) }}"
+cyan = "{{ hex(base_cyan) }}"
+white = "{{ hex(base_white) }}"
+
+[colors.bright]
+black = "{{ hex(base_bright_black) }}"
+red = "{{ hex(base_bright_red) }}"
+green = "{{ hex(base_bright_green) }}"
+yellow = "{{ hex(base_bright_yellow) }}"
+blue = "{{ hex(base_bright_blue) }}"
+magenta = "{{ hex(base_bright_purple) }}"
+cyan = "{{ hex(base_bright_cyan) }}"
+white = "{{ hex(base_bright_white) }}"

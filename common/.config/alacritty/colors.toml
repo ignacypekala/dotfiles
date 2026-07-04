@@ -1,0 +1,28 @@
+[colors]
+cursor = { text = "#121212", cursor = "#cccccc" }
+
+[colors.primary]
+background = "#121212"
+foreground = "#cccccc"
+dim_foreground = "#808080"
+bright_foreground = "#ffffff"
+
+[colors.normal]
+black = "#232323"
+red = "#d44d4f"
+green = "#67a376"
+yellow = "#3c372c"
+blue = "#78a7f0"
+magenta = "#b575e9"
+cyan = "#4eccf2"
+white = "#b3b3b3"
+
+[colors.bright]
+black = "#5e5d5d"
+red = "#ed7375"
+green = "#9ae3ac"
+yellow = "#f9f1a5"
+blue = "#8bc4f0"
+magenta = "#c59be7"
+cyan = "#9fd3ed"
+white = "#d6d6d6"

@@ -1,6 +1,5 @@
 # System color palette, sourced by config.sh.
 
-
 # Source colors
 neutral_900="#050505"
 neutral_800="#121212"
@@ -39,9 +38,7 @@ base_tint_purple="#493857"
 base_tint_cyan="#32424a"
 base_tint_white="#343638"
 
-#
 # Semantic aliases
-#
 ui_bg="$neutral_800"
 ui_bg_deep="$neutral_900"
 ui_bg_elevated="$neutral_700"

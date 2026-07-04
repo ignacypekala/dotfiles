@@ -1,0 +1,21 @@
+config-file = colors
+
+window-width = 100
+window-height = 30
+window-padding-x = 15
+window-padding-y = 15
+
+window-decoration = true
+
+font-size = 12
+font-family = "JetBrains Mono Regular"
+font-family-bold = "JetBrains Mono Extrabold"
+font-family = "Symbols Nerd Font"
+
+
+font-feature = -calt
+# font-feature = -clig
+# font-feature = -liga
+
+keybind = ctrl+tab=text:\x1b[27;5;9~
+keybind = ctrl+shift+tab=text:\x1b[1;6D

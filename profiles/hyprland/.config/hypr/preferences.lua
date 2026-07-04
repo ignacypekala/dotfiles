@@ -1,7 +1,7 @@
 return {
     mainMod = "SUPER",
     programs = {
-        terminal    = "wezterm",
+        terminal    = "alacritty",
         fileManager = "dolphin",
         menu        = "hyprlauncher",
         browser     = "librewolf",

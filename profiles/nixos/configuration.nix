@@ -68,6 +68,11 @@
         quickshell
         discord
         gimp
+        obs-studio
+
+        wezterm
+        ghostty
+        alacritty
 
         hyprlauncher
         hypridle

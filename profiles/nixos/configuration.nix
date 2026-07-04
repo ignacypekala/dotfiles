@@ -63,7 +63,6 @@
         wl-clipboard
 
         librewolf
-        wezterm
         fastfetch
         quickshell
         discord

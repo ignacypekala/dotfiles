@@ -27,8 +27,7 @@ hl.gesture({
 
 hl.device({
     name = "sinowealth-wired-gaming-mouse",
-    accel_profile = "flat",
-    sensitivity = -0.2,
+    sensitivity = -0.5,
 })
 
 hl.device({

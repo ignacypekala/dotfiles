@@ -3,6 +3,7 @@ hl.config({
         resize_on_border = false,
         allow_tearing = false,
         layout = "dwindle",
+        float_gaps = "25",
     },
     animations = {
         enabled = true,

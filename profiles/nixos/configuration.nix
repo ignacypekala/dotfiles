@@ -75,6 +75,7 @@
 
         hyprlauncher
         hypridle
+        hyprpaper
 
         neovim
         tree-sitter
@@ -105,6 +106,8 @@
     ];
 
     services.gnome.gnome-keyring.enable = true;
+
+    systemd.user.services.hyprpaper.enable = true;
 
     programs.hyprland = {
         enable = true;

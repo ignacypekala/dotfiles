@@ -79,9 +79,10 @@ hl.bind("CTRL + W", function()
                 window = window
             }))
         else
-            hl.dispatch(hl.dsp.pass({
-                window = window
-            }))
+            -- Manual state management prevents issues with send_shortcut:
+            -- https://github.com/hyprwm/Hyprland/discussions/14099
+            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "down" }))
+            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
         end
     end
 end)

@@ -12,7 +12,7 @@ error() {
 }
 
 # {{ func(opt) }} or {{ func(opt, arg) }}
-pattern='\{\{\s*([a-zA-Z]+)\s*\(\s*([a-zA-Z0-9_]+)\s*(,\s*([0-9.]+))?\s*\)\s*\}\}'
+pattern='\{\{\s*([a-zA-Z]+)\s*\(\s*([a-zA-Z0-9_]+)\s*(,\s*([a-zA-Z0-9.]+))?\s*\)\s*\}\}'
 
 # #rrggbb -> rr, gg, bb
 hex_to_rgb() {
@@ -56,6 +56,10 @@ bake_template() {
                 replacement="$value"
             elif [[ "$lower_func" == "hexa" ]]; then
                 replacement="${value}${arg}"
+                if [[ "$arg" == "" ]]; then
+                    warn "$func: opacity is missing, replacing with an empty string."
+                    replacement=""
+                fi
             elif [[ "$lower_func" == "hexcode" ]]; then
                 replacement="${value#\#}"
             elif [[ "$lower_func" == "hexacode" ]]; then

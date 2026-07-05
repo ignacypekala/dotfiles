@@ -9,22 +9,12 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "nixos"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
+    networking.hostName = "nixos";
     networking.networkmanager.enable = true;
 
-    # Set your time zone.
     time.timeZone = "Europe/Warsaw";
 
-    # Select internationalisation properties.
     i18n.defaultLocale = "en_GB.UTF-8";
-
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "en_GB.UTF-8";
         LC_IDENTIFICATION = "en_GB.UTF-8";
@@ -37,7 +27,6 @@
         LC_TIME = "en_GB.UTF-8";
     };
 
-    # Configure keymap in X11
     services.xserver.xkb = {
         layout = "pl";
         variant = "";
@@ -64,10 +53,13 @@
 
         librewolf
         fastfetch
-        quickshell
         discord
         gimp
         obs-studio
+
+        # kdePackages.qtdeclarative # for qmlls for quickshell
+        # quickshell
+        # ags
 
         wezterm
         ghostty
@@ -82,7 +74,6 @@
         lua-language-server
         libclang
         jdt-language-server
-        kdePackages.qtdeclarative # for qmlls for quickshell
 
         fortune
         fzf

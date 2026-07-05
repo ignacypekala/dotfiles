@@ -36,6 +36,9 @@ end
 
 hl.bind(combo(mod, "G"), hl.dsp.focus({ workspace = "name:game" }))
 
+hl.bind(combo(mod, "D"), hl.dsp.focus({ workspace = "emptynm" }))
+hl.bind(combo(mod, "SHIFT", "D"), hl.dsp.window.move({ workspace = "emptynm" }))
+
 hl.bind(combo(mod, "M"), hl.dsp.focus({ monitor = "+1" }))
 hl.bind(combo(mod, "SHIFT", "M"), hl.dsp.window.move({ monitor = "+1"}))
 hl.bind(combo(mod, "CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0", monitor2 = "+1" }))

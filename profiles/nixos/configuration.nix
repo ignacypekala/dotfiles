@@ -57,10 +57,6 @@
         gimp
         obs-studio
 
-        # kdePackages.qtdeclarative # for qmlls for quickshell
-        # quickshell
-        # ags
-
         wezterm
         ghostty
         alacritty

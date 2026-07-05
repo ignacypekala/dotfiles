@@ -48,6 +48,7 @@
         git
         tmux
         stow
+        python3
 
         wl-clipboard
 

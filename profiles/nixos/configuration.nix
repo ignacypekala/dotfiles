@@ -99,6 +99,7 @@
     services.gnome.gnome-keyring.enable = true;
 
     systemd.user.services.hyprpaper.enable = true;
+    systemd.user.services.hypridle.enable = true;
 
     programs.hyprland = {
         enable = true;

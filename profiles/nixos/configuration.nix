@@ -57,6 +57,7 @@
         discord
         gimp
         obs-studio
+        tidal-hifi
 
         wezterm
         ghostty

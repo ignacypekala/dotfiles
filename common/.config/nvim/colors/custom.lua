@@ -15,7 +15,7 @@ hl('NormalFloat', { fg = c.ansi.white, bg = c.ansi.black })
 
 hl('WinSeparator', { fg = c.ansi.black })
 
-hl('ColorColumn', { bg = c.ansi.black })
+hl('ColorColumn', { bg = c.neutral[700] })
 hl('LineNr', { fg = c.bright.white })
 hl('LineNrAbove', { fg = c.bright.black })
 hl('LineNrBelow', { fg = c.bright.black, bg = c.none })
@@ -94,8 +94,8 @@ hl('BlinkCmpKindInterface', { fg = c.ansi.green })
 
 -- Highlighting
 -- -- Syntax
-hl('Comment', { fg = c.bright.black })
-hl('Todo', { fg = c.ansi.white, bold = true })
+hl('Comment', { fg = c.neutral[400] })
+hl('Todo', { fg = c.bright.white, bold = true })
 hl('Constant', { fg = c.bright.blue })
 hl('String', { fg = c.bright.blue })
 hl('Identifier', { fg = c.bright.white })

@@ -3,7 +3,7 @@
 # Source colors
 neutral_900="#050505"
 neutral_800="#121212"
-neutral_700="#262626"
+neutral_700="#191919"
 neutral_600="#404040"
 neutral_500="#5e5e5e"
 neutral_400="#808080"

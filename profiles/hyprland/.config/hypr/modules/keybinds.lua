@@ -54,7 +54,8 @@ hl.bind(combo(mod, "SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", mon
 hl.bind(combo(mod, "mouse_down"), hl.dsp.focus({ workspace = "m+1" }))
 hl.bind(combo(mod, "TAB"), hl.dsp.focus({ workspace = "m+1" }))
 hl.bind(combo(mod, "mouse_up"), hl.dsp.focus({ workspace = "m-1" }))
-hl.bind(combo(mod, "SHIFT", "TAB"), hl.dsp.focus({ workspace = "m-1" }))
+
+hl.bind(combo(mod, "SHIFT", "TAB"), hl.dsp.window.move({ workspace = "m-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(combo(mod, "mouse:272"), hl.dsp.window.drag(), { mouse = true })

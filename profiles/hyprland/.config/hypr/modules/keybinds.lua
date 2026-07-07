@@ -76,7 +76,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 hl.bind("CTRL + W", function()
     local window = hl.get_active_window()
     if window ~= nil then
-        if window.class == programs.browser then
+        if window.class == programs.browser or window.class == "tidal-hifi" then
             hl.dispatch(hl.dsp.send_shortcut({
                 mods = "CTRL",
                 key = "BACKSPACE",
@@ -89,4 +89,4 @@ hl.bind("CTRL + W", function()
             hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
         end
     end
-end)
+end, {repeating = true})

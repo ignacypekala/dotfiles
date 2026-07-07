@@ -64,6 +64,7 @@
         wezterm
         ghostty
         alacritty
+        quickshell
 
         hyprlauncher
         hypridle

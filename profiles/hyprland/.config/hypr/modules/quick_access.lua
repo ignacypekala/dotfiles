@@ -5,21 +5,23 @@ local run_cmd = require('utils.run_cmd')
 local common_programs = {
     {
         class = "discord",
-        workspace = "discord",
         app = "discord",
         key = "D"
     },
     {
         class = "steam",
-        workspace = "steam",
         app = "steam",
-        key = "S" -- Games
+        key = "S"
     },
     {
         class = "librewolf",
-        workspace = "browser",
         app = "librewolf",
         key = "W" -- Web
+    },
+    {
+        class = "tidal-hifi",
+        app = "tidal-hifi",
+        key = "M" -- Music
     }
 }
 

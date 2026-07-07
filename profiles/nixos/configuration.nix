@@ -51,6 +51,8 @@
         python3
 
         wl-clipboard
+        brightnessctl
+        playerctl
 
         librewolf
         fastfetch

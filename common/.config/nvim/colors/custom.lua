@@ -105,8 +105,8 @@ hl('Type', { fg = c.ansi.green })
 hl('Special', { fg = c.ansi.blue })
 
 -- -- Treesitter
-hl('@comment', { fg = c.bright.black })
-hl('@comment.note.comment', { fg = c.ansi.white, bold = true })
+hl('@comment', { link = "Comment" })
+hl('@comment.note.comment', { link = "TODO" })
 
 hl('@variable.builtin', { fg = c.ansi.white })
 hl('@variable.parameter.builtin', { fg = c.bright.green })

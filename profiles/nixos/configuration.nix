@@ -98,8 +98,15 @@
 
     services.gnome.gnome-keyring.enable = true;
 
-    systemd.user.services.hyprpaper.enable = true;
-    systemd.user.services.hypridle.enable = true;
+    systemd.packages = with pkgs; [
+        hypridle
+        hyprpaper
+    ];
+
+    systemd.user.services = {
+        hyprpaper.wantedBy = [ "graphical-session.target" ];
+        hypridle.wantedBy = [ "graphical-session.target" ];
+    };
 
     programs.hyprland = {
         enable = true;

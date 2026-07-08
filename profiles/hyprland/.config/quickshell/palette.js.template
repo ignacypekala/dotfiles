@@ -1,0 +1,91 @@
+const color = {
+    neutral: {
+        900: "{{ hex(neutral_900) }}",
+        800: "{{ hex(neutral_800) }}",
+        700: "{{ hex(neutral_700) }}",
+        600: "{{ hex(neutral_600) }}",
+        500: "{{ hex(neutral_500) }}",
+        400: "{{ hex(neutral_400) }}",
+        300: "{{ hex(neutral_300) }}",
+        200: "{{ hex(neutral_200) }}",
+        100: "{{ hex(neutral_100) }}",
+    },
+
+    base: {
+        black: "{{ hex(base_black) }}",
+        red: "{{ hex(base_red) }}",
+        green: "{{ hex(base_green) }}",
+        yellow: "{{ hex(base_yellow) }}",
+        blue: "{{ hex(base_blue) }}",
+        purple: "{{ hex(base_purple) }}",
+        cyan: "{{ hex(base_cyan) }}",
+        white: "{{ hex(base_white) }}",
+
+        bright: {
+            black: "{{ hex(base_bright_black) }}",
+            red: "{{ hex(base_bright_red) }}",
+            green: "{{ hex(base_bright_green) }}",
+            yellow: "{{ hex(base_bright_yellow) }}",
+            blue: "{{ hex(base_bright_blue) }}",
+            purple: "{{ hex(base_bright_purple) }}",
+            cyan: "{{ hex(base_bright_cyan) }}",
+            white: "{{ hex(base_bright_white) }}",
+        },
+
+        tint: {
+            black: "{{ hex(base_tint_black) }}",
+            red: "{{ hex(base_tint_red) }}",
+            green: "{{ hex(base_tint_green) }}",
+            yellow: "{{ hex(base_tint_yellow) }}",
+            blue: "{{ hex(base_tint_blue) }}",
+            purple: "{{ hex(base_tint_purple) }}",
+            cyan: "{{ hex(base_tint_cyan) }}",
+            white: "{{ hex(base_tint_white) }}",
+        }
+    },
+
+    ui: {
+        bg: "{{ hex(ui_bg) }}",
+        bg_deep: "{{ hex(ui_bg_deep) }}",
+        bg_elevated: "{{ hex(ui_bg_elevated) }}",
+        bg_active: "{{ hex(ui_bg_active) }}",
+
+        fg: "{{ hex(ui_fg) }}",
+        fg_bold: "{{ hex(ui_fg_bold) }}",
+        fg_subtle: "{{ hex(ui_fg_subtle) }}",
+        fg_muted: "{{ hex(ui_fg_muted) }}",
+
+        accent_primary: "{{ hex(ui_accent_primary) }}",
+        accent_secondary: "{{ hex(ui_accent_secondary) }}",
+
+        border: "{{ hex(ui_border) }}",
+        border_subtle: "{{ hex(ui_border_subtle) }}",
+        border_active: "{{ hex(ui_border_active) }}",
+    },
+
+    state: {
+        info: "{{ hex(state_info) }}",
+        success: "{{ hex(state_success) }}",
+        warning: "{{ hex(state_warning) }}",
+        error: "{{ hex(state_error) }}",
+    },
+
+    diff: {
+        add: {
+            line_bg: "{{ hex(diff_add_line_bg) }}",
+            bg: "{{ hex(diff_add_bg) }}",
+            fg: "{{ hex(diff_add_fg) }}",
+        },
+        remove: {
+            line_bg: "{{ hex(diff_remove_line_bg) }}",
+            bg: "{{ hex(diff_remove_bg) }}",
+            fg: "{{ hex(diff_remove_fg) }}",
+        },
+        change: {
+            line_bg: "{{ hex(diff_change_line_bg) }}",
+            bg: "{{ hex(diff_change_bg) }}",
+            fg: "{{ hex(diff_change_fg) }}",
+        }
+    }
+};
+// vim:filetype=javascript

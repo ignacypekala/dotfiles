@@ -1,0 +1,7 @@
+const bar = {
+    colors: {
+        bg: "{{ hex(ui_bg) }}",
+        fg: "{{ hex(ui_fg) }}"
+    }
+}
+// vim:filetype=javascript

@@ -65,6 +65,7 @@
         ghostty
         alacritty
         quickshell
+        kdePackages.qtdeclarative
 
         hyprlauncher
         hypridle
@@ -95,6 +96,12 @@
         fira-sans
         jetbrains-mono
         nerd-fonts.symbols-only
+        texlivePackages.playfair
+        literata
+        alegreya
+        alegreya-sans
+        ibm-plex
+        lora
     ];
 
     services.gnome.gnome-keyring.enable = true;

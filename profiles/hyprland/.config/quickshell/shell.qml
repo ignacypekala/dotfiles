@@ -1,5 +1,13 @@
 import Quickshell
+import "bar" as Bar
 
 Scope {
-    Bar {}
+    Variants {
+        model: Quickshell.screens
+
+        delegate: Bar.Bar {
+            required property var modelData
+            screen: modelData
+        }
+    }
 }

@@ -1,31 +1,27 @@
-background = {{ hexcode(ui_bg) }}
-foreground = {{ hexcode(ui_fg) }}
+background = {{ HEXCODE(ui_bg) }}
+foreground = {{ HEXCODE(ui_fg) }}
 
-cursor-color = {{ hexcode(ui_fg) }}
-cursor-text = {{ hexcode(ui_bg) }}
-selection-background = {{ hexcode(neutral_500) }}
-selection-foreground = {{ hexcode(neutral_200) }}
+cursor-color = {{ HEXCODE(ui_fg) }}
+cursor-text = {{ HEXCODE(ui_bg) }}
+selection-background = {{ HEXCODE(neutral_500) }}
+selection-foreground = {{ HEXCODE(neutral_200) }}
 
-palette = 0={{ hex(base_black) }}
-palette = 8={{ hex(base_bright_black) }}
+palette = 0={{ HEX(base_black) }}
+palette = 1={{ HEX(base_red) }}
+palette = 2={{ HEX(base_green) }}
+palette = 3={{ HEX(base_yellow) }}
+palette = 4={{ HEX(base_blue) }}
+palette = 5={{ HEX(base_purple) }}
+palette = 6={{ HEX(base_cyan) }}
+palette = 7={{ HEX(base_white) }}
+palette = 8={{ HEX(base_bright_black) }}
 
-palette = 1={{ hex(base_red) }}
-palette = 10={{ hex(base_bright_red) }}
+palette = 9={{ HEX(base_bright_red) }}
+palette = 10={{ HEX(base_bright_green) }}
+palette = 11={{ HEX(base_bright_yellow) }}
+palette = 12={{ HEX(base_bright_blue) }}
+palette = 13={{ HEX(base_bright_purple) }}
+palette = 14={{ HEX(base_bright_cyan) }}
+palette = 15={{ HEX(base_bright_white) }}
 
-palette = 2={{ hex(base_green) }}
-palette = 11={{ hex(base_bright_green) }}
-
-palette = 3={{ hex(base_yellow) }}
-palette = 12={{ hex(base_bright_yellow) }}
-
-palette = 4={{ hex(base_blue) }}
-palette = 13={{ hex(base_bright_blue) }}
-
-palette = 5={{ hex(base_purple) }}
-palette = 14={{ hex(base_bright_purple) }}
-
-palette = 6={{ hex(base_cyan) }}
-palette = 15={{ hex(base_bright_cyan) }}
-
-palette = 7={{ hex(base_white) }}
-palette = 16={{ hex(base_bright_white) }}
+# vim:filetype=conf

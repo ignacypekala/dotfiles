@@ -1,7 +1,16 @@
+const fonts = {
+    ui: "{{ opt(ui_font) }}",
+    numbers: "{{ opt(ui_font_numbers) }}",
+    mono: "{{ opt(ui_font_mono) }}",
+    nerd: "{{ opt(ui_font_nerd) }}"
+    
+}
+
 const bar = {
     colors: {
-        bg: "{{ hex(ui_bg) }}",
-        fg: "{{ hex(ui_fg) }}"
+        bg: "{{ ahex(ui_bg, f4) }}",
+        fg: "{{ hex(ui_fg_subtle) }}",
+        fg_accent: "{{ hex(ui_accent_primary) }}"
     }
 }
 // vim:filetype=javascript

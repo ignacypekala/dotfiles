@@ -54,8 +54,13 @@ bake_template() {
             local lower_func=${func,,}
             if [[ "$lower_func" == "opt" || "$lower_func" == "hex" ]]; then
                 replacement="$value"
-            elif [[ "$lower_func" == "hexa" ]]; then
-                replacement="${value}${arg}"
+            elif [[ "$lower_func" == "hexa" || "$lower_func" == "ahex" ]]; then
+                if [[ "$lower_func" == "hexa" ]]; then
+                    replacement="${value}${arg}"
+                else
+                    replacement="#${arg}${value#\#}"
+                fi
+
                 if [[ "$arg" == "" ]]; then
                     warn "$func: opacity is missing, replacing with an empty string."
                     replacement=""

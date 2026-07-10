@@ -4,7 +4,7 @@ cursor = { text = "#121212", cursor = "#cccccc" }
 [colors.primary]
 background = "#121212"
 foreground = "#cccccc"
-dim_foreground = "#808080"
+dim_foreground = "#a6a6a6"
 bright_foreground = "#ffffff"
 
 [colors.normal]

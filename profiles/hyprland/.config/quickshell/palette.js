@@ -52,8 +52,8 @@ const color = {
 
         fg: "#cccccc",
         fg_bold: "#ffffff",
-        fg_subtle: "#808080",
-        fg_muted: "#5e5e5e",
+        fg_subtle: "#a6a6a6",
+        fg_muted: "#808080",
 
         accent_primary: "#67a376",
         accent_secondary: "#f4c451",

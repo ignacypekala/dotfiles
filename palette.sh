@@ -46,8 +46,8 @@ ui_bg_active="$neutral_600"
 
 ui_fg="$neutral_200"
 ui_fg_bold="$neutral_100"
-ui_fg_subtle="$neutral_400"
-ui_fg_muted="$neutral_500"
+ui_fg_subtle="$neutral_300"
+ui_fg_muted="$neutral_400"
 
 ui_accent_primary="$base_green"
 ui_accent_secondary="$base_yellow"

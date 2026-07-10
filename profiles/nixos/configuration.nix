@@ -65,7 +65,6 @@
         ghostty
         alacritty
         quickshell
-        kdePackages.qtdeclarative
 
         hyprlauncher
         hypridle

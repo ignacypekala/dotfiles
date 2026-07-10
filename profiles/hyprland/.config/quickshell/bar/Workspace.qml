@@ -17,7 +17,6 @@ Item {
     }
 
     readonly property int state: {
-        console.log(workspace.name, workspace.active, workspace.focused, Workspace.State.FOCUSED)
         if (workspace.active) {
             if (workspace.focused) {
                 return Workspace.State.FOCUSED;

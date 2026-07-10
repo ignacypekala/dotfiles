@@ -26,24 +26,49 @@ Item {
         return Workspace.State.INACTIVE;
     }
 
-    Item {
+    MouseArea {
+        id: tile
         anchors.fill: parent
+
+        hoverEnabled: true
+        onClicked: {
+            workspace.activate()
+        }
         
-        BarText {
-            id: tile
+        Rectangle {
             anchors.fill: parent
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
+            color: {
+                if (tile.containsMouse) {
+                    return Palette.color.neutral[600]
+                }
+                if (workspace.active) {
+                    return Palette.color.neutral[700]
+                }
+                return Palette.color.neutral[800]
+            }
+            Behavior on color {
+                ColorAnimation { 
+                    duration: 150 
+                    easing.type: Easing.InOutQuad 
+                }
+            }
 
-            isIcon: workspace.id < 0
+            BarText {
+                id: label
+                anchors.fill: parent
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
 
-            text: {
-                if (workspace.id < 0) {
-                    if (workspace.name == "game") {
-                        return "󰮂 "
+                isIcon: workspace.id < 0
+
+                text: {
+                    if (workspace.id < 0) {
+                        if (workspace.name == "game") {
+                            return "󰮂 "
+                        }
+                    } else {
+                        return workspace.name
                     }
-                } else {
-                    return workspace.name
                 }
             }
         }

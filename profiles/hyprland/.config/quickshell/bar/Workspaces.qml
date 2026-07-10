@@ -4,18 +4,14 @@ import QtQuick
 import Quickshell.Hyprland
 import "../palette.js" as Palette
 
-Rectangle {
-    // color: Palette.color.neutral[700]
-    color: "transparent"
-    implicitWidth: row.implicitWidth + 30
-    implicitHeight: row.implicitHeight + 8
-    radius: 15
-    
-    RowLayout {
-        anchors.fill: parent
-        spacing: 0
+Item {
+    implicitWidth: row.implicitWidth
 
+    RowLayout {
         id: row
+        anchors.fill: parent
+        spacing: 5
+
         Repeater {
             model: {
                 const workspaces = Hyprland.workspaces.values;
@@ -33,6 +29,10 @@ Rectangle {
                 workspace: modelData
 
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+                Layout.fillHeight: true
+                Layout.preferredWidth: {
+                    return height
+                }
             }
         }
     }

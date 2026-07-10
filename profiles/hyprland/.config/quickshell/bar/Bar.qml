@@ -64,6 +64,7 @@ PanelWindow {
             }
 
             Workspaces {
+                Layout.fillHeight: true
             }
         }
 

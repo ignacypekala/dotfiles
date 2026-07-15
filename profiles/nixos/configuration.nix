@@ -75,6 +75,7 @@
         lua-language-server
         libclang
         jdt-language-server
+        pyright
 
         fortune
         fzf

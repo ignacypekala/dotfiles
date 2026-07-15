@@ -12,4 +12,5 @@ require("modules.auto_start")
 require("modules.window_rules")
 require("modules.quick_access")
 require("modules.auto_float")
+require("modules.style_maximized")
 

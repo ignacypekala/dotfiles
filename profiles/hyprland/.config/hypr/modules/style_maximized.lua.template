@@ -1,0 +1,9 @@
+hl.window_rule({
+    name = "style-maximized-windows",
+    match = {
+        fullscreen_state_client = 1 -- maximized
+    },
+    border_color = "{{ hex(base_tint_green) }}"
+})
+
+-- vim:filetype=lua

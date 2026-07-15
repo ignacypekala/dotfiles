@@ -30,8 +30,8 @@ hl.bind(combo(mod, "SHIFT", "J"), hl.dsp.window.move({ direction = "down" }))
 
 for i = 1, 10 do
     local key = i % 10
-    hl.bind(combo(mod, key), hl.dsp.focus({ workspace = i }))
-    hl.bind(combo(mod, "SHIFT", key), hl.dsp.window.move({ workspace = i }))
+    hl.bind(combo(mod, key), hl.dsp.focus({ workspace = "m~" .. i }))
+    hl.bind(combo(mod, "SHIFT", key), hl.dsp.window.move({ workspace = "m~" .. i }))
 end
 
 hl.bind(combo(mod, "G"), hl.dsp.focus({ workspace = "name:game" }))

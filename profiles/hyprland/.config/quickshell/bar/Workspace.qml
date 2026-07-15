@@ -8,6 +8,7 @@ import "../palette.js" as Palette
 
 Item {
     id: root
+    required property int index
     required property HyprlandWorkspace workspace
 
     enum State {
@@ -67,7 +68,8 @@ Item {
                             return "󰮂 "
                         }
                     } else {
-                        return workspace.name
+                        const key = index + 1
+                        return key == 10 ? 0 : key
                     }
                 }
             }

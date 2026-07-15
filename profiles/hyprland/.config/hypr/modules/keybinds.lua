@@ -67,6 +67,7 @@ end)
 -- Focus empty workspaes on all monitors. Restore previous set of focused 
 -- workspaces on next use.
 local workspaces_before_minimize = {}
+local focused_monitor_before_minimize = nil
 hl.bind(combo(mod, "CTRL", "D"), function()
     local monitors_empty = true
     local monitors = hl.get_monitors()
@@ -81,6 +82,7 @@ hl.bind(combo(mod, "CTRL", "D"), function()
     if (not monitors_empty) or next(workspaces_before_minimize) == nil then
         -- Minimize
         local current = hl.get_active_monitor()
+        focused_monitor_before_minimize = current.id
         for _, monitor in ipairs(monitors) do
             workspaces_before_minimize[monitor.name] = monitor.active_workspace.id
             hl.dispatch(hl.dsp.focus({ monitor = monitor }))
@@ -96,6 +98,8 @@ hl.bind(combo(mod, "CTRL", "D"), function()
             hl.dispatch(hl.dsp.focus({ workspace = workspaces_before_minimize[monitor.name] }))
         end
         workspaces_before_minimize = {}
+        hl.dispatch(hl.dsp.focus({ monitor = focused_monitor_before_minimize }))
+        focused_monitor_before_minimize = nil
     end
 end)
 

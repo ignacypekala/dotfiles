@@ -5,6 +5,7 @@ import QtQuick.Layouts;
 import "../config.js" as Config;
 import "../palette.js" as Palette;
 
+
 PanelWindow {
     id: root;
 
@@ -78,12 +79,13 @@ PanelWindow {
                 rightMargin: 10
             }
 
-            Layout.margins: {
-                right: 10
-            }
+            spacing: 5
 
-            BarText {
-                text: "Right"
+            Tray {
+                Layout.margins: {
+                    top: 12
+                    bottom: 12
+                }
             }
         }
     }

@@ -152,4 +152,8 @@ hl.bind("CTRL + W", function()
             hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
         end
     end
-end, {repeating = true})
+end, { repeating = true })
+
+hl.on('window.active', function ()
+    ctrl_w:set_enabled(hl.get_active_workspace().name ~= "game")
+end)

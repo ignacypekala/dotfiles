@@ -14,3 +14,5 @@ path_color=$BRIGHT_YELLOW
 export TMUX_ACCENT="brightyellow"
 
 export JAVA_DEBUG="/usr/share/java-debug/com.microsoft.java.debug.plugin-*.jar"
+
+add_path "$HOME/.deno/bin"

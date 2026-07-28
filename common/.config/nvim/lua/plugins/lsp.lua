@@ -92,5 +92,7 @@ vim.lsp.config('ruff', {
     end })
 vim.lsp.enable('ruff')
 
+vim.lsp.enable('denols')
+
 -- Solution for document preview
 -- https://github.com/chomosuke/typst-preview.nvim

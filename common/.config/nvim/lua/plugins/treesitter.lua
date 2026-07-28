@@ -16,7 +16,6 @@ local treesitter_langs = {
     'yaml', 'toml', 'ini',
     'html', 'css',
     'bash',
-    'tmux',
     'gitignore',
     'vimdoc',
     'sql',

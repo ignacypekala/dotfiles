@@ -61,7 +61,7 @@ hl.bind(combo(mod, "D"), function()
 end)
 
 hl.bind(combo(mod, "SHIFT", "D"), function()
-    hl.dsp.window.move({ workspace = get_next_free_workspace_id() })
+    hl.dispatch(hl.dsp.window.move({ workspace = get_next_free_workspace_id() }))
 end)
 
 -- Focus empty workspaes on all monitors. Restore previous set of focused 
@@ -136,7 +136,10 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 -- silly vim addict side effect preventio-inator
-hl.bind("CTRL + W", function()
+local ctrl_w = hl.bind("CTRL + W", function()
+    if hl.get_active_workspace().name == "game" then
+        return false
+    end
     local window = hl.get_active_window()
     if window ~= nil then
         if window.class == programs.browser or window.class == "tidal-hifi" then

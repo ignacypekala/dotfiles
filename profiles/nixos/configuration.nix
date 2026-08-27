@@ -146,6 +146,9 @@
             };
         };
     };
+
+    programs.dms-shell.enable = true;
+
     # Enable proprietary NVIDIA drivers
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia = {

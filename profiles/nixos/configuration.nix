@@ -70,10 +70,6 @@
         alacritty
         quickshell
 
-        hyprlauncher
-        hypridle
-        hyprpaper
-
         neovim
         tree-sitter
         lua-language-server

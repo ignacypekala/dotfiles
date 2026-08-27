@@ -63,6 +63,7 @@
         gimp
         obs-studio
         tidal-hifi
+        nautilus
 
         wezterm
         ghostty

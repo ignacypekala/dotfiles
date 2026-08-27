@@ -56,6 +56,7 @@
         brightnessctl
         playerctl
         polkit_gnome
+        papirus-icon-theme
 
         librewolf
         fastfetch

@@ -96,12 +96,7 @@
         fira-sans
         jetbrains-mono
         nerd-fonts.symbols-only
-        texlivePackages.playfair
-        literata
-        alegreya
-        alegreya-sans
         ibm-plex
-        lora
     ];
 
     security.polkit.enable = true;

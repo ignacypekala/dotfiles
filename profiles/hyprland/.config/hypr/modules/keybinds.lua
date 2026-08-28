@@ -15,7 +15,11 @@ hl.bind(combo(mod, "Z"), hl.dsp.window.fullscreen({ mode = "maximized", action =
 hl.bind(combo(mod, "F"), hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(combo(mod, "V"), hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(combo(mod, "R"), hl.dsp.exec_cmd(run_cmd(programs.menu)))
+hl.bind(combo(mod, "R"), hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
+hl.bind(combo(mod, "C"), hl.dsp.exec_cmd("dms ipc call control-center toggle"))
+hl.bind(combo(mod, "SHIFT", "C"), hl.dsp.exec_cmd("dms ipc call powermenu toggle"))
+hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"))
+
 hl.bind(combo(mod, "E"), hl.dsp.exec_cmd(run_cmd(programs.fileManager)))
 hl.bind(combo(mod, "N"), hl.dsp.exec_cmd(run_cmd(programs.terminal)))
 hl.bind(combo(mod, "RETURN"), hl.dsp.exec_cmd(run_cmd(programs.terminal)))

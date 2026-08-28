@@ -139,7 +139,19 @@
         };
     };
 
-    programs.dms-shell.enable = true;
+    services.displayManager.dms-greeter = {
+        enable = true;
+        compositor.name = "hyprland";
+        configHome = "/home/ignacy";
+    };
+
+    programs.dms-shell = {
+        enable = true;
+        systemd = {
+            enable = true;
+            restartIfChanged = true;
+        };
+    };
 
     # Enable proprietary NVIDIA drivers
     services.xserver.videoDrivers = ["nvidia"];

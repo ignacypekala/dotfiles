@@ -7,7 +7,6 @@ require("modules.appearance")
 require("modules.layouts")
 require("modules.animations")
 require("modules.keybinds")
-require("modules.auto_start")
 
 require("modules.window_rules")
 require("modules.quick_access")

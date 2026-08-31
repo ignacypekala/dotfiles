@@ -2,14 +2,14 @@ hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 20,
-        border_size = 2,
+        border_size = 1,
         col = {
             active_border = {
                 colors = {
                     "{{ hexa(base_green, bb) }}",
                 },
             },
-            inactive_border = "{{ hex(neutral_800) }}",
+            inactive_border = "{{ hex(neutral_700) }}",
         },
     },
 

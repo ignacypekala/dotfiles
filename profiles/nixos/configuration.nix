@@ -65,6 +65,7 @@
         obs-studio
         tidal-hifi
         nautilus
+        qimgv
 
         wezterm
         ghostty

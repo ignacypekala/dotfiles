@@ -2,14 +2,14 @@ hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 20,
-        border_size = 2,
+        border_size = 1,
         col = {
             active_border = {
                 colors = {
                     "#67a376bb",
                 },
             },
-            inactive_border = "#121212",
+            inactive_border = "#191919",
         },
     },
 

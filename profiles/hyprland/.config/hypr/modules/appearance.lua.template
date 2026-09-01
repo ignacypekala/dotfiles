@@ -1,7 +1,7 @@
 hl.config({
     general = {
         gaps_in = 5,
-        gaps_out = 20,
+        gaps_out = 15,
         border_size = 1,
         col = {
             active_border = {
@@ -15,7 +15,7 @@ hl.config({
 
     decoration = {
         rounding = 10,
-        rounding_power = 2,
+        rounding_power = 5,
 
         active_opacity  = 1.0,
         inactive_opacity = 0.95,
@@ -25,13 +25,6 @@ hl.config({
 
         dim_inactive = true,
         dim_strength = 0.05,
-
-        shadow = {
-            enabled = true,
-            range = 10,
-            render_power = 3,
-            color = "{{ hexa(neutral_800, ee) }}"
-        },
     },
 })
 

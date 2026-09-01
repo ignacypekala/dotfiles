@@ -4,5 +4,6 @@ return {
         terminal    = "ghostty",
         fileManager = "nautilus",
         browser     = "librewolf",
+        imageViewer = "qimgv"
     }
 }

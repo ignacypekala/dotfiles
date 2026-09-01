@@ -139,6 +139,9 @@
         };
     };
 
+    # for mtp devices
+    services.gvfs.enable = true;
+
     services.displayManager.dms-greeter = {
         enable = true;
         compositor.name = "hyprland";

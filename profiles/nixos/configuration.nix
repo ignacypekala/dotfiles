@@ -43,6 +43,7 @@
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
+        # basic utils
         gcc
         gnumake
         bash
@@ -52,12 +53,21 @@
         python3
         bear
 
+        tree
+        file
+        zip
+        unzip
+
+        # desktop utils
         wl-clipboard
         brightnessctl
         playerctl
         polkit_gnome
         papirus-icon-theme
+        libnotify
+        htop
 
+        # desktop apps
         librewolf
         fastfetch
         discord
@@ -66,12 +76,15 @@
         tidal-hifi
         nautilus
         qimgv
+        pinta
+        kdePackages.kolourpaint
 
+        # terminals
         wezterm
         ghostty
         alacritty
-        quickshell
 
+        # dev environment
         neovim
         tree-sitter
         lua-language-server
@@ -79,19 +92,16 @@
         jdt-language-server
         pyright
 
+        # dev tools
         fortune
         fzf
         ripgrep
         jq
-
-        tree
-        file
-        zip
-        unzip
-        htop
-
-        libnotify
     ];
+
+    programs.steam = {
+        enable = true;
+    };
 
     fonts.packages = with pkgs; [
         noto-fonts
@@ -101,29 +111,45 @@
         ibm-plex
     ];
 
-    security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
-
+    # window manager/compositor
     systemd.packages = with pkgs; [
         hypridle
         hyprpaper
     ];
-
     systemd.user.services = {
         hyprpaper.wantedBy = [ "graphical-session.target" ];
         hypridle.wantedBy = [ "graphical-session.target" ];
     };
-
     programs.hyprland = {
         enable = true;
         withUWSM = true;
         xwayland.enable = true;
     };
 
-    programs.steam = {
+    # desktop environment
+    programs.dms-shell = {
         enable = true;
+        systemd = {
+            enable = true;
+            restartIfChanged = true;
+        };
+    };
+    services.displayManager.dms-greeter = {
+        enable = true;
+        compositor.name = "hyprland";
+        configHome = "/home/ignacy";
     };
 
+    # networking
+    networking.nameservers = [ "192.168.1.1" ];
+    networking.networkmanager.dns = "none";
+
+    # for mtp devices
+    services.gvfs.enable = true;
+
+    # polkit
+    security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
     systemd = {
         user.services.polkit-gnome-authentication-agent-1 = {
             description = "polkit-gnome-authentication-agent-1";
@@ -140,24 +166,7 @@
         };
     };
 
-    # for mtp devices
-    services.gvfs.enable = true;
-
-    services.displayManager.dms-greeter = {
-        enable = true;
-        compositor.name = "hyprland";
-        configHome = "/home/ignacy";
-    };
-
-    programs.dms-shell = {
-        enable = true;
-        systemd = {
-            enable = true;
-            restartIfChanged = true;
-        };
-    };
-
-    # Enable proprietary NVIDIA drivers
+    # proprietary nvidia drivers
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia = {
         modesetting.enable = true;
@@ -167,8 +176,6 @@
         nvidiaSettings = true;
     };
 
-    networking.nameservers = [ "192.168.1.1" ];
-    networking.networkmanager.dns = "none";
 
     system.stateVersion = "26.05";
 }

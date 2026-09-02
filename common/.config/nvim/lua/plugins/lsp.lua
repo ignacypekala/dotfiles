@@ -94,5 +94,8 @@ vim.lsp.enable('ruff')
 
 vim.lsp.enable('denols')
 
+vim.lsp.enable("gopls")
+vim.lsp.enable("qmlls")
+
 -- Solution for document preview
 -- https://github.com/chomosuke/typst-preview.nvim

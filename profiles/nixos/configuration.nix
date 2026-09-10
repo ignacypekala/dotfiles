@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let 
+    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
     imports =
         [
@@ -99,6 +102,8 @@
         fzf
         ripgrep
         jq
+
+        unstable.antigravity-cli
     ];
 
     programs.steam = {

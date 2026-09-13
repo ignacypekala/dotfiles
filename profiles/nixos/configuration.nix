@@ -141,6 +141,7 @@ in
             enable = true;
             restartIfChanged = true;
         };
+        package = unstable.dms-shell;
     };
     services.displayManager.dms-greeter = {
         enable = true;

@@ -71,6 +71,7 @@ in
         papirus-icon-theme
         libnotify
         htop
+        hyprcursor
 
         # desktop apps
         librewolf

@@ -13,3 +13,5 @@ require("modules.quick_access")
 require("modules.auto_float")
 require("modules.style_maximized")
 
+-- DMS Include Configs
+require("dms.outputs")

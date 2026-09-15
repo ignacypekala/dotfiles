@@ -1,9 +1,12 @@
 hl.config({
     general = {
-        resize_on_border = false,
+        resize_on_border = true,
         allow_tearing = false,
         layout = "dwindle",
         float_gaps = "25",
+        snap = {
+            enabled = true
+        }
     },
     animations = {
         enabled = true,

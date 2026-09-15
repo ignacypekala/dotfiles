@@ -72,6 +72,7 @@ in
         libnotify
         htop
         hyprcursor
+        hyprshutdown
 
         # desktop apps
         librewolf
@@ -137,8 +138,36 @@ in
     };
     services.displayManager.dms-greeter = {
         enable = true;
-        compositor.name = "hyprland";
+        compositor = {
+            name = "hyprland";
+            customConfig = ''
+                hl.env("DMS_RUN_GREETER", "1")
+                hl.config({
+                    animations = {
+                        enabled = false,
+                    },
+                    misc = {
+                        force_default_wallpaper = 0,
+                        disable_hyprland_logo = true
+                    },
+                    decoration = { 
+                        blur = { enabled = false },
+                        shadow = { enabled = false }
+                    }
+                })
+                hl.monitor({ 
+                    output = "desc:Dell Inc. DELL S2522HG FRYK1C3",
+                    mode = "1920x1080@239.757",
+                    position = "0x222", scale = 1, vrr = 0 
+                })
+                hl.monitor({ 
+                    output = "desc:Hewlett Packard HP LA2306 CNC1370SDZ",
+                    disabled = true
+                })
+            '';
+        };
         configHome = "/home/ignacy";
+        package = unstable.dms-shell;
     };
 
     # networking

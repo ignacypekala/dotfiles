@@ -120,14 +120,6 @@ in
     ];
 
     # window manager/compositor
-    systemd.packages = with pkgs; [
-        hypridle
-        hyprpaper
-    ];
-    systemd.user.services = {
-        hyprpaper.wantedBy = [ "graphical-session.target" ];
-        hypridle.wantedBy = [ "graphical-session.target" ];
-    };
     programs.hyprland = {
         enable = true;
         withUWSM = true;

@@ -1,6 +1,7 @@
 local combo = require('utils.combo')
 local mod = require('preferences').mainMod
 local run_cmd = require('utils.run_cmd')
+local notify_cmd = require('utils.notify_cmd')
 
 local common_programs = {
     {
@@ -35,6 +36,7 @@ hl.define_submap("quick_access", "reset", function()
                 }))
             else
                 hl.dispatch(hl.dsp.exec_cmd(run_cmd(program.app)))
+                hl.dispatch(hl.dsp.exec_cmd(notify_cmd("Launching " .. program.class)))
             end
         end
         hl.bind(program.key, handler)

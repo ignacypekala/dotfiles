@@ -59,12 +59,6 @@ mkdir -p ~/.cache
 printf "%s\n" "${project_roots[@]}" > ~/.cache/project_roots
 printf "%s\n" "${extra_projects[@]}" > ~/.cache/extra_projects
 
-set_custom_prompt() {
-    # Allows scrolling between prompts
-    local osc133='\[\e]133;A\e\\\]'
-
-    local path=$(pwd | path-format.sh | path-trim-relative.sh 30 30)
-    export PS1="${osc133}$path_color$path${RESET} ${BRIGHT_BLACK}${BOLD}>_${RESET} "
-}
-PROMPT_COMMAND=set_custom_prompt
+osc133='\[\e]133;A\e\\\]'
+export PS1="$path_color"'$(pwd | path-format.sh | path-trim-relative.sh 30 30)'"${RESET}${BRIGHT_BLACK}$BOLD"' >_ '"$RESET"
 

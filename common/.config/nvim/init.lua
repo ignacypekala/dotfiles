@@ -3,6 +3,8 @@ vim.opt.number = true
 vim.opt.numberwidth = 4
 
 vim.opt.wrap = false
+vim.opt.wrapmargin = 4
+vim.opt.linebreak = true
 
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'

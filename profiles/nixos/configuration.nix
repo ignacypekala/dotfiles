@@ -77,7 +77,7 @@ in
         # desktop apps
         librewolf
         fastfetch
-        discord
+        vesktop
         gimp
         obs-studio
         tidal-hifi

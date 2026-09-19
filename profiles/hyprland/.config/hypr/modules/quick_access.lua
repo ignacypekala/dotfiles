@@ -5,8 +5,8 @@ local notify_cmd = require('utils.notify_cmd')
 
 local common_programs = {
     {
-        class = "discord",
-        app = "discord",
+        class = "vesktop",
+        app = "vesktop",
         key = "D"
     },
     {

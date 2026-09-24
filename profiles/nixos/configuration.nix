@@ -76,6 +76,7 @@ in
         htop
         hyprcursor
         hyprshutdown
+        adw-gtk3
 
         # desktop apps
         librewolf

@@ -20,9 +20,6 @@ in
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "nixos";
-    networking.networkmanager.enable = true;
-
     time.timeZone = "Europe/Warsaw";
 
     i18n.defaultLocale = "en_GB.UTF-8";
@@ -180,8 +177,12 @@ in
     };
 
     # networking
-    networking.nameservers = [ "192.168.1.1" ];
-    networking.networkmanager.dns = "none";
+    networking.hostName = "nixos";
+    networking.nameservers = [];
+    networking.networkmanager = {
+        enable = true;
+    };
+    services.resolved.enable = true;
 
     # for mtp devices
     services.gvfs.enable = true;

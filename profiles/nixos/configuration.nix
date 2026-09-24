@@ -204,6 +204,15 @@ in
         };
     };
 
+    xdg.terminal-exec = {
+        enable = true;
+        settings = {
+            default = [
+                "ghostty.desktop"
+            ];
+        };
+    };
+
     # networking
     networking.hostName = "nixos";
     networking.nameservers = [];

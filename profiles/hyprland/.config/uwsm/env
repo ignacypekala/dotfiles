@@ -3,3 +3,4 @@ export QS_ICON_THEME=Papirus-Dark
 export QT_QUPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=gtk3
 export QT_QPA_PLATFORMTHEME_QT6=gtk3
+export DMS_ENABLE_GTK_REFRESH=1

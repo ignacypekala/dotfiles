@@ -102,6 +102,7 @@ in
         yt-dlp
         kid3
         puddletag
+        tauon
 
         # terminals
         wezterm

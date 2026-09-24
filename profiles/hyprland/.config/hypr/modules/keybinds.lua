@@ -41,7 +41,12 @@ for i = 1, 10 do
     hl.bind(combo(mod, "SHIFT", key), hl.dsp.window.move({ workspace = "m~" .. i }))
 end
 
-hl.bind(combo(mod, "G"), hl.dsp.focus({ workspace = "name:game" }))
+hl.bind(combo(mod, "G"), function ()
+    local window = hl.get_windows({ workspace = "name:game" })[1]
+    if window ~= nil then
+        hl.dispatch(hl.dsp.focus({ window = window }))
+    end
+end)
 
 -- Returns first available non-negative workspace ID. Needed because "emptynm" 
 -- selector sometimes resolved to an empty workspace on a different monitor.

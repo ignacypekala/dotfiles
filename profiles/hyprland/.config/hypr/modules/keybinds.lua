@@ -45,7 +45,10 @@ hl.bind(combo(mod, "G"), function ()
     local window = hl.get_windows({ workspace = "name:game" })[1]
     if window ~= nil then
         hl.dispatch(hl.dsp.focus({ window = window }))
+    else
+        hl.dispatch(hl.dsp.focus({ workspace = "name:game" }))
     end
+
 end)
 
 -- Returns first available non-negative workspace ID. Needed because "emptynm" 

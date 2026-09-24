@@ -4,10 +4,16 @@ let
     unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 {
+    disabledModules = [
+            "services/display-managers/dms-greeter.nix"
+            "programs/wayland/dms-shell.nix"
+    ];
     imports =
         [
             ./hardware-configuration.nix
-        ];
+            <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
+            <nixos-unstable/nixos/modules/programs/wayland/dms-shell.nix>
+    ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -135,6 +141,7 @@ in
             restartIfChanged = true;
         };
         package = unstable.dms-shell;
+        quickshell.package = unstable.quickshell;
     };
     services.displayManager.dms-greeter = {
         enable = true;
@@ -167,7 +174,9 @@ in
             '';
         };
         configHome = "/home/ignacy";
-        package = unstable.dms-shell;
+        package = unstable.dms-greeter;
+        quickshell.package = unstable.quickshell;
+    };
     };
 
     # networking

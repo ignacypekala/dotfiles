@@ -98,7 +98,7 @@ hl.bind(combo(mod, "CTRL", "D"), function()
             focused_monitor_before_minimize = current.id
         end
         for _, monitor in ipairs(monitors) do
-            workspaces_before_minimize[monitor.name] = monitor.active_workspace.id
+            workspaces_before_minimize[monitor.name] = monitor.active_workspace.name
             hl.dispatch(hl.dsp.focus({ monitor = monitor }))
             hl.dispatch(hl.dsp.focus({ workspace = get_next_free_workspace_id() }))
         end
@@ -109,7 +109,7 @@ hl.bind(combo(mod, "CTRL", "D"), function()
         -- Restore
         for _, monitor in ipairs(monitors) do
             hl.dispatch(hl.dsp.focus({ monitor = monitor }))
-            hl.dispatch(hl.dsp.focus({ workspace = workspaces_before_minimize[monitor.name] }))
+            hl.dispatch(hl.dsp.focus({ workspace = "name:" .. workspaces_before_minimize[monitor.name] }))
         end
         workspaces_before_minimize = {}
         hl.dispatch(hl.dsp.focus({ monitor = focused_monitor_before_minimize }))

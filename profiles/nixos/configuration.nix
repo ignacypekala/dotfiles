@@ -90,6 +90,10 @@ in
         pinta
         kdePackages.kolourpaint
 
+        yt-dlp
+        kid3
+        puddletag
+
         # terminals
         wezterm
         ghostty

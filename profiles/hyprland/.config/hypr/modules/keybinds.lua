@@ -91,7 +91,9 @@ hl.bind(combo(mod, "CTRL", "D"), function()
     if (not monitors_empty) or next(workspaces_before_minimize) == nil then
         -- Minimize
         local current = hl.get_active_monitor()
-        focused_monitor_before_minimize = current.id
+        if (current ~= nil) then
+            focused_monitor_before_minimize = current.id
+        end
         for _, monitor in ipairs(monitors) do
             workspaces_before_minimize[monitor.name] = monitor.active_workspace.id
             hl.dispatch(hl.dsp.focus({ monitor = monitor }))

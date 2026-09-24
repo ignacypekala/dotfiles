@@ -109,7 +109,6 @@ in
         alacritty
 
         # dev environment
-        neovim
         tree-sitter
         lua-language-server
         libclang
@@ -127,6 +126,10 @@ in
     ];
 
     programs.steam = {
+        enable = true;
+    };
+
+    programs.neovim = {
         enable = true;
     };
 

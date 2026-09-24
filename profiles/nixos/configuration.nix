@@ -121,6 +121,7 @@ in
         fzf
         ripgrep
         jq
+        bat
 
         unstable.antigravity-cli
     ];

@@ -8,8 +8,7 @@ in
             "services/display-managers/dms-greeter.nix"
             "programs/wayland/dms-shell.nix"
     ];
-    imports =
-        [
+    imports = [
             ./hardware-configuration.nix
             <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
             <nixos-unstable/nixos/modules/programs/wayland/dms-shell.nix>
@@ -77,6 +76,16 @@ in
         hyprcursor
         hyprshutdown
         adw-gtk3
+        
+        # https://discourse.nixos.org/t/how-to-use-nautilus-as-the-file-picker-dialog-portal/63490/2
+        (runCommandLocal "nautilus-portal" { } ''
+          mkdir -p $out/share/xdg-desktop-portal/portals
+          cat > $out/share/xdg-desktop-portal/portals/nautilus.portal <<EOF
+          [portal]
+          DBusName=org.gnome.Nautilus
+          Interfaces=org.freedesktop.impl.portal.FileChooser
+          EOF
+        '')    
 
         # desktop apps
         librewolf
@@ -181,6 +190,17 @@ in
         package = unstable.dms-greeter;
         quickshell.package = unstable.quickshell;
     };
+
+    programs.dconf.enable = true;
+    xdg.portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+        config = {
+            common.default = "*";
+            hyprland = {
+                "org.freedesktop.impl.portal.FileChooser" = "nautilus";
+            };
+        };
     };
 
     # networking

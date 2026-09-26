@@ -45,3 +45,11 @@ hl.window_rule({
     workspace = "name:game",
     fullscreen = true,
 })
+
+hl.window_rule({
+    name = "mark-terminals",
+    match = {
+        initial_class = "com.mitchellh.ghostty|Alacritty|org.wezfurlong.wezterm"
+    },
+    tag = "terminal"
+})

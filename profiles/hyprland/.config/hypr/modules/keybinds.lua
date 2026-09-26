@@ -2,6 +2,7 @@ local combo = require('utils.combo')
 local mod = require('preferences').mainMod
 local programs = require('preferences').programs
 local run_cmd = require('utils.run_cmd')
+local has_value = require('utils.has_value')
 
 -- General
 hl.bind(combo(mod, "SHIFT", "Q"), hl.dsp.window.close())
@@ -155,13 +156,8 @@ local ctrl_w = hl.bind("CTRL + W", function()
     end
     local window = hl.get_active_window()
     if window ~= nil then
-        -- if window.class == programs.browser or window.class == "tidal-hifi" then
-        if window.initial_class == "com.mitchellh.ghostty" then
-            -- Manual state management prevents issues with send_shortcut:
-            -- https://github.com/hyprwm/Hyprland/discussions/14099
-            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "down" }))
-            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
-            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "", state = "down" }))
+        if has_value(window.tags, "terminal*") then
+            hl.dispatch(hl.dsp.pass({ window = window }))
         else
             hl.dispatch(hl.dsp.send_shortcut({
                 mods = "CTRL",
@@ -170,7 +166,7 @@ local ctrl_w = hl.bind("CTRL + W", function()
             }))
         end
     end
-end, { repeating = true })
+end, { repeating = false })
 
 hl.on('window.active', function ()
     ctrl_w:set_enabled(hl.get_active_workspace().name ~= "game")

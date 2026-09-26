@@ -60,5 +60,5 @@ printf "%s\n" "${project_roots[@]}" > ~/.cache/project_roots
 printf "%s\n" "${extra_projects[@]}" > ~/.cache/extra_projects
 
 osc133='\[\e]133;A\e\\\]'
-export PS1="$path_color"'$(pwd | path-format.sh | path-trim-relative.sh 30 30)'"${RESET}${BRIGHT_BLACK}$BOLD"' >_ '"$RESET"
+export PS1="${osc133}${path_color}"'$(pwd | path-format.sh | path-trim-relative.sh 30 30)'"${RESET}${BRIGHT_BLACK}$BOLD"' >_ '"$RESET"
 

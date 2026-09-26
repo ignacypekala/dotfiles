@@ -148,24 +148,26 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 hl.bind("Print", hl.dsp.exec_cmd("dms screenshot region --no-file --no-confirm"))
 
--- silly vim addict side effect preventio-inator
+-- silly-vim-addict-side-effect-preventio-inator
 local ctrl_w = hl.bind("CTRL + W", function()
     if hl.get_active_workspace().name == "game" then
         return false
     end
     local window = hl.get_active_window()
     if window ~= nil then
-        if window.class == programs.browser or window.class == "tidal-hifi" then
+        -- if window.class == programs.browser or window.class == "tidal-hifi" then
+        if window.initial_class == "com.mitchellh.ghostty" then
+            -- Manual state management prevents issues with send_shortcut:
+            -- https://github.com/hyprwm/Hyprland/discussions/14099
+            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "down" }))
+            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
+            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "", state = "down" }))
+        else
             hl.dispatch(hl.dsp.send_shortcut({
                 mods = "CTRL",
                 key = "BACKSPACE",
                 window = window
             }))
-        else
-            -- Manual state management prevents issues with send_shortcut:
-            -- https://github.com/hyprwm/Hyprland/discussions/14099
-            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "down" }))
-            hl.dispatch(hl.dsp.send_key_state({ mods = "CTRL", key = "W", state = "up" }))
         end
     end
 end, { repeating = true })

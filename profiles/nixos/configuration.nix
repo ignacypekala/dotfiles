@@ -233,9 +233,7 @@ in
     # for mtp devices
     services.gvfs.enable = true;
 
-    # polkit
     security.polkit.enable = true;
-    security.soteria.enable = true;
     services.gnome.gnome-keyring.enable = true;
 
     # proprietary nvidia drivers

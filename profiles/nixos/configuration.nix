@@ -76,20 +76,15 @@ in
         polkit_gnome
         papirus-icon-theme
         libnotify
-        htop
         hyprcursor
         hyprshutdown
         adw-gtk3
+
+        htop
+        nautilus
+        gnome-disk-utility
+        gparted
         
-        # https://discourse.nixos.org/t/how-to-use-nautilus-as-the-file-picker-dialog-portal/63490/2
-        (runCommandLocal "nautilus-portal" { } ''
-          mkdir -p $out/share/xdg-desktop-portal/portals
-          cat > $out/share/xdg-desktop-portal/portals/nautilus.portal <<EOF
-          [portal]
-          DBusName=org.gnome.Nautilus
-          Interfaces=org.freedesktop.impl.portal.FileChooser
-          EOF
-        '')    
 
         # desktop apps
         librewolf
@@ -98,12 +93,9 @@ in
         gimp
         obs-studio
         tidal-hifi
-        nautilus
         qimgv
         pinta
         kdePackages.kolourpaint
-        gnome-disk-utility
-        gparted
 
         yt-dlp
         kid3
@@ -206,9 +198,10 @@ in
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
         config = {
-            common.default = "*";
+            common.default = [ "gnome" ];
             hyprland = {
-                "org.freedesktop.impl.portal.FileChooser" = "nautilus";
+                default = [ "hyprland" "gnome" ];
+                "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
             };
         };
     };

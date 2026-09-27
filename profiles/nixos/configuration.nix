@@ -102,6 +102,8 @@ in
         qimgv
         pinta
         kdePackages.kolourpaint
+        gnome-disk-utility
+        gparted
 
         yt-dlp
         kid3

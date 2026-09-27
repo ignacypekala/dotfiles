@@ -67,6 +67,7 @@ in
         file
         zip
         unzip
+        pv
 
         # desktop utils
         wl-clipboard

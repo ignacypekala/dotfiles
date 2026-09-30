@@ -125,6 +125,8 @@ in
 
     programs.steam = {
         enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
     };
 
     programs.neovim = {
@@ -162,6 +164,8 @@ in
             name = "hyprland";
             customConfig = ''
                 hl.env("DMS_RUN_GREETER", "1")
+                hl.env("HYPRCURSOR_THEME", "Bibata Modern Ice")
+                hl.env("HYPRCURSOR_SIZE", "24")
                 hl.config({
                     animations = {
                         enabled = false,
@@ -216,7 +220,7 @@ in
     };
 
     # networking
-    networking.hostName = "nixos";
+    networking.hostName = "grzejnik";
     networking.nameservers = [];
     networking.networkmanager = {
         enable = true;

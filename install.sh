@@ -47,7 +47,6 @@ prevent_stow_fold() {
 
 cleanup_no_folds() {
     for nofold in "${nofolds[@]}"; do
-        echo $nofold
         rm "$nofold"
     done
 }

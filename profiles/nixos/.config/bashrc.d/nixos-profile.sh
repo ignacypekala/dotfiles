@@ -1,4 +1,4 @@
-nixos_config="$HOME/configuration.nix"
+nixos_config="$HOME/nixos-config/machines/$HOSTNAME/configuration.nix"
 alias rebuild="sudo nixos-rebuild switch -I nixos-config=$nixos_config"
 alias upgrade="sudo nixos-rebuild switch -I nixos-config=$nixos_config --upgrade"
 

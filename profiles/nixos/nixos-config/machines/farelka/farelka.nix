@@ -10,7 +10,7 @@
     _module.args.unstable = unstable;
 
     networking = {
-        hostname = "farelka";
+        hostName = "farelka";
         wireless.enable = true;
     };
 

@@ -90,14 +90,21 @@ fi
 
 cleanup_no_folds
 
+# Remove leftover invalid links
 dotfiles_dir="$(realpath .)"
-find "$HOME/.local/bin/" "$HOME/.local/share/icons" "$HOME/.config" -type l | \
+find ${DIRS_TO_CHECK_FOR_LEFTOVERS[@]} -type l | \
     while read -a link; do
         target="$(realpath -m "$link")"
         if [[ "${target:0:${#dotfiles_dir}}" =~ "$dotfiles_dir" ]]; then
             if ! [ -e "$target" ]; then
-                echo Removing "$link"
+                echo Removing invalid link: "$link"
                 rm "$link"
+                dir=$(dirname "$link")
+                while [ -z "$( ls -A "$dir" )" ]; do
+                    echo Removing empty directory: "$dir"
+                    rmdir "$dir"
+                    dir=$(dirname "$dir")
+                done
             fi
         fi
     done

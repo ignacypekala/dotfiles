@@ -90,3 +90,15 @@ elif [[ "$force_known" != "true" ]]; then
 fi
 
 cleanup_no_folds
+
+dotfiles_dir="$(realpath .)"
+find "$HOME/.local/bin/" "$HOME/.local/share/icons" "$HOME/.config" -type l | \
+    while read -a link; do
+        target="$(realpath -m "$link")"
+        if [[ "${target:0:${#dotfiles_dir}}" =~ "$dotfiles_dir" ]]; then
+            if ! [ -e "$target" ]; then
+                echo Removing "$link"
+                rm "$link"
+            fi
+        fi
+    done

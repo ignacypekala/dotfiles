@@ -48,11 +48,25 @@ hl('DiffChange', { bg = c.dim.blue })
 hl('DiffDelete', { bg = c.dim.red })
 hl('DiffText', { bg = c.bright.blue, fg = c.ansi.black })
 
-hl('GitSignsAdd', { fg = c.ansi.green, bg = nil })
-hl('GitSignsChange', { fg = c.ansi.blue, bg = nil })
-hl('GitSignsDelete', { fg = c.ansi.red, bg = nil })
-hl('GitSignsChangeDelete', { fg = c.ansi.blue, bg = nil })
-hl('GitSignsUntracked', { fg = c.bright.black, bg = nil })
+-- gutter signs
+hl('GitSignsAdd', { fg = c.ansi.green })
+hl('GitSignsChange', { fg = c.ansi.blue })
+hl('GitSignsDelete', { fg = c.ansi.red })
+hl('GitSignsUntracked', { fg = c.bright.black })
+
+-- text in previews
+hl('GitSignsAddInline', { fg = c.ansi.black, bg = c.ansi.green })
+hl('GitSignsDeleteInline', { fg = c.ansi.black, bg = c.ansi.red })
+hl('GitSignsChangeInline', { fg = c.ansi.black, bg = c.ansi.green })
+
+-- text in buffers
+hl('GitSignsAddLnInline', { fg = "NONE", bg = c.dim.green })
+hl('GitSignsDeleteLnInline', { fg = "NONE", bg = c.dim.red })
+hl('GitSignsChangeLnInline', { fg = "NONE", bg = c.dim.blue })
+
+hl('GitSignsAddVirtLn', { link = "GitSignsAddLnInline" })
+hl('GitSignsChangeVirtLn', { link = "GitSignsChangeLnInline" })
+hl('GitSignsDeleteVirtLn', { link = "GitSignsDeleteLnInline" })
 
 hl('SpellBad', { underline = true })
 hl('SpellRare', { italic = true })

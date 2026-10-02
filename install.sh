@@ -57,6 +57,7 @@ prevent_stow_fold "$HOME/.config/bash_profile.d"
 prevent_stow_fold "$HOME/.config/sway/config.d"
 prevent_stow_fold "$HOME/.local"
 prevent_stow_fold "$HOME/.local/bin"
+prevent_stow_fold "$HOME/.local/share/icons"
 
 stow_directory "common"
 

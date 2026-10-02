@@ -41,7 +41,7 @@ in
     powerManagement.enable = true;
     boot.resumeDevice = "/dev/lvm/swap";
 
-    # webcam
+    # hardware
     hardware.ipu6 = {
         enable = true;
         platform = "ipu6ep";

@@ -96,7 +96,7 @@
                 hl.monitor({ 
                     output = "desc:Dell Inc. DELL S2522HG FRYK1C3",
                     mode = "1920x1080@239.757",
-                    position = "0x222", scale = 1, vrr = 0 
+                    position = "auto", scale = 1, vrr = 0 
                 })
                 hl.monitor({ 
                     output = "desc:Hewlett Packard HP LA2306 CNC1370SDZ",

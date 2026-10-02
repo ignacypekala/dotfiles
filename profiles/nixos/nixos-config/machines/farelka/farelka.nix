@@ -10,15 +10,17 @@ in
         ../../common.nix
         ../../profiles/desktop.nix
         ../../modules/steam.nix
+        <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
     ];
     _module.args.unstable = unstable;
 
+    # networking
     networking = {
         hostName = "farelka";
         wireless.enable = true;
     };
-    hardware.bluetooth.enable = true;
 
+    # security
     services.fprintd = {
         enable = true;
         tod = {
@@ -28,7 +30,12 @@ in
     };
     security.pam.services.greetd.fprintAuth = true;
     security.pam.services.dms-greeter.fprintAuth = true;
+    services.displayManager.autoLogin = {
+        enable = true;
+        user = "ignacy";
+    };
 
+    # power management
     services.thermald.enable = true;
     services.tlp.enable = true;
     powerManagement.enable = true;
@@ -39,7 +46,9 @@ in
         enable = true;
         platform = "ipu6ep";
     };
+    hardware.bluetooth.enable = true;
 
+    # drivers
     boot.initrd.kernelModules = [ "i915" ];
     hardware.graphics = {
         enable = true;
@@ -52,6 +61,7 @@ in
         LIBVA_DRIVER_NAME = "iHD";
     };
     hardware.enableRedistributableFirmware = true;
+
 
     system.stateVersion = "26.11";
 }

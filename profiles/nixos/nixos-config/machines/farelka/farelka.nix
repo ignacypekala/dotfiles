@@ -29,9 +29,10 @@ in
     security.pam.services.greetd.fprintAuth = true;
     security.pam.services.dms-greeter.fprintAuth = true;
 
+    services.thermald.enable = true;
+    services.tlp.enable = true;
     powerManagement.enable = true;
-    services.power-profiles-daemon.enable = true;
-    boot.resumeDevice = "/dev/lvm/swap"
+    boot.resumeDevice = "/dev/lvm/swap";
 
     # webcam
     hardware.ipu6 = {

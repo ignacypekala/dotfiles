@@ -9,6 +9,7 @@ in
         ./secure-boot.nix
         ../../common.nix
         ../../profiles/desktop.nix
+        ../../modules/steam.nix
     ];
     _module.args.unstable = unstable;
 

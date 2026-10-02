@@ -30,6 +30,7 @@ in
 
     powerManagement.enable = true;
     services.power-profiles-daemon.enable = true;
+    boot.resumeDevice = "/dev/lvm/swap"
 
     # webcam
     hardware.ipu6 = {

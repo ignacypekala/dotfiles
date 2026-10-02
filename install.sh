@@ -2,6 +2,11 @@
 # Symlinks dotfiles for the appropriate environment with GNU Stow.
 
 STOW_TARGET="$HOME"
+DIRS_TO_CHECK_FOR_LEFTOVERS=( 
+    "$HOME/.local/bin/"
+    "$HOME/.local/share/icons"
+    "$HOME/.config"
+)
 
 # Anchor the script relative to the script location.
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)

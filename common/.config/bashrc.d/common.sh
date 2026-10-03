@@ -30,6 +30,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias car='cat'
 alias nv='nvim'
-alias tm="tmux-sessions.sh open \"$PWD\""
+alias tm='tmux-open.sh "$PWD"'
 alias ff='fastfetch'
 

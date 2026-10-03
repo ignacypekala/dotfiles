@@ -31,3 +31,5 @@ alias grep='grep --color=auto'
 alias car='cat'
 alias nv='nvim'
 alias tm="tmux-sessions.sh open \"$PWD\""
+alias ff='fastfetch'
+

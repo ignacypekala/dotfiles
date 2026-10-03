@@ -29,6 +29,7 @@ in
     };
     security.pam.services.greetd.fprintAuth = true;
     security.pam.services.dms-greeter.fprintAuth = true;
+    security.pam.services.sudo.fprintAuth = false;
     services.displayManager = {
         defaultSession = "hyprland-uwsm";
         autoLogin = {

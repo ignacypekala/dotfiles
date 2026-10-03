@@ -10,7 +10,6 @@ in
         ../../common.nix
         ../../profiles/desktop.nix
         ../../modules/steam.nix
-        <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
     ];
     _module.args.unstable = unstable;
 
@@ -30,9 +29,12 @@ in
     };
     security.pam.services.greetd.fprintAuth = true;
     security.pam.services.dms-greeter.fprintAuth = true;
-    services.displayManager.autoLogin = {
-        enable = true;
-        user = "ignacy";
+    services.displayManager = {
+        defaultSession = "hyprland-uwsm";
+        autoLogin = {
+            enable = true;
+            user = "ignacy";
+        };
     };
 
     # power management

@@ -25,3 +25,9 @@ add_path ~/.local/bin
 add_path ~/.config/scripts
 add_path ~/go/bin
 add_path ~/.cargo/bin
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias car='cat'
+alias nv='nvim'
+alias tm="tmux-sessions.sh open \"$PWD\""

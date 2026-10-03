@@ -42,12 +42,6 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias car='cat'
-alias nv='nvim'
-alias tm="tmux-sessions.sh open \"$PWD\""
-
 # Dont save duplicates in history
 export HISTCONTROL=ignoredups
 export INPUTRC=$HOME/.inputrc

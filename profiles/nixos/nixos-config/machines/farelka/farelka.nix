@@ -38,9 +38,15 @@ in
 
     # power management
     services.thermald.enable = true;
-    services.tlp.enable = true;
+    services.upower.enable = true;
     powerManagement.enable = true;
+    services.power-profiles-daemon.enable = true;
     boot.resumeDevice = "/dev/lvm/swap";
+    services.logind.settings.Login = {
+        HandleLidSwitch = "suspend-then-hibernate";
+        HandleLidSwitchExternalPower = "lock";
+        HandleLidSwitchDocked = "lock";
+    };
 
     # hardware
     hardware.ipu6 = {

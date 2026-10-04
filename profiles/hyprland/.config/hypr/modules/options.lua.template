@@ -11,6 +11,13 @@ hl.config({
             },
             inactive_border = "{{ hex(neutral_700) }}",
         },
+        resize_on_border = true,
+        allow_tearing = false,
+        layout = "dwindle",
+        float_gaps = "25",
+        snap = {
+            enabled = true
+        }
     },
 
     decoration = {
@@ -25,6 +32,25 @@ hl.config({
 
         dim_inactive = true,
         dim_strength = 0.05,
+    },
+    animations = {
+        enabled = true,
+    },
+    misc = {
+        force_default_wallpaper = 0,
+        disable_hyprland_logo = true,
+        focus_on_activate = true,
+        disable_splash_rendering = true,
+        background_color = "#000000"
+    },
+    dwindle = {
+        preserve_split = true,
+    },
+    master = {
+        new_status = "master",
+    },
+    scrolling = {
+        fullscreen_on_one_column = true,
     },
 })
 

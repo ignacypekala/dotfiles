@@ -1,0 +1,57 @@
+hl.config({
+    general = {
+        gaps_in = 5,
+        gaps_out = 10,
+        border_size = 1,
+        col = {
+            active_border = {
+                colors = {
+                    "#67a376bb",
+                },
+            },
+            inactive_border = "#191919",
+        },
+        resize_on_border = true,
+        allow_tearing = false,
+        layout = "dwindle",
+        float_gaps = "25",
+        snap = {
+            enabled = true
+        }
+    },
+
+    decoration = {
+        rounding = 10,
+        rounding_power = 5,
+
+        active_opacity  = 1.0,
+        inactive_opacity = 0.95,
+        blur = {
+            enabled  = true,
+        },
+
+        dim_inactive = true,
+        dim_strength = 0.05,
+    },
+    animations = {
+        enabled = true,
+    },
+    misc = {
+        force_default_wallpaper = 0,
+        disable_hyprland_logo = true,
+        focus_on_activate = true,
+        disable_splash_rendering = true,
+        background_color = "#000000"
+    },
+    dwindle = {
+        preserve_split = true,
+    },
+    master = {
+        new_status = "master",
+    },
+    scrolling = {
+        fullscreen_on_one_column = true,
+    },
+})
+
+-- vim:filetype=lua

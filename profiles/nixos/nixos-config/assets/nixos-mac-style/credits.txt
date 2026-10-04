@@ -1,0 +1,3 @@
+This theme is a combination of:
+ - "Linux Distro Logos - macOS Boot Style" by TOBILINUXER: https://www.opendesktop.org/p/2106821
+ - "Linux Distro Logos - Mac OS Style Boot Splash" by EREN16: https://store.kde.org/p/1805336/

@@ -93,6 +93,7 @@
                         shadow = { enabled = false }
                     }
                 })
+                hl.bind("CTRL + W", hl.dsp.send_shortcut({ mods = "CTRL", key = "BACKSPACE" }))
                 hl.monitor({ 
                     output = "desc:Dell Inc. DELL S2522HG FRYK1C3",
                     mode = "1920x1080@239.757",

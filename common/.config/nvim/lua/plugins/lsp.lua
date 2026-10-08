@@ -39,7 +39,8 @@ local setup_clangd = function()
         capabilities = capabilities,
         cmd = {
             "clangd",
-            "--fallback-style=webkit"
+            "--fallback-style=webkit",
+            "--query-driver=/**/*"
         }
     })
 end

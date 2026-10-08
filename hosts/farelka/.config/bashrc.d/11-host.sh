@@ -1,4 +1,14 @@
 path_color=$YELLOW
 export TMUX_ACCENT="yellow"
-alias rebuild="sudo nixos-rebuild -I nixos-config=$nixos_config && sudo verify-secure-boot.sh"
-alias upgrade="sudo nixos-rebuild -I nixos-config=$nixos_config --upgrade && sudo verify-secure-boot.sh"
+unalias rebuild
+function rebuild() {
+    command="$1"
+    if [[ "$command" == "" ]]; then
+        echo No command provided
+        echo usage: rebuild boot/switch/test/...
+        return 1
+    fi
+    sudo nixos-rebuild "$command" -I nixos-config=$nixos_config && sudo verify-secure-boot.sh
+}
+unalias upgrade
+

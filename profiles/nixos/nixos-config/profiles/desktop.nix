@@ -9,7 +9,6 @@
     imports = [
         <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
         <nixos-unstable/nixos/modules/programs/wayland/dms-shell.nix>
-        ../modules/plymouth.nix
     ];
 
     environment.systemPackages = with pkgs; [

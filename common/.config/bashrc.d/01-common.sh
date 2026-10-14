@@ -32,4 +32,4 @@ alias car='cat'
 alias nv='nvim'
 alias tm='tmux-open.sh "$PWD"'
 alias ff='fastfetch'
-
+alias py='python'

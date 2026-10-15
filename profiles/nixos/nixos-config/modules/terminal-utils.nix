@@ -9,14 +9,16 @@
         gcc
         gnumake
         bash
-        stow
         tree
         file
         zip
         unzip
         pv
-        bat
         htop
+
+        stow
+        bat
+        btop
 
         git
         python3

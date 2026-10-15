@@ -17,7 +17,7 @@ if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
     . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-if [ -e /home/students/inf/i/ip479614/.nix-profile/etc/profile.d/nix.sh ]; then . /home/students/inf/i/ip479614/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 
 nix_config="profiles/mim/.config/nix"

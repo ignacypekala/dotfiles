@@ -18,3 +18,7 @@ if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
 fi
 
 if [ -e /home/students/inf/i/ip479614/.nix-profile/etc/profile.d/nix.sh ]; then . /home/students/inf/i/ip479614/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+
+nix_config="profiles/mim/.config/nix"
+alias rebuild="nix profile upgrade $nix_config"

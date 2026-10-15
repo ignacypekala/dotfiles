@@ -21,4 +21,4 @@ if [ -e /home/students/inf/i/ip479614/.nix-profile/etc/profile.d/nix.sh ]; then 
 
 
 nix_config="profiles/mim/.config/nix"
-alias rebuild="nix profile upgrade $nix_config"
+alias rebuild="nix profile upgrade $nix_config --impure"

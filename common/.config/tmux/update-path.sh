@@ -14,7 +14,7 @@ max_length=$(( $tmux_width * 40 / 100 ))
 display_path=$(
     tmux-name-desanitize.sh "$raw_path" \
     | path-format.sh \
-    | path-trim.sh $max_length
+    | path-trim.sh $max_length 2>/dev/null || pwd
 )
 
 tmux set-environment -t "$session" session_display_path "$display_path"

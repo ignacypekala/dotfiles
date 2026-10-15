@@ -7,8 +7,8 @@ if [[ $- == *i* ]] && [ ! -d /nix ]; then
     NIX_BACKING_DIR="$HOME/.nix"
 
     if [ -x "$CHROOT_BIN" ] && [ -d "$NIX_BACKING_DIR" ]; then
-        # Start zsh inside chroot and avoid re-loading global rc files repeatedly
-       $CHROOT_BIN $NIX_BACKING_DIR bash -l
+        # Start bash inside chroot
+        exec $CHROOT_BIN $NIX_BACKING_DIR bash -l
     fi
 fi
 

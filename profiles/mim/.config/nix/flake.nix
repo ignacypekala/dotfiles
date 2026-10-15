@@ -16,6 +16,7 @@
                 postBuild = ''
                     if [ -d "$out/share/applications" ]; then
                         for desktop_file in "$out/share/applications"/*.desktop; do
+                            echo "wrapping $desktop_file"
                             
                             # Break the symlink to modify the file safely
                             rm "$desktop_file"
@@ -23,7 +24,7 @@
                             chmod +w "$desktop_file"
 
                             # Prepend the chroot wrapper and inject the Nix profile PATH
-                            sed -i "s|^Exec=\(.*\)|\Exec=/home/$(whoami)/.local/bin/nix-user-chroot /home/$(whoami)/.nix /usr/bin/env PATH=/home/$(whoami)/.nix-profile/bin:/usr/bin \1|g" "$desktop_file"
+                            # sed -i "s|^Exec=\(.*\)|\Exec=/home/$(whoami)/.local/bin/nix-user-chroot /home/$(whoami)/.nix /usr/bin/env PATH=/home/$(whoami)/.nix-profile/bin:/usr/bin \1|g" "$desktop_file"
                         done
                     fi
                 '';

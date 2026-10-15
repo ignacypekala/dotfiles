@@ -14,13 +14,22 @@
             packages.${system}.default = pkgs.buildEnv {
                 name = "user-packages";
                 paths = with pkgs; [
-                    bear
-                    fastfetch
                     stow
+
+                    fastfetch
                     bat
                     ripgrep
 
                     ghostty
+
+                    clang-tools
+                    bear
+                    tmux
+                    tree-sitter
+                    neovim
+                    lldb
+                    asm-lsp
+                    jdt-language-server
                 ];
             };
         };

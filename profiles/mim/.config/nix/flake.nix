@@ -14,8 +14,13 @@
             packages.${system}.default = pkgs.buildEnv {
                 name = "user-packages";
                 paths = with pkgs; [
-                    fastfetch
                     bear
+                    fastfetch
+                    stow
+                    bat
+                    ripgrep
+
+                    ghostty
                 ];
             };
         };

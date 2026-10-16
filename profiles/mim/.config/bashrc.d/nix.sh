@@ -8,7 +8,7 @@ nix_backing_dir="$HOME/.nix"
 # 
 if [[ $- == *i* ]] && [ ! -d /nix ]; then
     if [ -v SSH_CONNECTION ] && ! [ -v TMUX ]; then
-        exec tmux attach || exec tmux-home.sh
+        exec tmux-start-or-attach.sh
     elif [ -x "$chroot_bin" ] && [ -d "$nix_backing_dir" ]; then
         exec $chroot_bin $nix_backing_dir bash -l
     fi

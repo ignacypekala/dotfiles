@@ -43,7 +43,6 @@
 
                     clang-tools
                     bear
-                    tmux
                     tree-sitter
                     neovim
                     lldb

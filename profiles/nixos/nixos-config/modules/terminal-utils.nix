@@ -24,6 +24,7 @@
         python3
         bear
         fastfetch
+        valgrind
 
         tmux
         fzf

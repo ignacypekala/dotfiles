@@ -45,6 +45,7 @@
                     bear
                     tree-sitter
                     neovim
+                    fortune
                     lldb
                     asm-lsp
                     jdt-language-server

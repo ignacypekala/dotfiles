@@ -1,5 +1,9 @@
 { pkgs, unstable, ... }:
 
+let
+    dms = builtins.getFlake "github:AvengeMedia/DankMaterialShell";
+    dank-greeter = builtins.getFlake "github:AvengeMedia/dank-greeter";
+in
 {
     disabledModules = [
         "services/display-managers/dms-greeter.nix"
@@ -7,8 +11,8 @@
     ];
 
     imports = [
-        <nixos-unstable/nixos/modules/services/display-managers/dms-greeter.nix>
-        <nixos-unstable/nixos/modules/programs/wayland/dms-shell.nix>
+        dms.nixosModules.dank-material-shell
+        dank-greeter.nixosModules.default
     ];
 
     environment.systemPackages = with pkgs; [
@@ -61,16 +65,16 @@
         xwayland.enable = true;
     };
 
-    programs.dms-shell = {
+    programs.dank-material-shell = {
         enable = true;
         systemd = {
             enable = true;
             restartIfChanged = true;
         };
-        package = unstable.dms-shell;
+        package = dms.packages.${pkgs.system}.default;
         quickshell.package = unstable.quickshell;
     };
-    services.displayManager.dms-greeter = {
+    programs.dms-greeter = {
         enable = true;
         compositor = {
             name = "hyprland";
@@ -106,7 +110,7 @@
             '';
         };
         configHome = "/home/ignacy";
-        package = unstable.dms-greeter;
+        package = dank-greeter.packages.${pkgs.system}.default;
         quickshell.package = unstable.quickshell;
     };
 

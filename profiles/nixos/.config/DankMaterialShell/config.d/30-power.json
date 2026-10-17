@@ -1,0 +1,18 @@
+{
+  "acMonitorTimeout": 120,
+  "acLockTimeout": 180,
+  "acPostLockMonitorTimeout": 30,
+  "lockBeforeSuspend": true,
+  "fadeToLockGracePeriod": 2,
+  "powerMenuActions": [
+    "reboot",
+    "logout",
+    "poweroff",
+    "lock",
+    "suspend",
+    "restart",
+    "softreboot"
+  ],
+  "customPowerActionReboot": "hyprshutdown --post-cmd \"dms kill; reboot\"",
+  "customPowerActionPowerOff": "hyprshutdown --post-cmd \"dms kill; poweroff\"",
+}

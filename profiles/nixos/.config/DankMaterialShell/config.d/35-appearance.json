@@ -1,0 +1,14 @@
+{
+  "matugenTemplateHyprland": false,
+  "matugenTemplateVencord": false,
+  "matugenTemplateEquibop": false,
+  "matugenTemplateGhostty": false,
+  "matugenTemplateKitty": false,
+  "matugenTemplateFoot": false,
+  "matugenTemplateAlacritty": false,
+  "matugenTemplateWezterm": false,
+  "matugenSpec": "2025",
+  "matugenSeedColor": "",
+  "matugenContrast": 0,
+  "matugenSourceMode": "dominant",
+}

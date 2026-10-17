@@ -1,0 +1,117 @@
+{
+  "controlCenterWidgets": [
+    {
+      "id": "user",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "col": 0,
+      "row": 0,
+      "hostname": true,
+      "compositor": true,
+      "badge": true
+    },
+    {
+      "id": "wifi",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "col": 4,
+      "row": 1
+    },
+    {
+      "id": "audioOutput",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 0,
+      "row": 1,
+      "small": false
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "col": 4,
+      "row": 2,
+      "small": false
+    },
+    {
+      "id": "audioInput",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 2,
+      "row": 1
+    },
+    {
+      "id": "doNotDisturb",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "small": false,
+      "col": 0,
+      "row": 3
+    },
+    {
+      "id": "quickTiles",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "instanceId": "mvcwlz0uprerhmhps8d",
+      "col": 4,
+      "row": 0
+    },
+    {
+      "id": "nightMode",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "darkMode",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "colorPicker",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "settings",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "edit",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "diskUsage",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "instanceId": "mvcwq32rij4ob40q23g3zc6vuj345z",
+      "mountPath": "/home",
+      "showMountPath": true,
+      "col": 4,
+      "row": 3
+    }
+  ],
+  "controlCenterColumns": 8
+}

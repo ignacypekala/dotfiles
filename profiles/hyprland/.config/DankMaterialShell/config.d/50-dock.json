@@ -3,7 +3,7 @@
     {
       "id": "dock",
       "name": "Dock",
-      "enabled": false,
+      "enabled": true,
       "screenPreferences": [
         "all"
       ],
@@ -13,29 +13,29 @@
       "taskbarAlign": "center",
       "widgetExpansion": "popout",
       "iconSize": 40,
-      "spacing": 4,
+      "spacing": 10,
       "itemSpacing": 4,
-      "margin": 0,
+      "margin": 14,
       "bottomGap": 0,
       "transparency": 1,
       "followInterfaceStyle": true,
-      "autoHide": false,
+      "autoHide": true,
       "smartAutoHide": false,
       "useOverlayLayer": false,
-      "editOnRightClick": false,
+      "editOnRightClick": true,
       "showOnFullscreen": false,
       "openOnOverview": false,
       "groupByApp": false,
       "separatePinnedAndRunningApps": false,
       "restoreSpecialWorkspaceOnClick": false,
       "isolateDisplays": false,
-      "indicatorStyle": "circle",
+      "indicatorStyle": "line",
       "borderEnabled": false,
       "borderColor": "surfaceText",
       "borderOpacity": 1,
       "borderThickness": 1,
-      "launcherEnabled": false,
-      "launcherLogoMode": "apps",
+      "launcherEnabled": true,
+      "launcherLogoMode": "os",
       "launcherLogoCustomPath": "",
       "launcherLogoColorOverride": "",
       "launcherLogoSizeOffset": 0,
@@ -45,13 +45,18 @@
       "maxVisibleRunningApps": 0,
       "showOverflowBadge": true,
       "showTrash": false,
-      "trashFileManager": "default",
+      "trashFileManager": "nautilus",
       "trashCustomCommand": "",
       "magnification": false,
       "magnificationScale": 130,
       "magnificationProfile": "parabolic",
       "magnificationExpand": false,
-      "order": [],
+      "order": [
+        "dock_launcher",
+        "dock_1792340966925",
+        "dock_apps",
+        "dock_trash"
+      ],
       "widgets": [
         {
           "id": "dock_launcher",
@@ -61,7 +66,8 @@
         {
           "id": "dock_apps",
           "widgetId": "appsDock",
-          "enabled": true
+          "enabled": true,
+          "appsDockHideIndicators": false
         },
         {
           "id": "dock_trash",

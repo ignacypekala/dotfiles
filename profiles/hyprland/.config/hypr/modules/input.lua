@@ -13,7 +13,7 @@ hl.config({
         float_switch_override_focus = 0,
         focus_on_close = 2,
 
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0.3, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
             natural_scroll = true,

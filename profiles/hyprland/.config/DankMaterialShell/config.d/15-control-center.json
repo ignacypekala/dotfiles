@@ -14,27 +14,27 @@
     {
       "id": "wifi",
       "enabled": true,
-      "w": 4,
-      "h": 1,
-      "col": 4,
-      "row": 1
+      "w": 2,
+      "h": 2,
+      "col": 2,
+      "row": 3
     },
     {
       "id": "audioOutput",
       "enabled": true,
       "w": 2,
       "h": 2,
-      "col": 0,
+      "col": 2,
       "row": 1,
       "small": false
     },
     {
       "id": "idleInhibitor",
       "enabled": true,
-      "w": 4,
+      "w": 3.5,
       "h": 1,
-      "col": 4,
-      "row": 2,
+      "col": 0.5,
+      "row": 5,
       "small": false
     },
     {
@@ -42,17 +42,17 @@
       "enabled": true,
       "w": 2,
       "h": 2,
-      "col": 2,
-      "row": 1
+      "col": 4,
+      "row": 3
     },
     {
       "id": "doNotDisturb",
       "enabled": true,
-      "w": 4,
+      "w": 3.5,
       "h": 1,
       "small": false,
-      "col": 0,
-      "row": 3
+      "col": 4,
+      "row": 5
     },
     {
       "id": "quickTiles",
@@ -102,15 +102,28 @@
       "group": "mvcwlz0uprerhmhps8d"
     },
     {
-      "id": "diskUsage",
+      "id": "bluetooth",
       "enabled": true,
-      "w": 4,
-      "h": 1,
-      "instanceId": "mvcwq32rij4ob40q23g3zc6vuj345z",
-      "mountPath": "/home",
-      "showMountPath": true,
+      "w": 2,
+      "h": 2,
       "col": 4,
-      "row": 3
+      "row": 1
+    },
+    {
+      "id": "volumeSlider",
+      "enabled": true,
+      "w": 1.5,
+      "h": 4,
+      "col": 0.5,
+      "row": 1
+    },
+    {
+      "id": "inputVolumeSlider",
+      "enabled": true,
+      "w": 1.5,
+      "h": 4,
+      "col": 6,
+      "row": 1
     }
   ],
   "controlCenterColumns": 8

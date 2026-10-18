@@ -48,5 +48,7 @@
   "notificationHistoryMaxCount": 30,
   "notificationHistorySaveLow": false,
   "notificationSummaryFontSize": 0,
-  "muxUseCustomCommand": false
+  "muxUseCustomCommand": false,
+  "useAutoLocation": true,
+  "launcherStyle": "full"
 }

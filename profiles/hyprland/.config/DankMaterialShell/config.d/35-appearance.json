@@ -14,5 +14,10 @@
   "matugenSeedColor": "",
   "matugenContrast": 0,
   "matugenSourceMode": "dominant",
-  "springBounce": 1
+  "springBounce": 1,
+  "widgetColorMode": "default",
+  "popupTransparency": 1,
+  "foregroundLayerTransparency": 1,
+  "blurForegroundLayers": true,
+  "blurLayerOutlineOpacity": 0
 }

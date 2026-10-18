@@ -238,7 +238,8 @@
       "islandNotificationBadgeClearOnOpen": true,
       "islandSatelliteFollowInterfaceStyle": true,
       "islandSatelliteTransparency": 0.24,
-      "islandSatelliteGap": 6
+      "islandSatelliteGap": 6,
+      "islandUseOverlayLayer": false
     },
     {
       "id": "dot1790451880374",

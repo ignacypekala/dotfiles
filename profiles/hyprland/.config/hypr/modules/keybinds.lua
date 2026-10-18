@@ -19,10 +19,15 @@ hl.bind(combo(mod, "V"), hl.dsp.window.float({ action = "toggle" }))
 hl.bind(combo(mod, "R"), hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
 hl.bind(combo(mod, "C"), hl.dsp.exec_cmd("dms ipc call control-center toggle"))
 hl.bind(combo(mod, "SHIFT", "C"), hl.dsp.exec_cmd("dms ipc call powermenu toggle"))
-hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"))
+hl.bind(combo(mod, "U"), hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"))
+
+-- TODO: enter a submap where META + TAB cycles island activities
+hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call island toggle home"))
+hl.bind(combo(mod, "N"), hl.dsp.exec_cmd("dms ipc call island toggle notifications"))
+hl.bind(combo(mod, "A"), hl.dsp.exec_cmd("dms ipc call island toggle media"))
+hl.bind(combo(mod, "W"), hl.dsp.exec_cmd("dms ipc call island toggle weather"))
 
 hl.bind(combo(mod, "E"), hl.dsp.exec_cmd(run_cmd(programs.fileManager)))
-hl.bind(combo(mod, "N"), hl.dsp.exec_cmd(run_cmd(programs.terminal)))
 hl.bind(combo(mod, "RETURN"), hl.dsp.exec_cmd(run_cmd(programs.terminal)))
 
 hl.bind(combo(mod, "H"), hl.dsp.focus({ direction = "left" }))
@@ -152,7 +157,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
-hl.bind("Print", hl.dsp.exec_cmd("dms screenshot region --no-file --no-confirm"))
+hl.bind("Print", hl.dsp.exec_cmd("dms screenshot region --no-file --no-confirm --reset --no-notify"))
 
 -- silly-vim-addict-side-effect-preventio-inator
 local ctrl_w = hl.bind("CTRL + W", function()

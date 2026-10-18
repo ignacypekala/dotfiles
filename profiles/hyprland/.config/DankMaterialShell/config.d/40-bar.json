@@ -401,6 +401,5 @@
   "frameLauncherEmergeSide": "top",
   "frameBarInsetPadding": 8,
   "connectedFrameBarStyleBackups": {},
-  "frameEnabled": false,
-  "barInsetPaddingSyncAll": false,
+  "frameEnabled": false
 }

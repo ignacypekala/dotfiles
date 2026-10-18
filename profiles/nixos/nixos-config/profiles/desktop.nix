@@ -110,6 +110,9 @@ in
             '';
         };
         configHome = "/home/ignacy";
+        configFiles = [
+            "/home/ignacy/.config/dank-greeter/settings.json"
+        ];
         package = dank-greeter.packages.${pkgs.system}.default;
         quickshell.package = unstable.quickshell;
     };

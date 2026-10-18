@@ -19,7 +19,6 @@ hl.config({
             enabled = true
         }
     },
-
     decoration = {
         rounding = 10,
         rounding_power = 5,

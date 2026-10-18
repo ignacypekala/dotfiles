@@ -1,0 +1,52 @@
+{
+  "configVersion": 42,
+  "motionEffect": 3,
+    "appIdSubstitutions": [],
+  "cursorSettings": {
+    "theme": "System Default",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": false,
+      "hideAfterInactiveMs": 0
+    },
+    "hyprland": {
+      "hideOnKeyPress": false,
+      "hideOnTouch": false,
+      "inactiveTimeout": 0
+    },
+    "dwl": {
+      "cursorHideTimeout": 0
+    }
+  },
+  "notepadDefaultMode": "popout",
+  "osdAlwaysShowValue": false,
+  "osdPosition": 7,
+  "osdVolumeEnabled": false,
+  "osdMediaVolumeEnabled": false,
+  "osdMediaPlaybackEnabled": true,
+  "osdPowerProfileEnabled": true,
+  "appDrawerSectionViewModes": {
+    "apps": "list"
+  },
+  "launchPrefix": "uwsm app --",
+  "displayNameMode": "model",
+  "screenPreferences": {
+    "notepad": [
+      "all"
+    ]
+  },
+  "dmsWindowsFloatingSeeded": [
+    "hyprland"
+  ],
+  "displayNameMode": "model",
+  "hyprlandGlowEnabled": false,
+  "notificationCompactMode": false,
+  "notificationPopupBodyInvokesAction": false,
+  "notificationTimeoutNormal": 10000,
+  "notificationPopupPrivacyMode": false,
+  "notificationHistoryMaxAgeDays": 1,
+  "notificationHistoryMaxCount": 30,
+  "notificationHistorySaveLow": false,
+  "notificationSummaryFontSize": 0,
+  "muxUseCustomCommand": false
+}

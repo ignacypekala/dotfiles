@@ -12,5 +12,10 @@
     "dms_qr_generator": {
       "trigger": "qrg"
     }
+  },
+  "launcherPluginVisibility": {
+    "dankHyprlandWindows": {
+      "allowWithoutTrigger": true
+    }
   }
 }

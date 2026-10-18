@@ -10,14 +10,14 @@
       "id": "clock",
       "w": 1,
       "h": 2,
-      "col": 0,
+      "col": 2,
       "row": 0
     },
     {
       "id": "weather",
       "w": 2,
       "h": 2,
-      "col": 1,
+      "col": 0,
       "row": 0
     },
     {

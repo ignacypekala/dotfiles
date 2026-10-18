@@ -16,15 +16,17 @@ hl.bind(combo(mod, "Z"), hl.dsp.window.fullscreen({ mode = "maximized", action =
 hl.bind(combo(mod, "F"), hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(combo(mod, "V"), hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(combo(mod, "R"), hl.dsp.exec_cmd("dms ipc call spotlight toggle"))
+hl.bind(combo(mod, "R"), hl.dsp.exec_cmd("dms ipc call spotlight toggleWith apps"))
+hl.bind(combo(mod, "S"), hl.dsp.exec_cmd("dms ipc call spotlight toggleWith all"))
+
 hl.bind(combo(mod, "C"), hl.dsp.exec_cmd("dms ipc call control-center toggle"))
 hl.bind(combo(mod, "SHIFT", "C"), hl.dsp.exec_cmd("dms ipc call powermenu toggle"))
 hl.bind(combo(mod, "U"), hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"))
+hl.bind(combo(mod, "N"), hl.dsp.exec_cmd("dms ipc call notifications toggle"))
 
 -- TODO: enter a submap where META + TAB cycles island activities
-hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call island toggle home"))
-hl.bind(combo(mod, "N"), hl.dsp.exec_cmd("dms ipc call island toggle notifications"))
-hl.bind(combo(mod, "A"), hl.dsp.exec_cmd("dms ipc call island toggle media"))
+hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call dash toggle overview"))
+hl.bind(combo(mod, "A"), hl.dsp.exec_cmd("dms ipc call dash toggle media"))
 hl.bind(combo(mod, "W"), hl.dsp.exec_cmd("dms ipc call island toggle weather"))
 
 hl.bind(combo(mod, "E"), hl.dsp.exec_cmd(run_cmd(programs.fileManager)))

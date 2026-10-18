@@ -131,7 +131,8 @@
           "id": "battery",
           "enabled": true,
           "background": false,
-          "batteryStyle": "outline"
+          "batteryStyle": "outline",
+          "showBatteryPowerDischarging": false
         },
         {
           "id": "controlCenterButton",

@@ -22,7 +22,7 @@
   "notepadDefaultMode": "popout",
   "osdAlwaysShowValue": false,
   "osdPosition": 5,
-  "osdVolumeEnabled": false,
+  "osdVolumeEnabled": true,
   "osdMediaVolumeEnabled": false,
   "osdMediaPlaybackEnabled": true,
   "osdPowerProfileEnabled": true,

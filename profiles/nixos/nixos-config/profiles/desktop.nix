@@ -1,8 +1,8 @@
 { pkgs, unstable, ... }:
 
 let
-    dms = builtins.getFlake "github:AvengeMedia/DankMaterialShell";
-    dank-greeter = builtins.getFlake "github:AvengeMedia/dank-greeter";
+    dms = builtins.getFlake "github:AvengeMedia/DankMaterialShell/5a480101c682e468a9fe3e95412a0d42e741e7de";
+    dank-greeter = builtins.getFlake "github:AvengeMedia/dank-greeter/a8b106330db763abd17bcb8eba2f58cb94ebf7a8";
 in
 {
     disabledModules = [

@@ -10,6 +10,7 @@ in
         ../../profiles/desktop.nix
         ../../modules/steam.nix
         ../../modules/nvidia.nix
+        ../../modules/quiet-boot.nix
     ];
     _module.args.unstable = unstable;
 

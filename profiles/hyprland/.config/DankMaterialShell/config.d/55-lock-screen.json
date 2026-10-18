@@ -89,5 +89,7 @@
         "shape": "round"
       }
     }
-  ]
+  ],
+    "lockScreenPowerOffMonitorsOnLock": true,
+  "enableFprint": true
 }

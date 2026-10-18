@@ -1,10 +1,9 @@
 {
   "acMonitorTimeout": 120,
-  "acLockTimeout": 180,
-  "acPostLockMonitorTimeout": 30,
+  "acLockTimeout": 300,
+  "acPostLockMonitorTimeout": 15,
   "lockBeforeSuspend": true,
   "fadeToLockGracePeriod": 2,
-
   "powerMenuActions": [
     "reboot",
     "logout",
@@ -15,5 +14,10 @@
     "softreboot"
   ],
   "customPowerActionReboot": "hyprshutdown --post-cmd \"dms kill; reboot\"",
-  "customPowerActionPowerOff": "hyprshutdown --post-cmd \"dms kill; poweroff\""
+  "customPowerActionPowerOff": "hyprshutdown --post-cmd \"dms kill; poweroff\"",
+  "fadeToDpmsGracePeriod": 2,
+  "batteryLockTimeout": 300,
+  "batteryMonitorTimeout": 120,
+  "batteryPostLockMonitorTimeout": 15,
+  "powerMenuGridLayout": false
 }

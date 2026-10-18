@@ -41,5 +41,9 @@
       "col": 0,
       "row": 2
     }
-  ]
+  ],
+  "spotlightSectionViewModes": {
+    "apps": "list"
+  },
+  "spotlightBarShowModeChips": false
 }

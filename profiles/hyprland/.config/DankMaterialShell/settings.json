@@ -1,2 +1,6 @@
 {
+  "spotlightSectionViewModes": {
+    "apps": "list"
+  },
+  "spotlightBarShowModeChips": false
 }

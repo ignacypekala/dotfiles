@@ -46,10 +46,11 @@
           "all"
         ],
         "syncPositionAcrossScreens": true,
-        "style": "expressive",
+        "style": "minimal",
         "profileVisibility": "always",
         "passwordVisibility": "always"
-      }
+      },
+      "name": "Password"
     },
     {
       "id": "lock_notifications",

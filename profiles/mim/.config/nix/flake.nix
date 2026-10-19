@@ -1,15 +1,19 @@
 {
     description = "Nix packages for the students machine";
 
-    inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    inputs = {
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+        nixGL.url = "github:nix-community/nixGL";
+    };
 
-    outputs = { self, nixpkgs }:
+    outputs = { self, nixpkgs, nixGL }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
             };
+            nixGLWrap = nixGL.packages.${system}.nixGLDefault;
             wrapGuiApp = pkg: pkgs.symlinkJoin {
                 name = "${pkg.name}-chroot-wrapped";
                 paths = [ pkg ];
@@ -24,7 +28,7 @@
 
                             # Prepend the chroot wrapper and inject the Nix profile PATH
                             # sh -c is used to find $HOME
-                            sed -i "s|^Exec=\(.*\)|Exec=sh -c 'exec \"\$HOME/.local/bin/nix-user-chroot\" \"\$HOME/.nix\" env PATH=\"\$HOME/.nix-profile/bin:/usr/bin\" \"\$@\"' sh \1|g" "$desktop_file"
+                            sed -i "s|^Exec=\(.*\)|Exec=sh -c 'exec \"\$HOME/.local/bin/nix-user-chroot\" \"\$HOME/.nix\" env PATH=\"\$HOME/.nix-profile/bin:/usr/bin\" ${nixGLWrap}/bin/nixGL \"\$@\"' sh \1|g" "$desktop_file"
                         done
                     fi
                 '';

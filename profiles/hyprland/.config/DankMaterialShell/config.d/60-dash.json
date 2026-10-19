@@ -3,6 +3,9 @@
     "clock": {
       "date": true,
       "tone": ""
+    },
+    "calendar": {
+      "weekends": true
     }
   },
   "dashCards": [

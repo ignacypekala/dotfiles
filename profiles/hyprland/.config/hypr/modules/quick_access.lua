@@ -23,6 +23,11 @@ local common_programs = {
         class = "tidal-hifi",
         app = "tidal-hifi",
         key = "M" -- Music
+    },
+    {
+        class = "com.danklinux.dankcalendar",
+        app = "dcal",
+        key = "C"
     }
 }
 

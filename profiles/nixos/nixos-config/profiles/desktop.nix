@@ -3,6 +3,7 @@
 let
     dms = builtins.getFlake "github:AvengeMedia/DankMaterialShell/5a480101c682e468a9fe3e95412a0d42e741e7de";
     dank-greeter = builtins.getFlake "github:AvengeMedia/dank-greeter/a8b106330db763abd17bcb8eba2f58cb94ebf7a8";
+    dank-calendar = builtins.getFlake "github:AvengeMedia/dankcalendar/ecdfbac5271e68a5989d8d86689fb8c2ea8ddca1";
 in
 {
     disabledModules = [
@@ -13,6 +14,7 @@ in
     imports = [
         dms.nixosModules.dank-material-shell
         dank-greeter.nixosModules.default
+        dank-calendar.nixosModules.default
     ];
 
     environment.systemPackages = with pkgs; [
@@ -114,6 +116,11 @@ in
             "/home/ignacy/.config/dank-greeter/settings.json"
         ];
         package = dank-greeter.packages.${pkgs.system}.default;
+        quickshell.package = unstable.quickshell;
+    };
+    programs.dank-calendar = {
+        enable = true;
+        package = dank-calendar.packages.${pkgs.system}.default;
         quickshell.package = unstable.quickshell;
     };
 

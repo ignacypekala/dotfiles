@@ -20,5 +20,6 @@
   "batteryLockTimeout": 300,
   "batteryMonitorTimeout": 120,
   "batteryPostLockMonitorTimeout": 15,
-  "powerMenuGridLayout": false
+  "powerMenuGridLayout": false,
+  "powerMenuDefaultAction": "reboot"
 }

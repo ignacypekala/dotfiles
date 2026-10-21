@@ -50,5 +50,7 @@
   "notificationSummaryFontSize": 0,
   "muxUseCustomCommand": false,
   "useAutoLocation": true,
-  "launcherStyle": "full"
+  "launcherStyle": "full",
+  "widgetBackgroundColor": "default",
+  "widgetBackgroundCustomColor": "#6750A4"
 }

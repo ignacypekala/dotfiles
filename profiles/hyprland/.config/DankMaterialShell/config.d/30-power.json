@@ -11,7 +11,8 @@
     "lock",
     "suspend",
     "restart",
-    "softreboot"
+    "softreboot",
+    "hibernate"
   ],
   "customPowerActionReboot": "hyprshutdown --post-cmd \"dms kill; reboot\"",
   "customPowerActionPowerOff": "hyprshutdown --post-cmd \"dms kill; poweroff\"",

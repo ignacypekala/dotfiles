@@ -25,6 +25,7 @@
         bear
         fastfetch
         valgrind
+        jdk
 
         tmux
         fzf

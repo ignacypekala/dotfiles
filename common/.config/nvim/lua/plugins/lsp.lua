@@ -85,7 +85,7 @@ return {
         vim.lsp.enable('pyright')
 
         vim.lsp.config('ruff', {
-            on_attach = function(client, bufnr)
+            on_attach = function(client)
                 if client.name == 'ruff' then
                   client.server_capabilities.hoverProvider = false
                 end

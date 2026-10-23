@@ -7,6 +7,9 @@ return {
                 theme = require('lualine-theme'),
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
+                disabled_filetypes = {
+                    statusline = { 'dashboard' },
+                },
             },
             sections = {
                 lualine_a = { 'mode', { 'selectioncount', padding = 1 } },

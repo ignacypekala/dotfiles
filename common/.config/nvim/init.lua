@@ -83,8 +83,16 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
-vim.cmd.packadd('nvim.undotree')
-vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
+-- Disable unused archive plugins (netrw left enabled for gx support)
+vim.g.loaded_gzip = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tutor = 1
+
+vim.keymap.set("n", "<leader>u", function()
+    vim.cmd.packadd('nvim.undotree')
+    vim.cmd.Undotree()
+end)
 
 -- Appearance
 vim.opt.termguicolors = true

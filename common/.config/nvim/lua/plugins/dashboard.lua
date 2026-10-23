@@ -9,10 +9,34 @@ local banner = {
 }
 
 local header = function()
-    local fortune = vim.fn.systemlist('fortune -s')
+    local cache_path = vim.fn.stdpath('cache') .. '/fortune.txt'
+    local fortune_lines
+    local f = io.open(cache_path, 'r')
+    if f then
+        local content = f:read('*a')
+        f:close()
+        if content and #content > 0 then
+            fortune_lines = vim.split(vim.trim(content), '\n')
+        end
+    end
+    if not fortune_lines then
+        fortune_lines = vim.fn.systemlist('fortune -s')
+    end
+
+    -- Refresh cache in the background for the next session
+    vim.system({ 'fortune', '-s' }, { text = true }, function(obj)
+        if obj.code == 0 and obj.stdout and #obj.stdout > 0 then
+            local out_f = io.open(cache_path, 'w')
+            if out_f then
+                out_f:write(obj.stdout)
+                out_f:close()
+            end
+        end
+    end)
+
     local h = vim.deepcopy(banner)
     table.insert(h, '')
-    vim.list_extend(h, fortune)
+    vim.list_extend(h, fortune_lines)
     table.insert(h, '')
     return h
 end
@@ -27,9 +51,6 @@ return {
         require('dashboard').setup({
             theme = "doom",
             disable_move = false,
-            hide = {
-                statusline = true,
-            },
             config = {
                 header = header(),
                 center = {

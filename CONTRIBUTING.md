@@ -1,0 +1,125 @@
+# Contributing guide
+
+Contributions are more than welcome!
+
+This document assumes that you already know how to use GitHub and Git.
+If that's not the case, we recommend [learning about it first here](https://docs.github.com/en/get-started/quickstart/hello-world).
+
+## Strict No LLM / No AI Policy
+
+No LLMs for issues.
+
+No LLMs for pull requests.
+
+No LLMs for comments on issues/PRs, including translation.
+English is encouraged, but not required.
+You are welcome to post in your native language and rely on others
+to have their own translation tools of choice to interpret your words.
+
+## First-time contributors
+
+I label issues that I think should be easy for first-time contributors
+with [`good-first-issue`](https://github.com/mrcjkb/rustaceanvim/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22).
+
+## Commit messages / PR title
+
+Please ensure your pull request title conforms to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+## CI
+
+CI checks are run using [`nix`](https://nixos.org/download.html#download-nix).
+
+## Development
+
+### Dev environment
+
+We use the following tools:
+
+#### Formatting
+
+- [`.editorconfig`](https://editorconfig.org/) (with [`editorconfig-checker`](https://github.com/editorconfig-checker/editorconfig-checker))
+- [`stylua`](https://github.com/JohnnyMorganz/StyLua) [Lua]
+- [`alejandra`](https://github.com/kamadorueda/alejandra) [Nix]
+
+#### Linting
+
+- [`luacheck`](https://github.com/mpeterv/luacheck) [Lua]
+- [`markdownlint`](https://github.com/DavidAnson/markdownlint) [Markdown]
+
+#### Static type checking
+
+- [`lua-language-server`](https://github.com/LuaLS/lua-language-server/wiki/Diagnosis-Report#create-a-report)
+
+### Nix devShell
+
+- Requires [flakes](https://wiki.nixos.org/wiki/Flakes) to be enabled.
+
+This project provides a `flake.nix` that can
+bootstrap all of the above development tools.
+
+To enter a development shell:
+
+```console
+nix develop
+```
+
+To apply formatting, while in a devShell, run
+
+```console
+pre-commit run --all
+```
+
+If you use [`direnv`](https://direnv.net/),
+just run `direnv allow` and you will be dropped in this devShell.
+
+### Running tests
+
+I use [`busted`](https://lunarmodules.github.io/busted/) for testing,
+but with Neovim as the Lua interpreter.
+
+The easiest way to run tests is with Nix (see below).
+
+If you do not use Nix, you can also run the test suite using `luarocks test`.
+For more information on how to set up Neovim as a Lua interpreter, see
+
+- The [neorocks tutorial](https://github.com/lumen-oss/neorocks#without-neolua).
+
+Or
+
+- [`nlua`](https://github.com/mfussenegger/nlua).
+
+> [!NOTE]
+>
+> The Nix devShell sets up `luarocks test` and `busted` to use Neovim as the interpreter.
+
+### Running tests and checks with Nix
+
+If you just want to run all checks that are available, run:
+
+```console
+nix flake check -L --option sandbox false
+```
+
+To run tests locally, using Nix:
+
+```console
+nix build .#checks.<your-system>.integration-nightly -L --option sandbox false
+```
+
+For example:
+
+```console
+nix build .#checks.x86_64-linux.integration-nightly -L --option sandbox false
+```
+
+For formatting and linting:
+
+```console
+nix build .#checks.<your-system>.pre-commit-check -L
+```
+
+For static type checking:
+
+```console
+nix build .#checks.<your-system>.type-check-nightly -L
+```

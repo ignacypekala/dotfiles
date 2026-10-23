@@ -56,7 +56,7 @@ return {
             signature = {
                 enabled = true,
                 window = {
-                    border = 'space'
+                    border = 'solid',
                 }
             },
         })

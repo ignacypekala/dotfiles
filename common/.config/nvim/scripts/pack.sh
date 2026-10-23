@@ -53,7 +53,7 @@ case "$cmd" in
         if [[ "$target" == "fzf" || "$target" == "all" ]] && [[ -d "telescope-fzf-native.nvim" ]]; then
             echo "Building telescope-fzf-native..."
             cmake -S telescope-fzf-native.nvim -B telescope-fzf-native.nvim/build -DCMAKE_BUILD_TYPE=Release
-            cmake --build telescope-fzf-native.nvim/build --config Release --target install
+            cmake --build telescope-fzf-native.nvim/build --config Release
         fi
         if [[ "$target" == "luasnip" || "$target" == "all" ]] && [[ -d "luasnip" ]]; then
             echo "Building luasnip jsregexp..."

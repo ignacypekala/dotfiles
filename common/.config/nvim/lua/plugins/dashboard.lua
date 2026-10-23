@@ -1,9 +1,3 @@
-local github = require("utils.pack_providers").github
-
-vim.pack.add({
-    github .. "nvimdev/dashboard-nvim"
-})
-
 local banner = {
     "                                            o8o                     ",
     "                                             `o                     ",
@@ -16,27 +10,36 @@ local banner = {
 
 local header = function()
     local fortune = vim.fn.systemlist('fortune -s')
-    local header = vim.deepcopy(banner)
-    table.insert(header, '')
-    vim.list_extend(header, fortune)
-    table.insert(header, '')
-    return header
+    local h = vim.deepcopy(banner)
+    table.insert(h, '')
+    vim.list_extend(h, fortune)
+    table.insert(h, '')
+    return h
 end
 
-require('dashboard').setup({
-    theme = "doom",
-    disable_move = false,
-    hide = {
-        statusline = true,
-    },
-    config = {
-        header = header(),
-        center = {
-            {
-                desc = ""
+return {
+    "dashboard-nvim",
+    lazy = false,
+    enabled = function()
+        return vim.fn.argc() == 0
+    end,
+    after = function()
+        require('dashboard').setup({
+            theme = "doom",
+            disable_move = false,
+            hide = {
+                statusline = true,
+            },
+            config = {
+                header = header(),
+                center = {
+                    {
+                        desc = ""
+                    }
+                },
+                footer = {""},
+                vertical_center = true
             }
-        },
-        footer = {""},
-        vertical_center = true
-    }
-})
+        })
+    end,
+}

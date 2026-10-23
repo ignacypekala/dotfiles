@@ -4,6 +4,7 @@ return {
     keys = {
         { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
+    ---@diagnostic disable-next-line: param-type-mismatch
     lazy = not (vim.fn.argc() > 0 and vim.fn.isdirectory(vim.fn.argv(0)) == 1),
     before = function()
         vim.cmd.packadd("mini.icons")

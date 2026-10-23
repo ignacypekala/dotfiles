@@ -1,5 +1,6 @@
 return {
     "luasnip",
+    -- loaded by blink
     lazy = true,
     after = function()
         local ls = require("luasnip")

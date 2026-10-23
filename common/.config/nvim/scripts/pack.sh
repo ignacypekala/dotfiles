@@ -59,6 +59,10 @@ case "$cmd" in
             echo "Building luasnip jsregexp..."
             make -C luasnip install_jsregexp 2>/dev/null || true
         fi
+        if [[ "$target" == "blink" || "$target" == "all" ]] && [[ -d "blink.cmp" ]]; then
+            echo "Building blink.cmp native library via official pipeline..."
+            nvim --headless -c "packadd blink.lib" -c "packadd blink.cmp" -c "lua require('blink.cmp').build():pwait()" -c "qall!"
+        fi
         ;;
     *)
         usage

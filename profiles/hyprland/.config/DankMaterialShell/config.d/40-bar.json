@@ -239,7 +239,8 @@
       "islandSatelliteFollowInterfaceStyle": false,
       "islandSatelliteTransparency": 0.58,
       "islandSatelliteGap": 12,
-      "islandUseOverlayLayer": false
+      "islandUseOverlayLayer": false,
+      "islandInteractionMode": "hybrid"
     },
     {
       "id": "dot1790451880374",

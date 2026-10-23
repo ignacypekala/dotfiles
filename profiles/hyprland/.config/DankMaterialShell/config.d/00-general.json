@@ -22,9 +22,9 @@
   "notepadDefaultMode": "popout",
   "osdAlwaysShowValue": false,
   "osdPosition": 5,
-  "osdVolumeEnabled": true,
+  "osdVolumeEnabled": false,
   "osdMediaVolumeEnabled": false,
-  "osdMediaPlaybackEnabled": true,
+  "osdMediaPlaybackEnabled": false,
   "osdPowerProfileEnabled": true,
   "appDrawerSectionViewModes": {
     "apps": "list"
@@ -52,5 +52,7 @@
   "useAutoLocation": true,
   "launcherStyle": "full",
   "widgetBackgroundColor": "default",
-  "widgetBackgroundCustomColor": "#6750A4"
+  "widgetBackgroundCustomColor": "#6750A4",
+  "displayProfileAutoSelect": false,
+  "mediaExcludePlayers": []
 }

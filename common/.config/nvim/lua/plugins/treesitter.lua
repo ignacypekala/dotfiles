@@ -1,7 +1,10 @@
 local github = require("utils.pack_providers").github
 
 vim.pack.add(
-    { github.."nvim-treesitter/nvim-treesitter" }
+    {
+        github.."nvim-treesitter/nvim-treesitter",
+        github.."nvim-treesitter/nvim-treesitter-context"
+    }
 )
 
 local treesitter_langs = {
@@ -40,3 +43,13 @@ vim.api.nvim_create_autocmd('FileType', {
 }
 )
 
+require("treesitter-context").setup({
+    enable = true,
+    max_lines = 3,
+    min_window_height = 0,
+    line_numbers = true,
+    multiline_threshold = 20,
+    trim_scope = 'outer',
+    mode = 'cursor',
+    separator = nil,
+})

@@ -91,7 +91,7 @@
       }
     }
   ],
-    "lockScreenPowerOffMonitorsOnLock": true,
+  "lockScreenPowerOffMonitorsOnLock": true,
   "enableFprint": true,
   "greeterWidgetInstances": [
     {
@@ -183,5 +183,8 @@
         "syncPositionAcrossScreens": true
       }
     }
-  ]
+  ],
+  "lockPamPath": "",
+  "lockPamInlineFprint": false,
+  "lockPamExternallyManaged": false
 }

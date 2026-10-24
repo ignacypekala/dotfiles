@@ -8,6 +8,7 @@
     environment.systemPackages = with pkgs; [
         gcc
         gnumake
+        cmake
         bash
         tree
         file

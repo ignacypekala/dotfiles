@@ -1,1 +1,13 @@
 **/.dms-backups/**
+
+# Neovim plugin build artifacts
+common/.config/nvim/pack/plugins/**/build/
+common/.config/nvim/pack/plugins/**/target/
+common/.config/nvim/pack/plugins/**/parser/
+common/.config/nvim/pack/plugins/**/parser-info/
+common/.config/nvim/pack/plugins/**/lib/*.so
+common/.config/nvim/pack/plugins/**/lib/*.dll
+common/.config/nvim/pack/plugins/**/lib/*.dylib
+*.so
+*.dll
+*.dylib

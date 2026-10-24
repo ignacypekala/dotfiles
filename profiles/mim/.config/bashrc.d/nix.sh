@@ -24,3 +24,5 @@ alias rebuild="nix profile upgrade $nix_config --impure"
 # Ensure ssh uses the local config to avoid some nix-user-chroot perms tomfoolery.
 export GIT_SSH_COMMAND="ssh -F $HOME/.ssh/config"
 alias ssh="ssh -F $HOME/.ssh/config"
+
+export NIXPKGS_ALLOW_UNFREE=1

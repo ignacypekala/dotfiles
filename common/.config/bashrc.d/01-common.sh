@@ -33,3 +33,7 @@ alias nv='nvim'
 alias tm='tmux-open.sh "$PWD"'
 alias ff='fastfetch'
 alias py='python'
+function lsr() {
+    num=${1:-10}
+    ls --color -Artls | tail -n $num
+}

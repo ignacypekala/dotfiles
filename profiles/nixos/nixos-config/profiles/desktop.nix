@@ -15,6 +15,7 @@ in
         dms.nixosModules.dank-material-shell
         dank-greeter.nixosModules.default
         dank-calendar.nixosModules.default
+        ../modules/cursor.nix
     ];
 
     environment.systemPackages = with pkgs; [
@@ -82,8 +83,6 @@ in
             name = "hyprland";
             customConfig = ''
                 hl.env("DMS_RUN_GREETER", "1")
-                hl.env("HYPRCURSOR_THEME", "Bibata Modern Ice")
-                hl.env("HYPRCURSOR_SIZE", "24")
                 hl.config({
                     animations = {
                         enabled = false,

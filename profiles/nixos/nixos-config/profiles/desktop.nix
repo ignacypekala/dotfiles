@@ -1,8 +1,6 @@
 { pkgs, unstable, ... }:
 
 let
-    dms = builtins.getFlake "github:AvengeMedia/DankMaterialShell/5a480101c682e468a9fe3e95412a0d42e741e7de";
-    dank-greeter = builtins.getFlake "github:AvengeMedia/dank-greeter/a8b106330db763abd17bcb8eba2f58cb94ebf7a8";
     dank-calendar = builtins.getFlake "github:AvengeMedia/dankcalendar/ecdfbac5271e68a5989d8d86689fb8c2ea8ddca1";
 in
 {
@@ -12,10 +10,10 @@ in
     ];
 
     imports = [
-        dms.nixosModules.dank-material-shell
-        dank-greeter.nixosModules.default
         dank-calendar.nixosModules.default
         ../modules/cursor.nix
+        <nixos-unstable/nixos/modules/services/display-managers/dux-greeter.nix>
+        <nixos-unstable/nixos/modules/programs/wayland/dux-shell.nix>
     ];
 
     environment.systemPackages = with pkgs; [
@@ -68,16 +66,16 @@ in
         xwayland.enable = true;
     };
 
-    programs.dank-material-shell = {
+    programs.dux-shell = {
         enable = true;
         systemd = {
             enable = true;
             restartIfChanged = true;
         };
-        package = dms.packages.${pkgs.system}.default;
+        package = unstable.dux-shell;
         quickshell.package = unstable.quickshell;
     };
-    programs.dms-greeter = {
+    services.displayManager.dux-greeter = {
         enable = true;
         compositor = {
             name = "hyprland";
@@ -114,7 +112,7 @@ in
         configFiles = [
             "/home/ignacy/.config/dank-greeter/settings.json"
         ];
-        package = dank-greeter.packages.${pkgs.system}.default;
+        package = unstable.dux-greeter;
         quickshell.package = unstable.quickshell;
     };
     programs.dank-calendar = {

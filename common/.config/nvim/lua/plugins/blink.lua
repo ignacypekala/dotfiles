@@ -8,17 +8,10 @@ return {
     after = function()
         local blink = require('blink.cmp')
 
+        print("blink")
         blink.setup({
             keymap = {
-                preset = 'default',
-                ['<C-y>'] = false,
-                ['<Tab>'] = { 'select_next', 'fallback'},
-                ['<S-Tab>'] = { 'select_prev', 'fallback'},
-                ['<Enter>'] = { 'accept', 'fallback'},
-                ['<C-n>'] = { 'snippet_forward', 'fallback' },
-                ['<C-p>'] = { 'snippet_backward', 'fallback' },
-                ['<C-k>'] = { 'show', 'show_documentation', 'hide_documentation' },
-                ['<C-c>'] = { 'cancel', 'fallback' }
+                preset = 'super-tab',
             },
             appearance = {
                 nerd_font_variant = 'mono'
@@ -62,3 +55,4 @@ return {
         })
     end
 }
+

@@ -38,7 +38,7 @@ return {
                 if args.match == 'c' or args.match == 'cpp' then
                     vim.bo.cindent = true
                 else
-                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
                 end
                 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                 vim.wo.foldmethod = "expr"

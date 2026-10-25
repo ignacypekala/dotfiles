@@ -2,14 +2,12 @@ return {
     "lualine.nvim",
     event = "DeferredUIEnter",
     after = function()
-        require("lualine").setup({
+        local lualine = require("lualine")
+        lualine.setup({
             options = {
                 theme = require('lualine-theme'),
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
-                disabled_filetypes = {
-                    statusline = { 'dashboard' },
-                },
             },
             sections = {
                 lualine_a = { 'mode', { 'selectioncount', padding = 1 } },

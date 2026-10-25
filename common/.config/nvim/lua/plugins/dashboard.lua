@@ -51,14 +51,15 @@ return {
         require('dashboard').setup({
             theme = "doom",
             disable_move = false,
+            hide = {
+                statusline = false
+            },
             config = {
                 header = header(),
                 center = {
-                    {
-                        desc = ""
-                    }
+                    { desc = "" }
                 },
-                footer = {""},
+                footer = { "" },
                 vertical_center = true
             }
         })

@@ -1,3 +1,4 @@
-local github = require("utils.pack_providers").github
-
-vim.pack.add({ github .. "tpope/vim-fugitive" })
+return {
+    "vim-fugitive",
+    cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse" }
+}

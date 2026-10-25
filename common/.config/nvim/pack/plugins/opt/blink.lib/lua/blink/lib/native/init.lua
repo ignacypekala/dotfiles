@@ -1,0 +1,219 @@
+local os = jit.os:lower()
+local lib_extension = (os == 'osx' or os == 'mac') and '.dylib' or os == 'windows' and '.dll' or '.so'
+
+--- @class blink.lib.native
+local native = {}
+
+--- Get information about the current platform
+--- @return blink.lib.native.Platform
+function native.platform()
+  local platform = require('blink.lib.native.platform')
+  local platform_os = platform.os()
+  local arch = platform.arch()
+  local libc = platform.libc(platform_os)
+  local triple = platform.triple(platform_os, arch, libc)
+  return { os = platform_os, arch = arch, libc = libc, triple = triple, lib_extension = lib_extension }
+end
+
+--- @param repo_root string Root of the repository
+--- @param name string Name of the artifact to be used when requiring it (e.g. 'blink_cmp_fuzzy')
+--- @param commit_hash? string Commit hash of the repository. If omitted, resulting filename will be `lib$name.so` instead of `lib$name.so.hash`.
+--- @return string library_path
+function native.library_path(repo_root, name, commit_hash)
+  repo_root = vim.fs.normalize(repo_root)
+  local path = repo_root .. '/lib/lib' .. name .. lib_extension
+  if commit_hash ~= nil then return path .. '.' .. commit_hash:sub(1, 7) end
+  return path
+end
+
+--- @param name string Name of the library to resolve (e.g. 'blink_cmp_fuzzy')
+--- @param commit_hash? string Commit hash of the library to resolve (e.g. 'e5678fe566e86553403b3129a3684389c84fafb5'). If omitted, `lib$name.so.hash` will be skipped, and only `lib$name.so` will be attempted.
+--- @return string? library_path
+function native.resolve(name, commit_hash)
+  -- $runtimepath/lib/lib*.so.hash
+  local lib_paths = commit_hash ~= nil
+      and vim.api.nvim_get_runtime_file('lib/lib' .. name .. lib_extension .. '.' .. commit_hash:sub(1, 7), true)
+    or {}
+  if #lib_paths == 0 then
+    -- fallback to $runtimepath/lib/lib*.so
+    lib_paths = vim.api.nvim_get_runtime_file('lib/lib' .. name .. lib_extension, true)
+  end
+
+  if #lib_paths > 1 then
+    error(
+      'Found multiple instances of the same library ('
+        .. name
+        .. '). Note that the latest update moved the binary from `site/lib/*` to `$repo/lib/*`. Please remove the former: '
+        .. table.concat(lib_paths, ', ')
+    )
+  end
+  return lib_paths[1]
+end
+
+--- @param name string Name of the library to load (e.g. 'blink_cmp_fuzzy')
+--- @param commit_hash string? Commit hash of the library to load (e.g. 'e5678fe566e86553403b3129a3684389c84fafb5'). If omitted, `lib$name.so.hash` will be skipped, and only `lib$name.so` will be attempted.
+--- @return any library
+function native.load(name, commit_hash)
+  local lib_path = native.resolve(name, commit_hash)
+  if lib_path == nil then return error('Failed to resolve library in $runtimepath/lib/: ' .. name) end
+
+  -- load the library
+  local loader, err = package.loadlib(lib_path, 'luaopen_' .. name)
+  if err or not loader then return error('Failed to load library: ' .. err or 'unknown error') end
+  return loader()
+end
+
+--- @param url string
+--- @param path string Where to save the library
+--- @param callback fun(err: string)
+function native.download(url, path, callback)
+  native.mkdirp(vim.fs.dirname(path))
+
+  -- if file exists, rename it and fs_unlink it to mark for garbage collection
+  local exists = vim.uv.fs_stat(path)
+  if exists and exists.type == 'file' then
+    local random_hash = string.format('%06x', math.random(0, 0xFFFFFF))
+    local new_path = path .. '.old.' .. random_hash
+    vim.uv.fs_rename(path, new_path)
+    vim.uv.fs_unlink(new_path)
+  end
+
+  vim.net.request(url, { outpath = path }, function(err) callback(tostring(err)) end)
+end
+
+--- @param url string
+--- @param path string Where to save the library
+--- @return blink.lib.Task<nil>
+function native.download_async(url, path)
+  return require('blink.lib.task').wrap(function(callback) native.download(url, path, callback) end)
+end
+
+--- @param cwd string
+--- @param cmd string[]
+--- @param logger blink.lib.Logger
+--- @param callback fun(err?: string, process?: vim.SystemCompleted)
+function native.exec(cwd, cmd, logger, callback)
+  logger:write_to_file('---\n')
+  logger:write_to_file('Working directory: ' .. cwd .. '\n')
+  logger:write_to_file('Command: ' .. table.concat(cmd, ' ') .. '\n')
+  logger:write_to_file('---\n')
+
+  local stderr = ''
+  return vim.system(cmd, {
+    cwd = cwd,
+    stdout = function(err, data) logger:write_to_file(err or data) end,
+    stderr = function(err, data)
+      if err == nil and data == nil then return end
+      stderr = stderr .. (err or data)
+      logger:write_to_file(err or data)
+    end,
+  }, function(res)
+    logger:write_to_file('---\n')
+    if res.code ~= 0 then
+      callback('Failed with exit code ' .. res.code .. ': ' .. stderr)
+    else
+      callback(nil, res)
+    end
+  end)
+end
+
+--- @param cwd string
+--- @param cmd string[]
+--- @param logger blink.lib.Logger
+--- @return blink.lib.Task<vim.SystemCompleted>
+function native.exec_async(cwd, cmd, logger)
+  return require('blink.lib.task').wrap(function(callback) native.exec(cwd, cmd, logger, callback) end)
+end
+
+--- Recursively creates a directory, no-op if the directory already exists
+--- @param path string
+function native.mkdirp(path)
+  local _, err = vim.uv.fs_mkdir(path, 493)
+  if err then
+    -- parent might not exist, try creating it first
+    local parent = vim.fs.dirname(path)
+    if parent and parent ~= path then
+      native.mkdirp(parent)
+      vim.uv.fs_mkdir(path, 493)
+    end
+  end
+end
+
+--- Move a file from one location to another, creating all intermediate directories at dst
+--- @param src string
+--- @param dst string
+function native.mv(src, dst)
+  native.mkdirp(vim.fs.dirname(dst))
+  local ok, err = vim.uv.fs_rename(src, dst)
+  if not ok then error(err) end
+end
+
+--------------------
+--- Git
+--------------------
+
+--- @param path string Path to the repository root or some path inside the repository
+--- @return string? git_repo_root Path to the repository root
+function native.git_repo_root(path)
+  local git_dir = vim.fs.find('.git', { upward = true, path = vim.fs.normalize(path), type = 'directory' })[1]
+  if not git_dir then return end
+  return vim.fn.fnamemodify(git_dir, ':h')
+end
+
+--- @param repo_root string Path to the repository root or some path inside the repository
+--- @return string commit_hash For example 'e5678fe566e86553403b3129a3684389c84fafb5'
+function native.git_commit(repo_root)
+  --- @param p string
+  --- @return string?
+  function read_file(p)
+    local fd = vim.uv.fs_open(p, 'r', 438) -- 438 = 0666
+    if not fd then return end
+
+    local content = vim.uv.fs_read(fd, 1024, 0)
+    vim.uv.fs_close(fd)
+    return content
+  end
+
+  -- Read HEAD
+  local head_path = repo_root .. '/.git/HEAD'
+  local head_content = read_file(head_path)
+  if not head_content then error('Failed to read ' .. head_path) end
+  head_content = vim.trim(head_content)
+
+  -- If HEAD is a direct commit hash (detached HEAD)
+  if head_content:match('^%x+$') then return head_content end
+
+  -- HEAD contains a ref, e.g. "ref: refs/heads/main"
+  local ref = head_content:match('^ref: (.+)$')
+  if ref then
+    -- Try to read the loose ref file (e.g. .git/refs/heads/main)
+    local ref_path = repo_root .. '/.git/' .. ref
+    local ref_content = read_file(ref_path)
+    if ref_content then return vim.trim(ref_content) end
+  end
+
+  -- Fallback to git CLI
+  local result = vim.system({ 'git', 'rev-parse', 'HEAD' }, { cwd = repo_root }):wait(1000)
+  if result.code ~= 0 or result.stdout == nil then error('Failed to get git commit: ' .. (result.stderr or '')) end
+  return vim.trim(result.stdout)
+end
+
+--- Unlike `git_commit(path)`, this function will simply return `nil` if the git commit cannot be determined
+--- @param path string Path to the repository root or some path inside the repository
+--- @return string? commit_hash For example 'e5678fe566e86553403b3129a3684389c84fafb5'
+function native.try_git_commit(path)
+  local success, commit_hash = pcall(native.git_commit, path)
+  if success then return commit_hash end
+end
+
+--- @param repo_root string Path to the repository root
+--- @param match? string Tag to check for existence (e.g. 'v1.*')
+--- @return string? tag For example 'v0.0.1'
+function native.git_tag(repo_root, match)
+  local cmd = match and { 'git', 'describe', '--tags', '--match', match, '--abbrev=0' }
+    or { 'git', 'describe', '--tags', '--exact-match' }
+  local process = vim.system(cmd, { cwd = repo_root }):wait(1000)
+  if process.code == 0 and process.stdout then return process.stdout:match('(.+)\n') end
+end
+
+return native

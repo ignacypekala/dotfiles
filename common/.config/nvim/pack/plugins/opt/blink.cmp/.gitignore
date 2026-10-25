@@ -1,0 +1,11 @@
+/lib
+/doc/tags
+/target
+.lazy.lua
+result
+.direnv
+.devenv
+.repro/
+.wrangler/
+.emmyrc.json
+.luarc.json

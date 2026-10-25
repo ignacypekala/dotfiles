@@ -1,50 +1,58 @@
-local codeberg = require('utils.pack_providers').codeberg
-
-vim.pack.add({ codeberg .. "mfussenegger/nvim-jdtls" })
-
-local bundles = {}
-local java_debug = vim.env.JAVA_DEBUG
-if java_debug ~= 0 then
-    bundles = {
-        vim.fn.glob(java_debug, true)
-    }
-end
-
-vim.lsp.enable("jdtls")
-
-vim.api.nvim_create_autocmd({"BufEnter", "BufWrite"}, {
-    pattern = "*.java",
-    callback = function(args)
-        if vim.fn.filereadable(args.file) == 0 or not vim.lsp.is_enabled("jdtls") then
-            return
+return {
+    "nvim-jdtls",
+    ft = "java",
+    after = function()
+        local bundles = {}
+        local java_debug = vim.env.JAVA_DEBUG
+        if java_debug ~= 0 then
+            bundles = {
+                vim.fn.glob(java_debug, true)
+            }
         end
 
-        local config = {
-            name = "jdtls",
-            cmd = { "jdtls" },
-            root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
-            settings = {
-                java = {
-                    signatureHelp = { enabled = true },
-                    format = {
-                        settings = {
-                            url = vim.fn.stdpath("config") .. "/eclipse-java-google-style.xml",
-                            profile = "GoogleStyle",
+        vim.lsp.enable("jdtls")
+
+        local function attach_jdtls(args)
+            if vim.fn.filereadable(args.file) == 0 or not vim.lsp.is_enabled("jdtls") then
+                return
+            end
+
+            local config = {
+                name = "jdtls",
+                cmd = { "jdtls" },
+                root_dir = vim.fs.root(0, {'gradlew', '.git', 'mvnw'}),
+                settings = {
+                    java = {
+                        signatureHelp = { enabled = true },
+                        format = {
+                            settings = {
+                                url = vim.fn.stdpath("config") .. "/eclipse-java-google-style.xml",
+                                profile = "GoogleStyle",
+                            }
+                        },
+                        codeGeneration = {
+                            useBlockes = true,
+                            hashCodeEquals = {
+                                useJava7Objects = true,
+                            }
                         }
                     },
-                    codeGeneration = {
-                        useBlockes = true,
-                        hashCodeEquals = {
-                            useJava7Objects = true,
-                        }
+                    init_options = {
+                        bundles = bundles,
                     }
-                },
-                init_options = {
-                    bundles = bundles,
                 }
             }
-        }
 
-        require('jdtls').start_or_attach(config)
+            require('jdtls').start_or_attach(config)
+        end
+
+        vim.api.nvim_create_autocmd({"BufEnter", "BufWrite"}, {
+            pattern = "*.java",
+            callback = attach_jdtls,
+        })
+
+        if vim.bo.filetype == "java" then
+            attach_jdtls({ file = vim.api.nvim_buf_get_name(0) })
+        end
     end
-})
+}

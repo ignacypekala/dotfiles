@@ -117,7 +117,7 @@ in
     };
     programs.dank-calendar = {
         enable = true;
-        package = dank-calendar.packages.${pkgs.system}.default;
+        package = dank-calendar.packages.${pkgs.stdenv.hostPlatform.system}.default;
         quickshell.package = unstable.quickshell;
     };
 

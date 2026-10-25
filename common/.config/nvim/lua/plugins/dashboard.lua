@@ -23,6 +23,7 @@ local header = function()
     return header
 end
 
+<<<<<<< Updated upstream
 require('dashboard').setup({
     theme = "doom",
     disable_move = false,
@@ -34,6 +35,28 @@ require('dashboard').setup({
         center = {
             {
                 desc = ""
+=======
+return {
+    "dashboard-nvim",
+    lazy = false,
+    enabled = function()
+        return vim.fn.argc() == 0
+    end,
+    after = function()
+        require('dashboard').setup({
+            theme = "doom",
+            disable_move = false,
+            hide = {
+                statusline = false
+            },
+            config = {
+                header = header(),
+                center = {
+                    { desc = "" }
+                },
+                footer = { "" },
+                vertical_center = true
+>>>>>>> Stashed changes
             }
         },
         footer = {""},

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 local github = require("utils.pack_providers").github
 
 vim.pack.add({ github.."nvim-lualine/lualine.nvim" })
@@ -22,6 +23,18 @@ require("lualine").setup({
                 'fileformat',
                 symbols = { unix = 'LF', dos = 'CRLF', mac = 'MAC' },
                 padding = 1,
+=======
+return {
+    "lualine.nvim",
+    event = "DeferredUIEnter",
+    after = function()
+        local lualine = require("lualine")
+        lualine.setup({
+            options = {
+                theme = require('lualine-theme'),
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+>>>>>>> Stashed changes
             },
             "progress"
         },

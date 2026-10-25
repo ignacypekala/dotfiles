@@ -11,7 +11,7 @@ vim.opt.cursorlineopt = 'number'
 vim.opt.scrolloff = 5
 
 -- Normal cursor but with a beam when typing
-vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500,"..
+vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500," ..
     "r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
@@ -45,7 +45,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.smarttab = true
 
--- LF Line terminators 
+-- LF Line terminators
 vim.opt.fileformat = 'unix'
 
 vim.opt.exrc = true
@@ -108,15 +108,15 @@ require('config.plugins')
 require('config.tabline')
 
 vim.api.nvim_create_user_command('DiffOrig', function()
-  local file = vim.fn.expand('%')
-  vim.cmd('vert new')
-  vim.cmd('set buftype=nofile | read ++edit ' .. file .. ' | 0d_ | diffthis')
-  vim.cmd('wincmd p | diffthis')
+    local file = vim.fn.expand('%')
+    vim.cmd('vert new')
+    vim.cmd('set buftype=nofile | read ++edit ' .. file .. ' | 0d_ | diffthis')
+    vim.cmd('wincmd p | diffthis')
 end, { desc = 'Diff current unsaved buffer with file on disk' })
 
 -- Highlight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function ()
+    callback = function()
         vim.highlight.on_yank({ higroup = "Yank" })
     end
 })
@@ -152,7 +152,7 @@ vim.api.nvim_create_user_command("Format", "lua vim.lsp.buf.format()", {})
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "gitcommit",
-    callback = function ()
+    callback = function()
         vim.opt_local.textwidth = 72
     end
 })
@@ -174,7 +174,19 @@ vim.api.nvim_create_user_command("WSLPath",
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "java",
-    callback = function ()
+    callback = function()
         vim.opt_local.colorcolumn = "101"
     end
 })
+
+local run_lowercase = function (command)
+    vim.cmd[string.lower(command)]()
+end
+
+for _, command in ipairs({ "WQ", "Wq", "W", "Q" }) do
+    vim.api.nvim_create_user_command(command,
+        function()
+            run_lowercase(command)
+        end, {}
+    )
+end

@@ -1,0 +1,229 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+---
+
+## [2.1.6] — 2026-07-31 (current)
+
+### Fixed
+- **A failed tunnel is no longer scraped as a valid share URL.** Nothing checked
+  the tunnel process's exit status, and any match of the provider `pattern`
+  counted as success — so a provider that wrote its *error* output to the
+  service URL file could have that error parsed into a share URL, copied to the
+  clipboard, and announced with the usual success message. The documented `bore`
+  recipe hit this: it redirects stderr into the scraped file, and
+  `could not connect to bore.pub:7835` (bore's control port, which is never
+  assigned as a tunnel port) satisfies the `bore%.pub:%d+` pattern. The result
+  was a quiet failure — the control port accepts connections and stays silent,
+  so guests hung until their own timeout instead of failing fast. The tunnel now
+  reports an error and publishes nothing when the process exits non-zero before
+  announcing a URL, and quotes the provider's own error line in the message.
+- **The URL poll timer now always gives up.** `max_attempts` was only consulted
+  for a missing or empty service URL file, so output that never matched the
+  provider pattern left a 250 ms timer polling for the rest of the Neovim
+  session without ever reporting anything.
+- **Tunnel exit status is now visible on Windows.** There the provider command
+  runs inside a `bash` pipeline that appends its output to the service URL file,
+  and a pipeline reports the exit status of its *last* command — the `while`
+  loop, which always succeeds. `set -o pipefail` makes the tunnel's own failure
+  propagate, so the checks above apply on Windows too.
+  Tests: `tests/tunnel/failure_spec.lua` (the process-driven cases are POSIX-only;
+  the pattern checks run everywhere).
+
+### Changed
+- **`bore` provider recipes anchored to the success line** in `README.md` and
+  `RECIPES.md` — `pattern = "listening at (bore%.pub:%d+)"` instead of
+  `"bore%.pub:%d+"`, so the address can only come from where bore announces it.
+  Documented that `pattern` may use a capture group, and that a loose pattern
+  can match a provider's error output.
+
+---
+
+## [2.1.5] — 2026-07-28
+
+### Added
+- **`RECIPES.md`** — practical walkthroughs for the seven most common workflows:
+  Neovim ↔ Neovim, Neovim ↔ VS Code via `open-pair`, LAN-only session (custom
+  provider), SSH-tunnel session with alternative providers, read-only review
+  session, self-hosted relay (privacy-first, covers SSH server and `bore` server
+  paths and how it applies to the `punch` transport), and shared terminal session.
+- **README "Privacy-first option" callout** in the Tunnel providers section
+  pointing to the self-hosted relay recipe.
+- **Demo media slots in README** — placeholders (HTML comments) and a
+  `docs/media/` directory ready for the hero, cross-editor, shared-terminal, and
+  follow-mode GIFs.
+
+### Changed
+- **README positioning** — overview rewritten to position the project as a GPL-3.0,
+  Neovim-native, end-to-end encrypted alternative to VS Code Live Share. Cross-editor
+  collaboration with VS Code via [open-pair](https://github.com/darkerthanblack2000/open-pair)
+  is now highlighted in the overview rather than buried in a footnote.
+
+### Fixed
+- **Editing a buffer after `:LiveShareStop` no longer raises
+  `attempt to index upvalue 'conn' (a nil value)`.** `nvim_buf_attach`
+  callbacks are not autocmds: `M.stop()` cleared the `LiveShareHost` augroup
+  and set `conn = nil`, but the per-buffer `on_lines` watcher survived and
+  still tried to broadcast the next local edit, so the host's editing session
+  was broken until Neovim restarted. Attachments now capture a session
+  generation counter (bumped by `M.stop()`) and retire themselves by returning
+  `true` on their first invocation after the session ends. This also fixes a
+  latent duplicate-broadcast bug: a `stop` → `start` cycle previously left the
+  old attachment live alongside the new one, sending every patch twice and
+  double-incrementing `seq`. `on_detach` is now guarded so the retiring stale
+  attachment cannot untrack a buffer the restarted session still shares.
+  Tests: `tests/host/lifecycle_spec.lua`.
+
+---
+
+## [2.1.4] — 2026-04-24
+
+### Changed
+- **`punch` 0.3.2 now required** — the published 0.3.2 rock now includes container
+  support (peer-reflexive candidate learning for Docker/Podman internal IPs), HTTPS proxy
+  compatibility (ALPN forces HTTP/1.1 so localhost.run and similar reverse proxies do not
+  negotiate HTTP/2), and chunked-encoding support in the signaling HTTP client.
+- **`punch` P2P transport status** — upgraded from **Experimental** to **Beta** in the
+  stability matrix.  The relay fallback for symmetric/double NAT is now end-to-end tested
+  on Linux with all four built-in tunnel providers (serveo.net, localhost.run, ngrok, bore).
+- **`punch` connection type notification** — when NAT hole-punching fails and the session
+  falls back to the relay broker, the status notification now correctly reads
+  connected (relay) instead of connected (P2P). The same correction applies to the
+  disconnect notification (relay connection closed vs. P2P connection closed).
+  Affected both the host side (per-peer notification) and the guest side. 
+
+---
+
+## [2.1.3] — 2026-04-22
+
+### Fixed
+- **`punch` signaling server bind address** — the host-side signaling server now
+  binds to `127.0.0.1` instead of `0.0.0.0`.  Binding to `0.0.0.0` caused the
+  relay fallback to fail silently: the host session was configured with relay URL
+  `ws://0.0.0.0:PORT/relay`, which is not a valid connection target on most
+  systems.  With `127.0.0.1` the host can connect to its own relay broker and
+  the symmetric-NAT relay path works end-to-end.
+  Requires [`punch`](https://luarocks.org/modules/azratul/punch) ≥ 0.3.2.
+- **`punch` relay token mismatch** — the connector (guest) no longer generates its
+  own relay token; it reads the host's token from the remote description instead.
+  Previously both peers generated independent tokens and never matched at the relay
+  broker, so relay fallback always failed in symmetric/double NAT scenarios.
+  Requires [`punch`](https://luarocks.org/modules/azratul/punch) ≥ 0.3.2.
+- **`punch` relay URL for HTTPS tunnels** — `https://` signaling URLs are now
+  correctly converted to `wss://` for the relay WebSocket connection (previously
+  only `http://` → `ws://` was handled, leaving HTTPS tunnel relay broken).
+
+### Added
+- **Improved `:checkhealth`** — health checks now report the configured transport mode
+  (`ws` / `punch`), verify the correct tunnel-provider binary for the active `service`
+  setting (`ssh`, `ngrok`, `bore`), check that the `punch` library is installed when
+  `transport = "punch"`, warn when no username is configured, and provide
+  platform-specific install hints for OpenSSL (Linux distros, macOS, Windows).
+  Fixed Neovim version requirement in health check from 0.5 to 0.9 to match actual
+  requirements.
+- **LWW conflict model documentation** — `PROTOCOL.md` §3 now has three subsections:
+  §3.1 describes last-write-wins semantics with a step-by-step concurrent-edit example;
+  §3.2 documents practical implications for client implementors (safe vs. unsafe scenarios,
+  latency effects, undo behavior); §3.3 lists known limitations. `README.md` gains a
+  "Conflict model" quick-reference table linking to the full spec.
+- **Networking edge-case tests** — two new integration test suites:
+  - `tests/integration/edge_cases_spec.lua` (5 tests): synthesized `bye` on abrupt
+    disconnect, `bye` broadcast to remaining peers (§7.3), `unauthorized` error for
+    read-only guest patch (§5.4), `rejected` message delivery via `server.reject()`,
+    and `broadcast(msg, except_peer)` exclusion guarantee.
+  - `tests/integration/concurrent_spec.lua` (4 tests): three-peer broadcast, sequential
+    message delivery order (5 patches in send order), and concurrent patches from two
+    and three guests all reaching the server.
+
+---
+
+## [2.1.2] — 2026-04-21
+
+### Changed
+- **`punch` relay fallback** — when UDP hole-punching fails (symmetric NAT, double NAT),
+  sessions now fall back automatically through a relay broker hosted on the same signaling
+  server. Requires [`punch`](https://luarocks.org/modules/azratul/punch) ≥ 0.3.0.
+  No configuration changes needed.
+
+---
+
+## [2.1.1] — 2026-04
+
+### Fixed
+- **ngrok TCP transport deadlock** — the client now sends a zero-length probe frame
+  immediately on connect in raw TCP mode. Previously both sides waited for the other to
+  write first, so ngrok TCP sessions never progressed past the initial connection.
+- **Guest state machine** — `on_message` now gates messages by connection state
+  (`handshake` → `workspace_sync` → `active`). Patches and cursor events that arrive
+  before `open_files_snapshot` are buffered and replayed in order once the workspace
+  snapshot lands, preventing spurious buffer mutations during the join sequence.
+- **`open_files_snapshot` always sent** — the host now sends this message even when no
+  files are currently open, so guests always exit `workspace_sync` cleanly.
+- **`peers_snapshot` ordering** — the host now sends `peers_snapshot` before
+  `open_files_snapshot`, matching the order mandated by PROTOCOL.md §8.
+- **`hello_ack` caps corrected** — the guest now advertises `workspace`, `cursor`,
+  `follow`, and `terminal` (previously `cursor` and `follow` only).
+- **`required_caps` validation** — if the host requires a capability the guest does not
+  support, the guest sends `bye` and disconnects with an error message instead of
+  proceeding with undefined behaviour.
+- **Seq gap detection** (§7.1) — the guest tracks the last seen global `seq` number.
+  A gap triggers `file_request` for the affected path; stale/duplicate patches are
+  silently dropped. Seq tracking resets after `file_response` or `open_files_snapshot`.
+- **Out-of-range patch detection** (§7.2) — if a patch's `lnum` exceeds the current
+  buffer length, the guest sends `file_request` rather than applying a broken patch.
+- **`bye` name on abrupt disconnect** — the server now tracks peer names (set when
+  `hello_ack` is received) and includes the name in the synthesised `bye` broadcast on
+  unexpected disconnection.
+- **10 s workspace-sync watchdog** — if `open_files_snapshot` is not received within
+  10 seconds of the handshake completing, the guest disconnects with an error.
+
+---
+
+## [2.1.0] — 2026-03
+
+### Added
+- **P2P transport via punch.lua** — when `transport = "punch"`, collaborative traffic flows
+  over a direct encrypted UDP channel between host and guest, bypassing the tunnel server
+  entirely after the short signaling phase (~5 s). Requires the
+  [`punch`](https://luarocks.org/modules/azratul/punch) LuaRocks package on both sides.
+- **Workspace browser** (`:LiveShareWorkspace`) — floating window listing all files in the
+  remote workspace, with on-demand file requests.
+- **Shared terminal** — host can open a PTY shell streamed to all guests as `terminal_data`
+  messages.
+- **Follow mode** (`:LiveShareFollow`) — guest's active buffer tracks the host's focus events.
+- **Peer approval flow** — new guests enter a `pending` state; the host is prompted via
+  `vim.ui.select` to approve/deny and assign a role (`rw` or `ro`) before the peer receives
+  any broadcast.
+- **Read-only guest role** — guests assigned `ro` cannot send patches; editing is disabled on
+  their buffers.
+- **Visual selection sharing** — cursor messages include `sel_*` fields when the sender is in
+  visual mode; rendered as extmarks on remote peers.
+- **Peer list** (`:LiveSharePeers`) — floating window showing connected peers and their active
+  file.
+- **Capabilities negotiation** — `hello` / `hello_ack` exchange `caps` arrays; the host
+  advertises `required_caps` and `optional_caps`.
+- **Protocol version check** — guest emits a `WARN` notification when the host's
+  `protocol_version` differs from its own (`M.VERSION = 3`).
+
+### Changed
+- Replaced the `instant.nvim` dependency with a self-contained collaboration engine
+  (`lua/live-share/collab/`): WebSocket transport, binary framing, AES-256-GCM encryption,
+  buffer sync, and cursor tracking.
+- Transport auto-detection: server reads the first 4 bytes of every connection — `"GET "`
+  triggers a WebSocket upgrade; anything else is treated as raw length-prefixed TCP.
+- Encryption is now mandatory — sessions will not start without OpenSSL.
+- Protocol wire version bumped to **3**.
+
+### Removed
+- `instant.nvim` dependency.
+- Plaintext fallback (encryption is now required).
+
+---
+
+## [1.1.0] — 2024
+
+Last release based on `instant.nvim` as the collaboration engine.
+See the [`v1.1.0`](https://github.com/azratul/live-share.nvim/releases/tag/v1.1.0) tag.

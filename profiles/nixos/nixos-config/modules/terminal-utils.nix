@@ -32,6 +32,8 @@
         fzf
         jq
         ripgrep
+
+        cargo
     ];
 
     programs.nix-ld = {

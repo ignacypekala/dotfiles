@@ -19,7 +19,7 @@ Commands:
       Update an existing subtree
       Example: $0 pull telescope.nvim opt https://github.com/nvim-telescope/telescope.nvim master
 
-  build [fzf|luasnip]
+  build [all|fzf|luasnip|blink]
       Run build steps for plugins that require compilation
 EOF
     exit 1
@@ -60,8 +60,10 @@ case "$cmd" in
             make -C luasnip install_jsregexp 2>/dev/null || true
         fi
         if [[ "$target" == "blink" || "$target" == "all" ]] && [[ -d "blink.cmp" ]]; then
-            echo "Building blink.cmp native library via official pipeline..."
-            nvim --headless -c "packadd blink.lib" -c "packadd blink.cmp" -c "lua require('blink.cmp').build():pwait()" -c "qall!"
+            echo "Building blink.cmp..."
+            cargo build --release --manifest-path blink.cmp/Cargo.toml
+            mkdir -p blink.cmp/lib
+            cp -f blink.cmp/target/release/libblink_cmp_fuzzy.so blink.cmp/lib/
         fi
         ;;
     *)

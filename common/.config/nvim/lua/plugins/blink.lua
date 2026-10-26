@@ -8,10 +8,35 @@ return {
     after = function()
         local blink = require('blink.cmp')
 
-        print("blink")
         blink.setup({
             keymap = {
                 preset = 'super-tab',
+                ['<C-space>'] = false,
+                ['<C-K>'] = false,
+                ['<C-S>'] = {
+                    'show_signature',
+                    'show_signature_documentation',
+                    'hide_signature',
+                },
+                -- ['<C-e>'] = { 'hide', 'fallback' },
+                --
+                -- ['<Tab>'] = {
+                --     function(cmp)
+                --         if cmp.snippet_active() then return cmp.accept()
+                --         else return cmp.select_and_accept() end
+                --     end,
+                --     'snippet_forward',
+                --     'fallback'
+                -- },
+                -- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+                --
+                -- ['<Up>'] = { 'select_prev', 'fallback' },
+                -- ['<Down>'] = { 'select_next', 'fallback' },
+                -- ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+                -- ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+                --
+                ['<C-b>'] = { 'show_documentation', 'scroll_documentation_up' },
+                ['<C-f>'] = { 'show_documentation', 'scroll_documentation_down' },
             },
             appearance = {
                 nerd_font_variant = 'mono'
@@ -19,8 +44,8 @@ return {
             completion = {
                 list = {
                     selection = {
-                        preselect = false,
-                        auto_insert = true,
+                        preselect = true,
+                        auto_insert = false,
                     }
                 },
                 menu = {
@@ -30,14 +55,19 @@ return {
                     draw = {
                         columns = {
                             { "kind_icon",         "label",       gap = 1 },
-                            { "label_description", "source_name", gap = 1 }
+                            { "label_description", "source_name", gap = 0 }
                         },
                     },
+                    direction_priority = { 's', 'n' }
                 },
                 documentation = {
-                    auto_show = false,
-                    auto_show_delay_ms = 0,
+                    auto_show = true,
+                    auto_show_delay_ms = 2000,
                 },
+                ghost_text = {
+                    enabled = true,
+                    show_first_line_only = false
+                }
             },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
@@ -50,7 +80,8 @@ return {
                 enabled = true,
                 window = {
                     border = 'solid',
-                }
+                    direction_priority = { 'n', 's' },
+                },
             },
         })
     end

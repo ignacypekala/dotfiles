@@ -1,0 +1,95 @@
+name: CI
+
+on:
+  push:
+    branches: [main, nightly, develop]
+  pull_request:
+    branches: [main, nightly]
+
+jobs:
+  lint:
+    name: Style check (StyLua)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install StyLua
+        uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: --check lua/ plugin/
+
+  test:
+    name: Unit tests (${{ matrix.os }}, nvim-${{ matrix.nvim }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        nvim: [stable, nightly]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim (${{ matrix.nvim }})
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.nvim }}
+
+      - name: Install plenary.nvim (Unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim \
+            ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
+
+      - name: Install plenary.nvim (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        run: |
+          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim \
+            ~/AppData/Local/nvim-data/site/pack/vendor/start/plenary.nvim
+
+      - name: Run tests (Unix)
+        if: matrix.os != 'windows-latest'
+        shell: bash
+        run: |
+          nvim --headless \
+            -u tests/minimal_init.lua \
+            -c "PlenaryBustedDirectory tests/ {minimal_init = 'tests/minimal_init.lua'}"
+
+      - name: Run tests (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: bash
+        timeout-minutes: 10
+        run: |
+          for spec in $(find tests/ -name '*_spec.lua'); do
+            nvim --headless \
+              -u tests/minimal_init.lua \
+              -c "PlenaryBustedFile $spec"
+          done
+
+  health:
+    name: Health check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim (stable)
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+
+      - name: Check plugin loads without errors
+        shell: bash
+        run: |
+          nvim --headless \
+            -u NONE \
+            --cmd "set runtimepath+=." \
+            -c "lua require('live-share')" \
+            -c "quit"

@@ -1,0 +1,285 @@
+-- Command handlers: bridge between user commands and host/guest modules.
+local M = {}
+
+local function host()
+  return require("live-share.host")
+end
+local function guest()
+  return require("live-share.guest")
+end
+local function follow()
+  return require("live-share.follow")
+end
+local function ui()
+  return require("live-share.ui")
+end
+local function session()
+  return require("live-share.session")
+end
+local function tunnel()
+  return require("live-share.tunnel")
+end
+
+function M.setup(config)
+  M.config = config
+  require("live-share.collab.crypto").setup(config)
+end
+
+-- :LiveShareHostStart [port]
+function M.host_start(port)
+  if session().active() then
+    vim.notify("live-share: session already active — run :LiveShareStop first", vim.log.levels.WARN)
+    return
+  end
+  if not require("live-share.collab.crypto").available then
+    vim.notify(
+      "live-share: OpenSSL is not available — encryption is required to start a session",
+      vim.log.levels.ERROR
+    )
+    return
+  end
+  local h = host()
+  h.setup(M.config)
+  if not h.start(port) then
+    return
+  end
+
+  if M.config.transport == "punch" then
+    local sig_port = h.get_signaling_port()
+    if not sig_port then
+      vim.notify("live-share: punch transport started but signaling port is unavailable", vim.log.levels.ERROR)
+      return
+    end
+    tunnel().start(sig_port, { url_prefix = "punch+" })
+  else
+    tunnel().start(port or M.config.port_internal)
+  end
+end
+
+-- :LiveShareJoin <url> [port]
+function M.join(url, port)
+  if session().active() then
+    vim.notify("live-share: session already active — run :LiveShareStop first", vim.log.levels.WARN)
+    return
+  end
+  if not require("live-share.collab.crypto").available then
+    vim.notify(
+      "live-share: OpenSSL is not available — encryption is required to join a session",
+      vim.log.levels.ERROR
+    )
+    return
+  end
+  port = port or M.config.port
+
+  local key_b64 = url:match("#key=([A-Za-z0-9_%-]+)")
+  if not key_b64 then
+    vim.notify(
+      "live-share: no encryption key found in URL (#key=...) — refusing to connect without encryption",
+      vim.log.levels.ERROR
+    )
+    return
+  end
+  url = url:gsub("#.*$", "")
+
+  local mode
+  if url:match("^punch%+") then
+    -- Punch (P2P) transport: "punch+http://tunnel-host:port" or "punch+host:port"
+    url = url:gsub("^punch%+", "")
+    -- Normalize tcp:// → http:// (punch signaling speaks HTTP/HTTPS, not raw TCP).
+    if url:match("^tcp://") then
+      local h, p = url:match("^tcp://([^:]+):(%d+)")
+      if h and p then
+        url = "http://" .. h .. ":" .. p
+      end
+    elseif not url:match("^https?://") then
+      url = "http://" .. url
+    end
+    -- The signaling client supports both http:// and https://.
+    -- ngrok TCP and ngrok HTTPS have both been confirmed to work.
+    mode = "punch"
+  elseif url:match("^tcp://") then
+    local h, p = url:match("^tcp://([^:]+):(%d+)")
+    url = h
+    port = tonumber(p)
+    mode = "tcp"
+  elseif url:match("^https?://") then
+    url = url:gsub("^https?://", "")
+    mode = "ws"
+  elseif url:match("^[%w._%-]+:%d+$") then
+    -- bare host:port without scheme (e.g. bore.pub:12345)
+    local h, p = url:match("^([^:]+):(%d+)")
+    url = h
+    port = tonumber(p)
+    mode = "ws"
+  end
+
+  local g = guest()
+  g.setup(M.config)
+  g.connect(url, port, key_b64, mode)
+end
+
+-- :LiveShareStop
+function M.stop()
+  if not session().active() then
+    vim.api.nvim_err_writeln("live-share: no active session")
+    return
+  end
+  local role = session().role
+  if role == "host" then
+    host().stop()
+    tunnel().stop()
+  elseif role == "guest" then
+    guest().stop()
+  end
+  vim.api.nvim_out_write("live-share: session stopped\n")
+end
+
+-- :LiveShareFollow [peer_id]
+-- No arg → follow the host (peer 0). With peer_id → follow that specific peer.
+function M.follow(peer_id_str)
+  if not session().active() then
+    vim.notify("live-share: not in a session", vim.log.levels.WARN)
+    return
+  end
+  local peer_id = peer_id_str and tonumber(peer_id_str) or 0
+  if session().role == "host" and peer_id == 0 then
+    vim.notify("live-share: you are the host — cannot follow yourself (peer 0)", vim.log.levels.WARN)
+    return
+  end
+  follow().set_follow(peer_id)
+end
+
+-- :LiveShareUnfollow
+function M.follow_disable()
+  follow().disable()
+end
+
+-- :LiveShareWorkspace
+function M.open_workspace()
+  if session().role ~= "guest" then
+    vim.notify("live-share: :LiveShareWorkspace is only available for guests", vim.log.levels.WARN)
+    return
+  end
+  ui().open_workspace_explorer()
+end
+
+-- :LiveSharePeers
+function M.show_peers()
+  if not session().active() then
+    vim.notify("live-share: not in a session", vim.log.levels.WARN)
+    return
+  end
+  ui().show_peers()
+end
+
+-- :LiveShareOpen <path>
+function M.open_file(path)
+  if session().role ~= "guest" then
+    vim.notify("live-share: :LiveShareOpen is only available for guests", vim.log.levels.WARN)
+    return
+  end
+  if not path or path == "" then
+    vim.notify("live-share: usage: :LiveShareOpen <workspace/relative/path>", vim.log.levels.WARN)
+    return
+  end
+  guest().request_file(path)
+end
+
+-- :LiveShareTerminal
+function M.terminal()
+  if not session().active() then
+    vim.notify("live-share: not in a session", vim.log.levels.WARN)
+    return
+  end
+  if session().role == "host" then
+    host().open_terminal()
+  else
+    vim.notify(
+      "live-share: the host opens shared terminals — they appear automatically when ready",
+      vim.log.levels.INFO
+    )
+  end
+end
+
+-- :LiveShareDebugInfo
+function M.debug_info()
+  local lines = { "# live-share.nvim debug info", "" }
+
+  local cfg = require("live-share").get_config()
+  local crypto = require("live-share.collab.crypto")
+  local protocol = require("live-share.collab.protocol")
+  local session = require("live-share.session")
+
+  -- Plugin / protocol
+  lines[#lines + 1] = "plugin version : 2.1.6"
+  lines[#lines + 1] = "protocol version: " .. tostring(protocol.VERSION)
+
+  -- Neovim
+  local nv = vim.version()
+  lines[#lines + 1] = "neovim version  : " .. nv.major .. "." .. nv.minor .. "." .. nv.patch
+
+  -- OS
+  local uname = (vim.uv or vim.loop).os_uname()
+  lines[#lines + 1] = "os              : " .. (uname.sysname or "unknown") .. " " .. (uname.release or "")
+
+  -- OpenSSL
+  lines[#lines + 1] = "openssl         : " .. (crypto.available and "available" or "NOT FOUND — encryption disabled")
+
+  -- Config
+  if cfg then
+    if session.role == "guest" then
+      -- For guests: show the effective transport from the host URL, not local config.
+      -- Tunnel provider is irrelevant (guests never start a tunnel).
+      lines[#lines + 1] = "transport       : " .. (session.transport or "ws") .. " (from host URL)"
+    else
+      lines[#lines + 1] = "transport       : " .. (cfg.transport or "ws")
+      lines[#lines + 1] = "tunnel provider : " .. (cfg.service or "nokey@localhost.run")
+    end
+    lines[#lines + 1] = "port internal   : " .. tostring(cfg.port_internal or 9876)
+    lines[#lines + 1] = "debug logging   : " .. (cfg.debug and "on" or "off")
+    if cfg.openssl_lib then
+      lines[#lines + 1] = "openssl_lib     : " .. cfg.openssl_lib
+    end
+  else
+    lines[#lines + 1] = "(live-share.setup() has not been called)"
+  end
+
+  -- Session state
+  lines[#lines + 1] = ""
+  if session.active() then
+    lines[#lines + 1] = "session         : active (" .. (session.role or "unknown") .. ")"
+    lines[#lines + 1] = "peer id         : " .. tostring(session.peer_id or "n/a")
+    lines[#lines + 1] = "session id      : " .. tostring(session.sid or "n/a")
+    if session.role == "host" then
+      local ok_t, tunnel = pcall(require, "live-share.tunnel")
+      local share_url = ok_t and tunnel.last_url
+      lines[#lines + 1] = "share url       : " .. (share_url or "(tunnel not ready yet)")
+    end
+  else
+    lines[#lines + 1] = "session         : none"
+  end
+
+  -- Open in a scratch buffer
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+  vim.bo[buf].filetype = "markdown"
+  vim.bo[buf].modifiable = false
+  vim.api.nvim_win_set_buf(0, buf)
+end
+
+-- Tab-completion helper for :LiveShareOpen.
+function M.complete_workspace_path(arg_lead)
+  local ok, g = pcall(require, "live-share.guest")
+  if not ok then
+    return {}
+  end
+  local files = g.get_workspace_files()
+  if arg_lead == "" then
+    return files
+  end
+  return vim.tbl_filter(function(f)
+    return f:find(arg_lead, 1, true) ~= nil
+  end, files)
+end
+
+return M

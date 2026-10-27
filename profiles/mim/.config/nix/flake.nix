@@ -22,8 +22,6 @@
                     bat
                     ripgrep
 
-                    alacritty
-
                     clang-tools
                     bear
                     tree-sitter

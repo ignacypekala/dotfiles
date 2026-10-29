@@ -32,8 +32,8 @@ return {
                 --
                 -- ['<Up>'] = { 'select_prev', 'fallback' },
                 -- ['<Down>'] = { 'select_next', 'fallback' },
-                ['<C-b>'] = { 'show_documentation', 'scroll_documentation_up' },
-                ['<C-f>'] = { 'show_documentation', 'scroll_documentation_down' },
+                ['<C-b>'] = { 'show_documentation', 'scroll_documentation_up', 'fallback' },
+                ['<C-f>'] = { 'show_documentation', 'scroll_documentation_down', 'fallback' },
             },
             appearance = {
                 nerd_font_variant = 'mono'

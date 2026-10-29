@@ -13,7 +13,7 @@ return {
         })
         require("live-share").setup({
             username = "ignacy",
-            port = 2137,
+            port = 9876,
             service = "lan"
         })
     end

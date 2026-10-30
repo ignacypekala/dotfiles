@@ -26,7 +26,6 @@
         bear
         fastfetch
         valgrind
-        jdk
 
         tmux
         fzf
@@ -34,6 +33,9 @@
         ripgrep
 
         cargo
+        nodejs
+        python3
+        jdk
     ];
 
     programs.nix-ld = {

@@ -58,6 +58,7 @@ in
         jetbrains-mono
         nerd-fonts.symbols-only
         ibm-plex
+        merriweather
     ];
 
     programs.hyprland = {

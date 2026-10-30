@@ -22,7 +22,6 @@
         btop
 
         git
-        python3
         bear
         fastfetch
         valgrind

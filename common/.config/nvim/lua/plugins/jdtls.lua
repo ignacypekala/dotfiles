@@ -40,7 +40,11 @@ return {
                     init_options = {
                         bundles = bundles,
                     }
-                }
+                },
+                on_attach = function(client )
+                    -- Disable LSP semantic tokens to fallback to Treesitter
+                    client.server_capabilities.semanticTokensProvider = nil
+                end,
             }
 
             require('jdtls').start_or_attach(config)

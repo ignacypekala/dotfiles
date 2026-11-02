@@ -11,6 +11,7 @@ in
         ../../profiles/desktop.nix
         ../../modules/steam.nix
         ../../modules/quiet-boot.nix
+        ../../modules/windows.nix
     ];
     _module.args.unstable = unstable;
 

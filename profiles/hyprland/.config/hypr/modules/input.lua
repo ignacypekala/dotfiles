@@ -55,3 +55,9 @@ hl.device({
     name = "wacom-intuos-s-pen",
     output = "DP-2"
 })
+
+hl.device({
+    -- farelka touchscreen
+    name = "wacf3200:00-29bd:1104",
+    enabled = false
+})

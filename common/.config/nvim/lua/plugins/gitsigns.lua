@@ -58,6 +58,14 @@ return {
                 map('n', '<leader>hq', gitsigns.setqflist)
 
                 map({'o', 'x'}, 'ih', gitsigns.select_hunk)
+
+                vim.api.nvim_create_user_command('GS', 'Gitsigns <args>', {
+                    nargs = '*',
+                    complete = function(_, cmdline, _)
+                        local proxy_cmd = cmdline:gsub('GS', 'Gitsigns', 1)
+                        return vim.fn.getcompletion(proxy_cmd, 'cmdline')
+                    end
+                })
             end
         }
     end

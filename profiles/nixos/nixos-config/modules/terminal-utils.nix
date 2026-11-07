@@ -35,6 +35,7 @@
         nodejs
         python3
         jdk
+        typst
     ];
 
     programs.nix-ld = {

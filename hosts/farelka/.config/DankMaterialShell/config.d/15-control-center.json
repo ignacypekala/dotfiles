@@ -124,6 +124,26 @@
       "h": 4,
       "col": 6,
       "row": 1
+    },
+    {
+      "id": "brightnessSlider",
+      "enabled": true,
+      "w": 3.5,
+      "h": 1,
+      "instanceId": "mw5dm35spnqkla0jnbnyznc2qk9o7",
+      "deviceName": "backlight:intel_backlight",
+      "col": 0.5,
+      "row": 6
+    },
+    {
+      "id": "brightnessSlider",
+      "enabled": true,
+      "w": 3.5,
+      "h": 1,
+      "instanceId": "mw5dmfigaia2v63nncv",
+      "deviceName": "ddc:i2c-11",
+      "col": 4,
+      "row": 6
     }
   ],
   "controlCenterColumns": 8

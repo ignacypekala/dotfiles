@@ -59,7 +59,7 @@ cleanup_no_folds() {
 prevent_stow_fold "$HOME/.config"
 prevent_stow_fold "$HOME/.config/bashrc.d"
 prevent_stow_fold "$HOME/.config/bash_profile.d"
-prevent_stow_fold "$HOME/.config/sway/config.d"
+prevent_stow_fold "$HOME/.config/DankMaterialShell/config.d"
 prevent_stow_fold "$HOME/.local"
 prevent_stow_fold "$HOME/.local/bin"
 prevent_stow_fold "$HOME/.local/share/icons"

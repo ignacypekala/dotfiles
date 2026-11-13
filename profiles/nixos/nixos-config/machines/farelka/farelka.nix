@@ -54,6 +54,14 @@ in
         HibernateDelaySec="10min";
     };
 
+    # This spell prevents a race condition between the greeter and gpu drivers.
+    services.udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="drm", KERNEL=="card*", TAG+="systemd"
+    '';
+    systemd.services.greetd = {
+        wants = [ "dev-dri-card1.device" ];
+        after = [ "dev-dri-card1.device" ];
+    };
 
     # hardware
     hardware.ipu6 = {

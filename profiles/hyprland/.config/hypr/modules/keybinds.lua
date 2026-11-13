@@ -6,7 +6,8 @@ local has_value = require('utils.has_value')
 
 -- General
 hl.bind(combo(mod, "SHIFT", "Q"), hl.dsp.window.close())
-hl.bind(combo(mod, "SHIFT + P"), hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(combo(mod, "SHIFT + P"),
+    hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- Windows
 hl.bind(combo(mod, "P"), hl.dsp.window.pseudo())
@@ -49,19 +50,18 @@ for i = 1, 10 do
     hl.bind(combo(mod, "SHIFT", key), hl.dsp.window.move({ workspace = "m~" .. i }))
 end
 
-hl.bind(combo(mod, "G"), function ()
+hl.bind(combo(mod, "G"), function()
     local window = hl.get_windows({ workspace = "name:game" })[1]
     if window ~= nil then
         hl.dispatch(hl.dsp.focus({ window = window }))
     else
         hl.dispatch(hl.dsp.focus({ workspace = "name:game" }))
     end
-
 end)
 
--- Returns first available non-negative workspace ID. Needed because "emptynm" 
+-- Returns first available non-negative workspace ID. Needed because "emptynm"
 -- selector sometimes resolved to an empty workspace on a different monitor.
-local get_next_free_workspace_id = function ()
+local get_next_free_workspace_id = function()
     local workspaces = hl.get_workspaces()
     local max_id = math.mininteger
     for _, workspace in ipairs(workspaces) do
@@ -84,7 +84,7 @@ hl.bind(combo(mod, "SHIFT", "D"), function()
     hl.dispatch(hl.dsp.window.move({ workspace = get_next_free_workspace_id() }))
 end)
 
--- Focus empty workspaes on all monitors. Restore previous set of focused 
+-- Focus empty workspaes on all monitors. Restore previous set of focused
 -- workspaces on next use.
 local workspaces_before_minimize = {}
 local focused_monitor_before_minimize = nil
@@ -126,13 +126,13 @@ hl.bind(combo(mod, "CTRL", "D"), function()
 end)
 
 hl.bind(combo(mod, "M"), hl.dsp.focus({ monitor = "+1" }))
-hl.bind(combo(mod, "SHIFT", "M"), hl.dsp.window.move({ monitor = "+1"}))
+hl.bind(combo(mod, "SHIFT", "M"), hl.dsp.window.move({ monitor = "+1" }))
 hl.bind(combo(mod, "CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0", monitor2 = "+1" }))
 
-hl.bind(combo(mod, "SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", monitor = "+1"}))
+hl.bind(combo(mod, "SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", monitor = "+1" }))
 
 hl.bind(combo(mod, "mouse_down"), hl.dsp.focus({ workspace = "m+1" }))
-hl.bind(combo(mod, "TAB"), hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(combo(mod, "TAB"), hl.dsp.focus({ workspace = "m+1" }), { repeating = true })
 hl.bind(combo(mod, "mouse_up"), hl.dsp.focus({ workspace = "m-1" }))
 hl.bind(combo(mod, "SHIFT", "TAB"), hl.dsp.focus({ workspace = "m-1" }))
 
@@ -147,10 +147,14 @@ hl.bind("SUPER + CTRL", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind("SUPER + ALT_L", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+    { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+    { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+    { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+    { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
@@ -180,7 +184,7 @@ local ctrl_w = hl.bind("CTRL + W", function()
     end
 end, { repeating = false })
 
-hl.on('window.active', function ()
+hl.on('window.active', function()
     ctrl_w:set_enabled(hl.get_active_workspace().name ~= "game")
 end)
 

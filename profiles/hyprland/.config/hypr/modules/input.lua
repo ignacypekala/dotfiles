@@ -7,7 +7,7 @@ hl.config({
         kb_rules = "",
 
         repeat_delay = 300,
-        repeat_rate = 25,
+        repeat_rate = 50,
 
         follow_mouse = 2,
         float_switch_override_focus = 0,

@@ -46,13 +46,14 @@ in
     services.power-profiles-daemon.enable = true;
     boot.resumeDevice = "/dev/lvm/swap";
     services.logind.settings.Login = {
-        IdleAction = "supsend-then-hibernate";
-        IdleActionSec = "5min";
         HandleLidSwitch = "suspend-then-hibernate";
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "suspend";
-        HibernateDelaySec="2min";
     };
+    systemd.sleep.settings.Sleep = {
+        HibernateDelaySec="10min";
+    };
+
 
     # hardware
     hardware.ipu6 = {

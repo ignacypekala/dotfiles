@@ -34,6 +34,7 @@ in
 
         # apps
         librewolf
+        google-chrome
         vesktop
         gimp
         obs-studio
@@ -51,6 +52,7 @@ in
         alacritty
 
         unstable.antigravity-cli
+        unstable.antigravity-ide
     ];
 
     fonts.packages = with pkgs; [

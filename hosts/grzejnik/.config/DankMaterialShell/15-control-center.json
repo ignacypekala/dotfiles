@@ -1,0 +1,130 @@
+{
+  "controlCenterWidgets": [
+    {
+      "id": "user",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "col": 0,
+      "row": 0,
+      "hostname": true,
+      "compositor": true,
+      "badge": true
+    },
+    {
+      "id": "wifi",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 2,
+      "row": 3
+    },
+    {
+      "id": "audioOutput",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 2,
+      "row": 1,
+      "small": false
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "w": 3.5,
+      "h": 1,
+      "col": 0.5,
+      "row": 5,
+      "small": false
+    },
+    {
+      "id": "audioInput",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 4,
+      "row": 3
+    },
+    {
+      "id": "doNotDisturb",
+      "enabled": true,
+      "w": 3.5,
+      "h": 1,
+      "small": false,
+      "col": 4,
+      "row": 5
+    },
+    {
+      "id": "quickTiles",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "instanceId": "mvcwlz0uprerhmhps8d",
+      "col": 4,
+      "row": 0
+    },
+    {
+      "id": "nightMode",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "darkMode",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "colorPicker",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "settings",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "edit",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": false,
+      "group": "mvcwlz0uprerhmhps8d"
+    },
+    {
+      "id": "bluetooth",
+      "enabled": true,
+      "w": 2,
+      "h": 2,
+      "col": 4,
+      "row": 1
+    },
+    {
+      "id": "volumeSlider",
+      "enabled": true,
+      "w": 1.5,
+      "h": 4,
+      "col": 0.5,
+      "row": 1
+    },
+    {
+      "id": "inputVolumeSlider",
+      "enabled": true,
+      "w": 1.5,
+      "h": 4,
+      "col": 6,
+      "row": 1
+    }
+  ],
+  "controlCenterColumns": 8
+}

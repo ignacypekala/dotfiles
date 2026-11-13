@@ -10,6 +10,8 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.scrolloff = 5
 
+vim.opt.mousescroll = 'ver:1,hor:2'
+
 -- Normal cursor but with a beam when typing
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25-blinkon500," ..
     "r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"

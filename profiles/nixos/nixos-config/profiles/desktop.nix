@@ -35,7 +35,10 @@ in
         # apps
         librewolf
         google-chrome
+
+        signal-desktop
         vesktop
+
         gimp
         obs-studio
         tidal-hifi

@@ -54,6 +54,9 @@ in
         ghostty
         alacritty
 
+        # lord forgive me for I am about to sin
+        vscode
+
         unstable.antigravity-cli
         unstable.antigravity-ide
     ];

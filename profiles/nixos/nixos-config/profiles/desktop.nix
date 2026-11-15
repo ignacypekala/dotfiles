@@ -58,7 +58,6 @@ in
         vscode
 
         unstable.antigravity-cli
-        unstable.antigravity-ide
     ];
 
     fonts.packages = with pkgs; [

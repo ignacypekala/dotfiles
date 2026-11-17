@@ -66,6 +66,10 @@ in
         nerd-fonts.symbols-only
         ibm-plex
         merriweather
+        texlivePackages.garamond-math
+        dejavu_fonts
+        cantarell-fonts
+        texlivePackages.playfair
     ];
 
     programs.hyprland = {

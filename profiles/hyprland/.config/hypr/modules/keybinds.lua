@@ -31,7 +31,10 @@ hl.bind(combo(mod, "A"), hl.dsp.exec_cmd("dms ipc call dash toggle media"))
 hl.bind(combo(mod, "W"), hl.dsp.exec_cmd("dms ipc call island toggle weather"))
 
 hl.bind(combo(mod, "E"), hl.dsp.exec_cmd(run_cmd(programs.fileManager)))
-hl.bind(combo(mod, "RETURN"), hl.dsp.exec_cmd(run_cmd(programs.terminal)))
+hl.bind(
+    combo(mod, "RETURN"),
+    hl.dsp.exec_cmd(run_cmd("ghostty +new-window") )
+)
 
 hl.bind(combo(mod, "H"), hl.dsp.focus({ direction = "left" }))
 hl.bind(combo(mod, "L"), hl.dsp.focus({ direction = "right" }))
@@ -165,27 +168,21 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 hl.bind("Print", hl.dsp.exec_cmd("dms screenshot region --no-file --no-confirm --reset --no-notify"))
 
--- silly-vim-addict-side-effect-preventio-inator
-local ctrl_w = hl.bind("CTRL + W", function()
-    if hl.get_active_workspace().name == "game" then
-        return false
-    end
-    local window = hl.get_active_window()
-    if window ~= nil then
-        if has_value(window.tags, "terminal*") then
-            hl.dispatch(hl.dsp.pass({ window = window }))
-        else
-            hl.dispatch(hl.dsp.send_shortcut({
-                mods = "CTRL",
-                key = "BACKSPACE",
-                window = window
-            }))
-        end
-    end
-end, { repeating = false })
+local ctrl_w = hl.bind("CTRL + W", hl.dsp.send_shortcut({mods = "CTRL", key = "BACKSPACE"}))
 
 hl.on('window.active', function()
-    ctrl_w:set_enabled(hl.get_active_workspace().name ~= "game")
+    local workspace = hl.get_active_workspace()
+    if workspace == nil then
+        return
+    end
+
+    local window = hl.get_active_window()
+    if window == nil then
+        return
+    end
+
+    local disabled = workspace.name == "game" or has_value(window.tags, "terminal*")
+    ctrl_w:set_enabled(not disabled)
 end)
 
 hl.bind("SUPER + space", function()

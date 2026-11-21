@@ -34,7 +34,6 @@ in
 
         # apps
         librewolf
-        google-chrome
 
         signal-desktop
         vesktop

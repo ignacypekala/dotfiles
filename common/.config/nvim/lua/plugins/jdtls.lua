@@ -41,10 +41,6 @@ return {
                         bundles = bundles,
                     }
                 },
-                on_attach = function(client )
-                    -- Disable LSP semantic tokens to fallback to Treesitter
-                    client.server_capabilities.semanticTokensProvider = nil
-                end,
             }
 
             require('jdtls').start_or_attach(config)
@@ -58,5 +54,17 @@ return {
         if vim.bo.filetype == "java" then
             attach_jdtls({ file = vim.api.nvim_buf_get_name(0) })
         end
+
+        -- Disable syntax highlighting from jdtls and fallback to treesitter
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client and client.name == "jdtls" then
+                    client.server_capabilities.semanticTokensProvider = nil
+                end
+            end,
+        })
+
     end
+
 }

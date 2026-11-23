@@ -12,6 +12,7 @@ in
         ../../modules/steam.nix
         ../../modules/quiet-boot.nix
         ../../modules/windows.nix
+        ../../modules/ctf.nix
     ];
     _module.args.unstable = unstable;
 

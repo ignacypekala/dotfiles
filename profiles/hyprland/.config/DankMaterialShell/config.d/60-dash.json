@@ -6,6 +6,9 @@
     },
     "calendar": {
       "weekends": true
+    },
+    "weather": {
+      "city": true
     }
   },
   "dashCards": [

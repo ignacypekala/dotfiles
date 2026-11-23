@@ -7,6 +7,7 @@ in
     imports = [
         ./hardware-configuration.nix
         ./secure-boot.nix
+        ./webcam.nix
         ../../common.nix
         ../../profiles/desktop.nix
         ../../modules/steam.nix
@@ -65,10 +66,6 @@ in
     };
 
     # hardware
-    hardware.ipu6 = {
-        enable = true;
-        platform = "ipu6ep";
-    };
     hardware.bluetooth.enable = true;
 
     # drivers

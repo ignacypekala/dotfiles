@@ -1,7 +1,7 @@
 # dotfiles
 
-Configuration files for all the machines/environments I use. The appropriate
-subset of files is symlinked with GNU Stow on across a variety of environments.
+Configuration files for all the machines/environments I use. 
+The appropriate files/directories are symlinked with GNU Stow in various environments.
 
 You probably don't want to use these yourself, but feel free to use them as a reference.
 
@@ -17,7 +17,7 @@ Here's an overview of the repo structure:
 │   │   ├── tmux
 │   │   └── ...
 │   └── .local
-│       └── bin                 // some scripts of mine
+│       └── bin                 // some scripts which I use
 ├── hosts                       // sourced based on the hostname
 │   ├── farelka
 │   ├── grzejnik

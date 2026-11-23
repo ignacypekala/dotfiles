@@ -52,7 +52,7 @@ return {
                     draw = {
                         columns = {
                             { "kind_icon",         "label",       gap = 1 },
-                            { "label_description", "source_name", gap = 0 }
+                            { "label_description", "source_name", gap = 1 }
                         },
                     },
                     direction_priority = { 's', 'n' }

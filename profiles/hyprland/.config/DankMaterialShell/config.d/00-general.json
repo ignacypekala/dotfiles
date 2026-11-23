@@ -54,5 +54,6 @@
   "widgetBackgroundColor": "default",
   "widgetBackgroundCustomColor": "#6750A4",
   "displayProfileAutoSelect": false,
-  "mediaExcludePlayers": []
+  "mediaExcludePlayers": [],
+  "m3ElevationLightDirection": "autoBar"
 }

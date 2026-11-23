@@ -65,13 +65,11 @@ in
     };
 
     # hardware
+    hardware.ipu6 = {
+        enable = true;
+        platform = "ipu6ep";
+    };
     hardware.bluetooth.enable = true;
-
-    # don't seem to work
-    hardware.ipu6.enable = false;
-    environment.systemPackages = with pkgs; [
-        libcamera
-    ];
 
     # drivers
     boot.initrd.kernelModules = [ "i915" ];

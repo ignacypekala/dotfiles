@@ -135,12 +135,12 @@ in
     programs.dconf.enable = true;
     xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
+        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
         config = {
-            common.default = [ "gtk" ];
+            common.default = [ "gnome" ];
             hyprland = {
-                default = [ "hyprland" "gtk" ];
-                "org.freedesktop.impl.portal.FileChooser" = [ "gnome" "gtk" ];
+                default = [ "hyprland" "gnome" ];
+                "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
             };
         };
     };
@@ -152,11 +152,6 @@ in
                 "ghostty.desktop"
             ];
         };
-    };
-
-    services.pipewire = {
-        enable = true;
-        wireplumber.enable = true;
     };
 
     # for mtp devices

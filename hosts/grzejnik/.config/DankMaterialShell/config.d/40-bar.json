@@ -129,13 +129,6 @@
           "background": false
         },
         {
-          "id": "battery",
-          "enabled": true,
-          "background": false,
-          "batteryStyle": "outline",
-          "showBatteryPowerDischarging": false
-        },
-        {
           "id": "controlCenterButton",
           "enabled": true,
           "showNetworkIcon": true,
@@ -441,6 +434,6 @@
   "connectedFrameBarStyleBackups": {},
   "frameEnabled": false,
   "barInsetPaddingSyncAll": true,
-  "barElevationEnabled": false,
+  "barElevationEnabled": true,
   "barInsetPaddingShared": 6
 }

@@ -25,12 +25,15 @@ hl.bind(combo(mod, "SHIFT", "C"), hl.dsp.exec_cmd("dms ipc call powermenu toggle
 hl.bind(combo(mod, "U"), hl.dsp.exec_cmd("dms ipc call settings focusOrToggle"))
 hl.bind(combo(mod, "N"), hl.dsp.exec_cmd("dms ipc call notifications toggle"))
 
--- TODO: enter a submap where META + TAB cycles island activities
 hl.bind(combo(mod, "I"), hl.dsp.exec_cmd("dms ipc call dash toggle overview"))
 hl.bind(combo(mod, "A"), hl.dsp.exec_cmd("dms ipc call dash toggle media"))
 hl.bind(combo(mod, "W"), hl.dsp.exec_cmd("dms ipc call island toggle weather"))
 
+hl.bind(combo(mod, "B"), hl.dsp.exec_cmd("dms ipc powerprofile toggle"))
+
 hl.bind(combo(mod, "E"), hl.dsp.exec_cmd(run_cmd(programs.fileManager)))
+
+-- TODO: enter a submap where META + TAB cycles island activities
 hl.bind(
     combo(mod, "RETURN"),
     hl.dsp.exec_cmd(run_cmd("ghostty +new-window") )

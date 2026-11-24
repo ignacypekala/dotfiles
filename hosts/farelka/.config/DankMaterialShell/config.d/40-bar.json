@@ -129,6 +129,13 @@
           "background": false
         },
         {
+          "id": "battery",
+          "enabled": true,
+          "showBatteryPercentOnlyOnBattery": false,
+          "showBatteryPowerDischarging": false,
+          "batteryStyle": "outline"
+        },
+        {
           "id": "controlCenterButton",
           "enabled": true,
           "showNetworkIcon": true,

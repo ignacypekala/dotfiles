@@ -7,7 +7,7 @@ in
     imports = [
         ./hardware-configuration.nix
         ../../common.nix
-        ../../profiles/desktop.nix
+        ../../modules/desktop.nix
         ../../modules/steam.nix
         ../../modules/nvidia.nix
         ../../modules/quiet-boot.nix

@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, ... }: 
 
 let
     dank-calendar = builtins.getFlake "github:AvengeMedia/dankcalendar/ecdfbac5271e68a5989d8d86689fb8c2ea8ddca1";
@@ -12,71 +12,10 @@ in
 
     imports = [
         dank-calendar.nixosModules.default
-        ../modules/cursor.nix
         <nixos-unstable/nixos/modules/services/display-managers/dux-greeter.nix>
         <nixos-unstable/nixos/modules/programs/wayland/dux-shell.nix>
         dux-files.nixosModules.dux-files
     ];
-
-    environment.systemPackages = with pkgs; [
-        # environment
-        wl-clipboard
-        brightnessctl
-        playerctl
-        polkit_gnome
-        papirus-icon-theme
-        libnotify
-        hyprcursor
-        hyprshutdown
-        adw-gtk3
-
-        gnome-disk-utility
-        gparted
-
-        # apps
-        librewolf
-
-        signal-desktop
-        vesktop
-
-        gimp
-        obs-studio
-        tidal-hifi
-        qimgv
-        pinta
-        kdePackages.kolourpaint
-
-        yt-dlp
-        kid3
-        puddletag
-
-        wezterm
-        ghostty
-        alacritty
-
-        # lord forgive me for I am about to sin
-        vscode
-
-        unstable.antigravity-cli
-    ];
-
-    fonts.packages = with pkgs; [
-        noto-fonts
-        jetbrains-mono
-        nerd-fonts.symbols-only
-        ibm-plex
-        merriweather
-        texlivePackages.garamond-math
-        dejavu_fonts
-        cantarell-fonts
-        texlivePackages.playfair
-    ];
-
-    programs.hyprland = {
-        enable = true;
-        withUWSM = true;
-        xwayland.enable = true;
-    };
 
     programs.dux-shell = {
         enable = true;
@@ -139,33 +78,4 @@ in
             preferred = true;
         };
     };
-
-    programs.dconf.enable = true;
-    xdg.portal = {
-        enable = true;
-        extraPortals = [
-            pkgs.xdg-desktop-portal-gtk
-        ];
-        config = {
-            common.default = [ "gnome" ];
-            hyprland = {
-                default = [ "hyprland" "gtk" ];
-            };
-        };
-    };
-
-    xdg.terminal-exec = {
-        enable = true;
-        settings = {
-            default = [
-                "ghostty.desktop"
-            ];
-        };
-    };
-
-    # for mtp devices
-    services.gvfs.enable = true;
-
-    security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
 }

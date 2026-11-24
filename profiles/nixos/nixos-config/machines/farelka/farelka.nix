@@ -9,7 +9,7 @@ in
         ./secure-boot.nix
         ./webcam.nix
         ../../common.nix
-        ../../profiles/desktop.nix
+        ../../modules/desktop.nix
         ../../modules/steam.nix
         ../../modules/quiet-boot.nix
         ../../modules/windows.nix

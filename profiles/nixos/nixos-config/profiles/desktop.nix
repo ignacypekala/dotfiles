@@ -2,6 +2,7 @@
 
 let
     dank-calendar = builtins.getFlake "github:AvengeMedia/dankcalendar/ecdfbac5271e68a5989d8d86689fb8c2ea8ddca1";
+    dux-files = builtins.getFlake "github:duxlabs-dev/dux-files/73581769072cd40e539a16c627afe6bb18ae75ad";
 in
 {
     disabledModules = [
@@ -14,6 +15,7 @@ in
         ../modules/cursor.nix
         <nixos-unstable/nixos/modules/services/display-managers/dux-greeter.nix>
         <nixos-unstable/nixos/modules/programs/wayland/dux-shell.nix>
+        dux-files.nixosModules.dux-files
     ];
 
     environment.systemPackages = with pkgs; [
@@ -28,7 +30,6 @@ in
         hyprshutdown
         adw-gtk3
 
-        nautilus
         gnome-disk-utility
         gparted
 
@@ -131,16 +132,24 @@ in
         package = dank-calendar.packages.${pkgs.stdenv.hostPlatform.system}.default;
         quickshell.package = unstable.quickshell;
     };
+    programs.dux-files = {
+        enable = true;
+        portal = {
+            enable = true;
+            preferred = true;
+        };
+    };
 
     programs.dconf.enable = true;
     xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+        extraPortals = [
+            pkgs.xdg-desktop-portal-gtk
+        ];
         config = {
             common.default = [ "gnome" ];
             hyprland = {
-                default = [ "hyprland" "gnome" ];
-                "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
+                default = [ "hyprland" "gtk" ];
             };
         };
     };

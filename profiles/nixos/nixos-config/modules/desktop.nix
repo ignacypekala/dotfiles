@@ -17,6 +17,7 @@
         hyprshutdown
         adw-gtk3
 
+        nautilus
         gnome-disk-utility
         gparted
 

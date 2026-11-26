@@ -78,4 +78,37 @@ in
             preferred = true;
         };
     };
+
+    xdg.terminal-exec = {
+        enable = true;
+        settings = {
+            default = [
+                "ghostty.desktop"
+            ];
+        };
+    };
+
+    # for mtp devices
+    services.gvfs.enable = true;
+
+    security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
+
+    # printing
+    services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+    };
+    services.printing = {
+        enable = true;
+        drivers = with pkgs; [
+            cups-filters
+            cups-browsed
+
+            pkgs.epson-escpr
+            pkgs.epson-escpr2
+        ];
+    };
+    users.users."ignacy".extraGroups = [ "lp" ];
 }

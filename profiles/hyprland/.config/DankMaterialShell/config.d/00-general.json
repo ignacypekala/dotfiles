@@ -1,4 +1,5 @@
 {
+  "bluetoothMprisEnabled": true,
   "clockFormat": "24h",
   "configVersion": 42,
   "motionEffect": 3,

@@ -1,4 +1,14 @@
 {
+  "weatherProviders": [
+    {
+      "id": "openmeteo",
+      "enabled": true
+    },
+    {
+      "id": "metno",
+      "enabled": true
+    }
+  ],
   "dashOptions": {
     "clock": {
       "date": true,
@@ -8,7 +18,60 @@
       "weekends": true
     },
     "weather": {
-      "city": true
+      "city": true,
+      "widgets": [
+        {
+          "id": "conditions",
+          "w": 3,
+          "h": 2,
+          "tone": "primary",
+          "city": true,
+          "col": 0,
+          "row": 0
+        },
+        {
+          "id": "daily",
+          "w": 2,
+          "h": 2,
+          "forecast": "cards",
+          "col": 2,
+          "row": 2
+        },
+        {
+          "id": "precipitation",
+          "w": 1,
+          "h": 2,
+          "graphics": true,
+          "tone": "",
+          "col": 3,
+          "row": 0
+        },
+        {
+          "id": "hourly",
+          "w": 4,
+          "h": 2,
+          "forecast": "chart",
+          "col": 0,
+          "row": 4
+        },
+        {
+          "id": "readings",
+          "w": 2,
+          "h": 2,
+          "tone": "",
+          "col": 0,
+          "row": 2
+        }
+      ],
+      "panelColumns": 5,
+      "panelRows": 3
+    },
+    "media": {
+      "cardBackgrounds": true,
+      "albumArtBackdrop": false,
+      "playerStyle": "material",
+      "titleFont": "Notable",
+      "artStyle": "disc"
     }
   },
   "dashCards": [

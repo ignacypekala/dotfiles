@@ -138,7 +138,7 @@ hl.bind(combo(mod, "CTRL", "M"), hl.dsp.workspace.swap_monitors({ monitor1 = "0"
 hl.bind(combo(mod, "SHIFT", "N"), hl.dsp.workspace.move({ workspace = "e+0", monitor = "+1" }))
 
 hl.bind(combo(mod, "mouse_down"), hl.dsp.focus({ workspace = "m+1" }))
-hl.bind(combo(mod, "TAB"), hl.dsp.focus({ workspace = "m+1" }), { repeating = true })
+hl.bind(combo(mod, "TAB"), hl.dsp.focus({ workspace = "m+1" }))
 hl.bind(combo(mod, "mouse_up"), hl.dsp.focus({ workspace = "m-1" }))
 hl.bind(combo(mod, "SHIFT", "TAB"), hl.dsp.focus({ workspace = "m-1" }))
 

@@ -73,9 +73,15 @@ in
     };
     programs.dux-files = {
         enable = true;
+        systemd = {
+            enable = true;
+            target = "graphical-session.target";
+            restartIfChanged = true;
+        };
         portal = {
             enable = true;
             preferred = true;
+            desktop = "hyprland";
         };
     };
 

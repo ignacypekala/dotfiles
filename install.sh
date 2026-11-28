@@ -58,6 +58,7 @@ cleanup_no_folds() {
 
 prevent_stow_fold "$HOME/.config"
 prevent_stow_fold "$HOME/.config/bashrc.d"
+prevent_stow_fold "$HOME/.config/tidal-hifi"
 prevent_stow_fold "$HOME/.config/bash_profile.d"
 prevent_stow_fold "$HOME/.config/DankMaterialShell/config.d"
 prevent_stow_fold "$HOME/.local"
